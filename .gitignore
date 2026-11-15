@@ -1,0 +1,4 @@
+tests/shots/
+tests/results.json
+__pycache__/
+.DS_Store

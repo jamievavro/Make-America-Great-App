@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make America Great</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{--blue:#0B2A5B;--red:#B22234;--sky:#EAF0FA;--line:#D5DDEB;--muted:#3D4A63}
+*{box-sizing:border-box}
+html,body{margin:0;background:#C9D6EC;font-family:Inter,sans-serif;color:#10182B}
+.app{max-width:440px;margin:0 auto;min-height:100vh;background:#fff;display:flex;flex-direction:column;position:relative}
+.top{background:var(--blue);color:#fff;padding:16px 16px 12px;position:sticky;top:0;z-index:5}
+.toprow{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.brand{display:flex;align-items:center;gap:8px;font-family:Oswald,sans-serif;font-weight:700;font-size:19px;letter-spacing:.5px}
+.sub{font-size:12px;font-weight:600;color:#E3EAF6;margin-top:6px}
+.stripes{height:12px;background:repeating-linear-gradient(180deg,var(--red) 0 3px,#fff 3px 6px)}
+.pill{border:0;border-radius:999px;padding:8px 14px;font:700 13px Inter,sans-serif;cursor:pointer;white-space:nowrap}
+.pill.red{background:var(--red);color:#fff}.pill.white{background:#fff;color:var(--blue)}.pill.out{background:#fff;color:var(--blue);border:1px solid var(--blue)}.pill.on{background:var(--blue);color:#fff}
+.donate{background:#fff;color:var(--red);display:flex;align-items:center;gap:6px;min-height:36px}
+.chips{display:flex;gap:8px;overflow-x:auto;margin-top:12px;padding-bottom:2px}
+main{flex:1;padding:16px 16px 100px}
+.view{display:none;flex-direction:column;gap:12px}.view.on{display:flex}
+.card{border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;background:#fff;text-align:left;font-family:inherit;color:inherit;cursor:pointer;width:100%}
+.card.big{border:2px solid var(--blue);padding:0;overflow:hidden}
+.card.row{flex-direction:row;gap:12px;align-items:center;padding:12px}
+.tag{align-self:flex-start;font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;color:#fff;background:var(--red)}
+.tag.b{background:var(--blue)}
+.meta{font-size:12px;color:var(--muted)}
+.src{font-size:12px;font-weight:700;color:var(--red)}
+h1,h2,h3{margin:0}
+.h-big{font-family:Oswald,sans-serif;font-weight:500;font-size:22px;line-height:1.2;color:var(--blue)}
+.h{font-size:15px;font-weight:700;line-height:1.3;color:var(--blue)}
+.pagehead{background:var(--blue);color:#fff;margin:-16px -16px 0;padding:22px 20px 18px}
+.pagehead .k{font-size:12px;font-weight:700;letter-spacing:1px}
+.pagehead h1{font-family:Oswald,sans-serif;font-size:30px;font-weight:700;margin-top:4px}
+.pagehead p{margin:4px 0 0;font-size:13px;color:#E3EAF6}
+.pagehead+.stripes{margin:0 -16px 4px}
+.btn{min-height:52px;border:0;border-radius:14px;background:var(--red);color:#fff;font:700 16px Inter,sans-serif;cursor:pointer;width:100%}
+.btn.b{background:var(--blue)}
+.label{font-size:13px;font-weight:700;letter-spacing:.5px;color:var(--muted);margin-top:4px}
+.back{display:flex;align-items:center;gap:6px;background:none;border:0;color:var(--blue);font:700 14px Inter,sans-serif;min-height:44px;padding:0;cursor:pointer}
+.facts{background:var(--sky);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.check{border:2px solid var(--red);border-radius:14px;padding:12px 16px}
+.check a{display:flex;justify-content:space-between;min-height:44px;align-items:center;font-weight:700;font-size:14px;color:var(--blue);text-decoration:none;border-bottom:1px solid var(--line)}
+.check a:last-child{border:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{border-radius:12px;padding:12px;color:#fff;background:var(--blue)}.stat b{font-family:Oswald,sans-serif;font-size:24px;display:block}.stat span{font-size:12px;font-weight:600}
+.num{width:36px;height:36px;flex:none;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font:700 18px Oswald,sans-serif;background:var(--red)}
+.num.b{background:var(--blue)}
+.vote{flex:none;color:#fff;font-weight:700;font-size:13px;padding:8px 12px;border-radius:8px;background:var(--blue)}
+.cal{width:58px;flex:none;border-radius:10px;overflow:hidden;text-align:center}.cal div:first-child{background:var(--red);color:#fff;font-size:12px;font-weight:700;padding:4px 0}.cal div:last-child{background:var(--sky);color:var(--blue);font:700 22px Oswald,sans-serif;padding:4px 0}
+.icon-btn{width:44px;height:44px;flex:none;border-radius:50%;border:2px solid var(--blue);background:#fff;color:var(--blue);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.icon-btn.set{background:var(--blue);color:#fff}
+.poll{position:relative;min-height:46px;border:2px solid var(--blue);border-radius:10px;background:#fff;overflow:hidden;text-align:left;padding:0 14px;font:700 14px Inter,sans-serif;color:var(--blue);cursor:pointer;width:100%}
+.poll i{position:absolute;left:0;top:0;bottom:0;background:#C9D6EC;width:0;transition:width .4s}
+.poll span{position:relative}
+input,textarea{font:16px Inter,sans-serif;border:1px solid #B8C4D9;border-radius:12px;padding:12px;width:100%}
+textarea{border:2px solid var(--blue);resize:none}
+.amts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.amt{min-height:52px;border:2px solid var(--blue);border-radius:12px;background:#fff;color:var(--blue);font:700 17px Inter,sans-serif;cursor:pointer}
+.amt.on{background:var(--blue);color:#fff}
+.small{font-size:12px;line-height:1.5;color:var(--muted);text-align:center;margin:0}
+.toast{pointer-events:none;position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--blue);color:#fff;padding:12px 18px;border-radius:12px;font-weight:700;font-size:14px;display:none;z-index:20;max-width:90%}
+nav.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:440px;background:var(--blue);display:grid;grid-template-columns:repeat(5,1fr);padding:4px 0 14px;z-index:10}
+nav.tabs button{background:none;border:0;color:#C9D6EC;display:flex;flex-direction:column;align-items:center;gap:3px;font:600 11px Inter,sans-serif;padding:8px 0;cursor:pointer;min-height:52px}
+nav.tabs button.on{color:#fff;font-weight:700}
+nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
+.sharecard{border-radius:18px;overflow:hidden;border:2px solid var(--blue)}
+.more a,.more button.card{flex-direction:row;align-items:center;justify-content:space-between}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<pattern id="stp" width="10" height="12.92" patternUnits="userSpaceOnUse"><rect width="10" height="6.46" fill="#B22234"/><rect y="6.46" width="10" height="6.46" fill="#fff"/></pattern>
+<pattern id="dots" width="7" height="6.5" patternUnits="userSpaceOnUse"><circle cx="3.5" cy="3.25" r="1.2" fill="#fff"/></pattern>
+<pattern id="sky" width="26" height="22" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="1.6" fill="#fff"/><circle cx="19" cy="16" r="1.2" fill="#fff"/></pattern>
+</defs>
+<symbol id="capitol" viewBox="0 0 354 160"><rect width="354" height="160" fill="#0B2A5B"/><rect width="354" height="100" fill="url(#sky)" opacity=".7"/><rect y="130" width="354" height="30" fill="#B22234"/><rect y="136" width="354" height="6" fill="#fff"/><rect y="148" width="354" height="6" fill="#fff"/><g fill="#fff"><rect x="70" y="112" width="214" height="20"/><rect x="90" y="100" width="174" height="12"/><rect x="147" y="74" width="60" height="26"/><path d="M141 76Q177 22 213 76Z"/><rect x="173" y="24" width="8" height="14"/><path d="M177 12L182 24H172Z"/></g><g fill="#0B2A5B"><rect x="152" y="80" width="4" height="20"/><rect x="162" y="80" width="4" height="20"/><rect x="172" y="80" width="4" height="20"/><rect x="182" y="80" width="4" height="20"/><rect x="192" y="80" width="4" height="20"/><rect x="202" y="80" width="4" height="20"/><rect x="100" y="115" width="4" height="15"/><rect x="130" y="115" width="4" height="15"/><rect x="220" y="115" width="4" height="15"/><rect x="250" y="115" width="4" height="15"/></g></symbol>
+<symbol id="flag" viewBox="0 0 84 84"><rect width="84" height="84" fill="url(#stp)"/><rect width="38" height="45" fill="#0B2A5B"/><rect width="38" height="45" fill="url(#dots)"/></symbol>
+<symbol id="wh" viewBox="0 0 84 84"><rect width="84" height="84" fill="#0B2A5B"/><rect y="66" width="84" height="18" fill="#B22234"/><g fill="#fff"><rect x="10" y="40" width="64" height="26"/><path d="M26 40L42 26L58 40Z"/><rect x="40" y="16" width="2" height="10"/></g><rect x="42" y="16" width="9" height="5" fill="#B22234"/><g fill="#0B2A5B"><rect x="30" y="44" width="3" height="20"/><rect x="37" y="44" width="3" height="20"/><rect x="44" y="44" width="3" height="20"/><rect x="51" y="44" width="3" height="20"/></g></symbol>
+<symbol id="desert" viewBox="0 0 358 150"><rect width="358" height="150" fill="#0B2A5B"/><circle cx="250" cy="96" r="36" fill="#B22234"/><path d="M0 110L60 80L110 104L170 70L240 108L300 86L358 104V150H0Z" fill="#fff" opacity=".25"/><rect y="118" width="358" height="32" fill="#fff"/><g fill="#0B2A5B"><rect x="70" y="72" width="8" height="50" rx="4"/><rect x="56" y="86" width="8" height="18" rx="4"/><rect x="84" y="80" width="8" height="20" rx="4"/></g></symbol>
+<symbol id="heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.2C1 8.2 3.4 4.5 7 4.5c2 0 3.4 1.1 5 3 1.6-1.9 3-3 5-3 3.6 0 6 3.7 4.5 7.3C19.5 16.4 12 21 12 21z"/></symbol>
+<symbol id="bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4zM10 20a2 2 0 004 0" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+<symbol id="chev" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5"/></symbol>
+</svg>
+
+<div class="app">
+<header class="top">
+<div class="toprow">
+<div class="brand"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z" fill="#B22234" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>MAKE AMERICA GREAT</div>
+<button data-go="profile" aria-label="My profile" style="width:44px;height:44px;border-radius:50%;border:2px solid #fff;background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></button>
+</div>
+<div class="toprow" style="margin-top:8px"><div class="sub" style="margin:0">Free · No ads · Sourced</div>
+<button class="pill donate" data-go="donate"><svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#heart"/></svg>Donate to App Creator</button></div>
+</header>
+<div class="stripes" aria-hidden="true"></div>
+
+<main>
+<!-- HOME -->
+<section class="view on" id="v-home">
+<div class="chips" id="topics">
+<button class="pill red" data-topic="Top Wins">Top Wins</button><button class="pill out" data-topic="Economy">Economy</button><button class="pill out" data-topic="Jobs">Jobs</button><button class="pill out" data-topic="Border">Border</button><button class="pill out" data-topic="Energy">Energy</button>
+</div>
+<button class="card" data-go="race2028" style="background:var(--blue);border:0;color:#fff;flex-direction:row;align-items:center;gap:14px"><span style="font:700 34px Oswald,sans-serif;color:#fff;line-height:1">2028</span><span style="flex:1;display:flex;flex-direction:column;gap:2px"><b style="font:700 17px Oswald,sans-serif;letter-spacing:.5px">ROAD TO 2028</b><span style="font-size:12px;color:#E3EAF6">See every Republican running or thinking about it</span></span><span style="font-size:22px">›</span></button>
+<style>
+.strip{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 8px;scroll-snap-type:x mandatory}
+.ctile{flex:none;width:138px;scroll-snap-align:start;border:2px solid var(--blue);border-radius:14px;padding:10px 6px;display:flex;flex-direction:column;align-items:center;gap:5px;background:#fff;text-align:center}
+.ctile .cav{width:52px;height:52px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font:700 18px Oswald,sans-serif}
+.ctile .cn{font-size:13px;font-weight:700;color:var(--blue);line-height:1.2;min-height:34px;display:flex;align-items:center;justify-content:center;background:none;border:0;cursor:pointer;font-family:inherit;padding:0}
+.ctile .cr{font-size:11px;font-weight:700;color:var(--muted)}
+.mstars{display:flex}
+.mstar{width:25px;height:32px;border:0;background:none;padding:0;font-size:22px;line-height:1;color:#C9D6EC;cursor:pointer}
+.mstar.on{color:#E8A317}
+.live{display:flex;flex-direction:column;gap:6px}
+.lv{display:flex;gap:8px;align-items:center;font-size:13px;line-height:1.35;padding:8px 10px;border-radius:10px;background:var(--sky)}
+.lv .st{color:#B5790C;font-weight:700;white-space:nowrap}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--red);flex:none;animation:pulse 1.2s infinite}
+@keyframes pulse{50%{opacity:.25}}
+</style>
+<div class="post" style="gap:8px;padding:12px;border:2px solid var(--red)"><div style="display:flex;justify-content:space-between;align-items:center"><h2 style="font:700 17px Oswald,sans-serif;color:var(--blue);letter-spacing:.5px">★ RATE THE 2028 FIELD</h2><button class="back" data-go="race2028" style="min-height:36px;font-size:13px">See all ›</button></div><span class="meta">Most liked first. Swipe the line and tap the stars to vote.</span><div class="strip" id="stripHome"></div><div id="liveHome" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--blue)"></div></div>
+<button class="card big" data-go="story">
+<svg width="100%" height="160" preserveAspectRatio="xMidYMid slice" role="img" aria-label="U.S. Capitol under a starry sky"><use href="#capitol"/></svg>
+<div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;gap:8px;align-items:center"><span class="tag">TOP WIN</span><span class="meta">Economy · 2h ago</span></div>
+<h2 class="h-big">[Headline: new factory opening brings jobs to an American town]</h2>
+<span class="src">✓ 3 primary sources linked</span>
+</div>
+</button>
+<button class="card row" data-go="story"><svg width="84" height="84" style="flex:none;border-radius:10px" role="img" aria-label="American flag"><use href="#flag"/></svg><div style="display:flex;flex-direction:column;gap:6px"><span class="meta">Jobs · 4h ago</span><h3 class="h">[Headline: monthly jobs report highlights]</h3><span class="src">Source: BLS report</span></div></button>
+<button class="card row" data-go="story"><svg width="84" height="84" style="flex:none;border-radius:10px" role="img" aria-label="White House"><use href="#wh"/></svg><div style="display:flex;flex-direction:column;gap:6px"><span class="meta">White House · 6h ago</span><h3 class="h">[Headline: bill signed into law]</h3><span class="src">Source: congress.gov</span></div></button>
+<button class="card row" data-go="story"><svg width="84" height="84" style="flex:none;border-radius:10px" role="img" aria-label="American flag"><use href="#flag"/></svg><div style="display:flex;flex-direction:column;gap:6px"><span class="meta">Energy · 8h ago</span><h3 class="h">[Headline: energy production news]</h3><span class="src">Source: EIA data</span></div></button>
+</section>
+
+<!-- STORY -->
+<section class="view" id="v-story">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<svg width="100%" height="170" preserveAspectRatio="xMidYMid slice" style="border-radius:14px" role="img" aria-label="U.S. Capitol"><use href="#capitol"/></svg>
+<div style="display:flex;gap:8px;align-items:center"><span class="tag">NEWS</span><span class="meta">Economy · [Date]</span></div>
+<h1 class="h-big" style="font-size:26px">[Headline: new factory opening brings jobs to an American town]</h1>
+<p style="margin:0;font-size:15px;line-height:1.55;color:#2D3748">[Story summary in plain language: what happened, who it helps, and what comes next.]</p>
+<div class="facts"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue)">KEY FACTS</h2><div><b style="color:var(--red)">★</b> [Fact, e.g. number of jobs]</div><div><b style="color:var(--red)">★</b> [Fact, e.g. investment amount]</div></div>
+<div class="check"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--red);margin-bottom:4px">CHECK IT YOURSELF</h2><a href="#">White House statement<span>›</span></a><a href="#">State jobs data<span>›</span></a><a href="#">Company press release<span>›</span></a></div>
+<div class="grid3"><button class="pill on" id="repostBtn" style="min-height:46px">↻ Repost</button><button class="pill out" id="likeBtn" style="min-height:46px">★ Like</button><button class="pill red" data-go="share" style="min-height:46px">Share</button></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><div class="label">COMMENTS</div><span style="font-size:11px;font-weight:700;color:var(--blue)">Moderated · Keep it positive</span></div>
+<div id="storyComments" style="display:flex;flex-direction:column;gap:10px"><div class="card" style="cursor:default"><b style="font-size:13px;color:var(--blue)">[Username] · [State]</b><span style="font-size:14px">[Comment text]</span></div></div>
+<form id="sform" style="display:flex;gap:8px"><label style="flex:1"><span style="position:absolute;width:1px;height:1px;overflow:hidden">Comment on this story</span><input id="sinput" placeholder="Comment on this story"></label><button class="pill red" style="min-height:46px">Post</button></form>
+</section>
+
+<!-- SHARE -->
+<section class="view" id="v-share">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<h2 class="h" style="font-size:18px">Your share card</h2>
+<div class="sharecard">
+<svg width="100%" height="150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#capitol"/></svg>
+<div style="background:var(--blue);color:#fff;padding:16px;display:flex;flex-direction:column;gap:8px">
+<span style="font-size:11px;font-weight:700;letter-spacing:1px;color:#E3EAF6">AMERICA IS WINNING</span>
+<b style="font:700 22px/1.2 Oswald,sans-serif">[Headline: new factory opening brings jobs to an American town]</b>
+<span style="font-size:12px;color:#E3EAF6">Sourced · Make America Great app</span>
+</div>
+<div class="stripes"></div>
+</div>
+<div class="grid3">
+<button class="pill on" data-toast="Shared to Facebook (demo)">Facebook</button><button class="pill on" data-toast="Shared to X (demo)">X</button><button class="pill red" data-toast="Link copied (demo)">Copy link</button>
+</div>
+</section>
+
+<!-- BRIEF -->
+<section class="view" id="v-brief">
+<div class="pagehead"><div class="k" id="bKick">YOUR DAILY BRIEF · [DATE]</div><h1 id="bTitle">Today's 5 Wins for America</h1><p id="bSub">About a 3-minute read · every item sourced</p></div><div class="stripes"></div>
+<div class="grid3" id="bTabs" role="tablist"><button class="pill on" data-b="daily" role="tab">Daily</button><button class="pill out" data-b="weekly" role="tab">Weekly</button><button class="pill out" data-b="monthly" role="tab">Monthly</button></div>
+<div class="bpanel" id="b-daily" style="display:flex;flex-direction:column;gap:12px">
+<button class="card row" data-go="story"><span class="num">1</span><div><h3 class="h">[Economy win summary]</h3><span class="src">View source</span></div></button>
+<button class="card row" data-go="story"><span class="num b">2</span><div><h3 class="h">[Jobs win summary]</h3><span class="src">View source</span></div></button>
+<button class="card row" data-go="story"><span class="num">3</span><div><h3 class="h">[Border or security update]</h3><span class="src">View source</span></div></button>
+<button class="card row" data-go="story"><span class="num b">4</span><div><h3 class="h">[Energy or manufacturing news]</h3><span class="src">View source</span></div></button>
+<button class="card row" data-go="story"><span class="num">5</span><div><h3 class="h">[Good news from communities]</h3><span class="src">View source</span></div></button>
+</div>
+<div class="bpanel" id="b-weekly" style="display:none;flex-direction:column;gap:12px">
+<div class="grid3"><div class="stat"><b>[#]</b><span>Wins this week</span></div><div class="stat" style="background:var(--red)"><b>[#]</b><span>Bills signed</span></div><div class="stat" style="background:var(--sky);color:var(--blue)"><b>[#]</b><span>Promises kept</span></div></div>
+<div class="label">TOP STORIES THIS WEEK</div>
+<button class="card row" data-go="story"><span class="num">1</span><div><span class="meta">Monday</span><h3 class="h">[Biggest win of the week]</h3><span class="src">View source</span></div></button>
+<button class="card row" data-go="story"><span class="num b">2</span><div><span class="meta">Wednesday</span><h3 class="h">[Economy or jobs highlight]</h3><span class="src">View source</span></div></button>
+<button class="card row" data-go="story"><span class="num">3</span><div><span class="meta">Friday</span><h3 class="h">[Border or security highlight]</h3><span class="src">View source</span></div></button>
+<div class="facts"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue)">COMING UP NEXT WEEK</h2><div><b style="color:var(--red)">★</b> [Upcoming vote or signing]</div><div><b style="color:var(--red)">★</b> [Upcoming speech or event]</div></div>
+</div>
+<div class="bpanel" id="b-monthly" style="display:none;flex-direction:column;gap:12px">
+<div class="chips" id="months"><button class="pill on">November</button><button class="pill out">October</button><button class="pill out">September</button><button class="pill out">August</button></div>
+<div class="grid3"><div class="stat"><b>[#]</b><span>Wins this month</span></div><div class="stat" style="background:var(--red)"><b>[#]</b><span>Laws signed</span></div><div class="stat" style="background:var(--sky);color:var(--blue)"><b>[#]</b><span>New jobs</span></div></div>
+<div class="label">MONTH BY CATEGORY</div>
+<button class="card" data-go="story"><span class="src">ECONOMY</span><h3 class="h">[Monthly economy recap]</h3><span class="meta">Sources: BLS, Commerce Dept.</span></button>
+<button class="card" data-go="story"><span class="src">BORDER</span><h3 class="h">[Monthly border recap]</h3><span class="meta">Source: CBP data</span></button>
+<button class="card" data-go="story"><span class="src">ENERGY</span><h3 class="h">[Monthly energy recap]</h3><span class="meta">Source: EIA data</span></button>
+<button class="card" data-go="promises"><span class="src">PROMISES</span><h3 class="h">[Promises kept this month]</h3><span class="meta">See the full tracker ›</span></button>
+</div>
+<button class="btn" data-go="share" id="bShare">Share Today's Brief</button>
+</section>
+
+<!-- PROMISES -->
+<section class="view" id="v-promises">
+<div class="pagehead"><div class="k">TRACKER</div><h1>Promises Kept</h1><p>Each promise linked to the order or law behind it</p></div><div class="stripes"></div>
+<div class="grid3"><div class="stat"><b>[#]</b><span>Kept</span></div><div class="stat" style="background:var(--red)"><b>[#]</b><span>In progress</span></div><div class="stat" style="background:var(--sky);color:var(--blue)"><b>[#]</b><span>Not started</span></div></div>
+<div class="chips" id="pfilter"><button class="pill on">All</button><button class="pill out">Economy</button><button class="pill out">Border</button><button class="pill out">Energy</button></div>
+<div class="card"><span class="tag b">✓ KEPT · [date]</span><h3 class="h">[Promise, e.g. secure the southern border]</h3><a href="#" class="src">See the executive order</a></div>
+<div class="card"><span class="tag b">✓ KEPT · [date]</span><h3 class="h">[Promise, e.g. cut taxes for workers]</h3><a href="#" class="src">See the law</a></div>
+<div class="card"><span class="tag">IN PROGRESS · [latest step]</span><h3 class="h">[Promise, e.g. bring factories back]</h3><a href="#" class="src">See the record</a></div>
+</section>
+
+<!-- VOTES -->
+<section class="view" id="v-votes">
+<div class="pagehead"><div class="k">YOUR REPRESENTATIVES</div><h1>Vote Tracker</h1><p>From official congressional records</p></div><div class="stripes"></div>
+<div class="grid3" id="reps"><button class="pill on">[Senator]</button><button class="pill out">[Senator]</button><button class="pill out">[House Rep]</button></div>
+<div class="label">RECENT VOTES</div>
+<div class="card row"><div style="flex:1"><h3 class="h">[Bill name]</h3><span class="meta">[Date] · Passed</span></div><span class="vote">YES</span></div>
+<div class="card row"><div style="flex:1"><h3 class="h">[Bill name]</h3><span class="meta">[Date] · Failed</span></div><span class="vote" style="background:var(--red)">NO</span></div>
+<div class="card row"><div style="flex:1"><h3 class="h">[Bill name]</h3><span class="meta">[Date] · Passed</span></div><span class="vote">YES</span></div>
+<a href="https://www.congress.gov" class="src" style="text-align:center;font-size:14px;padding:12px">See full voting record on congress.gov</a>
+</section>
+
+<!-- MORE -->
+<section class="view more" id="v-more">
+<div class="pagehead"><div class="k">EXPLORE</div><h1>More</h1></div><div class="stripes"></div>
+<button class="card" data-go="promises"><span class="h">★ Promises Kept</span><span>›</span></button>
+<button class="card" data-go="videos"><span class="h">▶ Videos</span><span>›</span></button>
+<button class="card" data-go="profile"><span class="h">My Profile</span><span>›</span></button>
+<button class="card" data-go="people"><span class="h">Find Friends</span><span>›</span></button>
+<button class="card" data-go="votes"><span class="h">Vote Tracker</span><span>›</span></button>
+<button class="card" data-go="factcheck"><span class="h">Fact Check</span><span>›</span></button>
+<button class="card" data-go="state"><span class="h">Your State</span><span>›</span></button>
+<button class="card" data-go="events"><span class="h">Events</span><span>›</span></button>
+<button class="card" data-go="community"><span class="h">Poll + Comments</span><span>›</span></button>
+<button class="card" data-go="donate" style="border:2px solid var(--red)"><span class="h" style="color:var(--red)">Donate to the App Creator</span><span>›</span></button>
+</section>
+
+<!-- FACT CHECK -->
+<section class="view" id="v-factcheck">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div class="pagehead" style="margin-top:0;border-radius:14px;margin-left:0;margin-right:0"><div class="k">HEARD SOMETHING?</div><h1>Fact Check</h1><p>See the real record, with sources</p></div>
+<label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--blue)">Type or paste a claim<textarea rows="3" id="claim" placeholder="e.g. &quot;I heard that...&quot;"></textarea></label>
+<button class="btn" id="checkBtn">Check the Facts</button>
+<div class="card" id="checkResult" style="display:none;border:2px solid var(--blue)"><span class="tag b">CHECKING THE RECORD</span><h3 class="h" id="claimText"></h3><p style="margin:0;font-size:13px;color:#2D3748">In the real app, this shows what official records say, with links.</p></div>
+<div class="label">RECENT CHECKS</div>
+<div class="card"><span class="tag b">TRUE</span><h3 class="h">[Claim being checked]</h3><span class="meta">[What the official record shows]</span><a href="#" class="src">2 sources</a></div>
+<div class="card"><span class="tag">MISLEADING</span><h3 class="h">[Claim being checked]</h3><span class="meta">[What's missing from the story]</span><a href="#" class="src">3 sources</a></div>
+</section>
+
+<!-- STATE -->
+<section class="view" id="v-state">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h1 class="h-big" style="font-size:28px;font-weight:700" id="stateName">Arizona</h1>
+<label style="flex:none"><span style="position:absolute;width:1px;height:1px;overflow:hidden">Choose state</span><select id="stateSel" style="min-height:44px;border:2px solid var(--blue);border-radius:999px;padding:0 12px;font:700 13px Inter,sans-serif;color:var(--blue);background:#fff"><option>Arizona</option><option>Texas</option><option>Florida</option><option>Ohio</option><option>Pennsylvania</option></select></label></div>
+<svg width="100%" height="150" preserveAspectRatio="xMidYMid slice" style="border-radius:14px" role="img" aria-label="Desert sunset"><use href="#desert"/></svg>
+<button class="card" data-go="story"><span class="src">JOBS · [City]</span><h3 class="h">[Headline: new business opening in <span class="sn">Arizona</span>]</h3><span class="meta">Source: [local source]</span></button>
+<button class="card" data-go="story"><span class="src">COMMUNITY · [City]</span><h3 class="h">[Headline: local heroes and veterans news]</h3><span class="meta">Source: [local source]</span></button>
+<button class="card" data-go="story"><span class="src">BORDER · <span class="sn">Arizona</span></span><h3 class="h">[Headline: border security update]</h3><span class="meta">Source: CBP data</span></button>
+</section>
+
+<!-- EVENTS -->
+<section class="view" id="v-events">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<h1 class="h-big" style="font-size:28px;font-weight:700">Events</h1>
+<span class="meta">Rallies, speeches, bill signings and town halls</span>
+<div class="card row"><div class="cal"><div>[MON]</div><div>[##]</div></div><div style="flex:1"><span class="src">RALLY</span><h3 class="h">[Event name]</h3><span class="meta">[City, State] · [Time]</span></div><button class="icon-btn" aria-label="Set reminder"><svg width="20" height="20"><use href="#bell"/></svg></button></div>
+<div class="card row"><div class="cal"><div style="background:var(--blue)">[MON]</div><div>[##]</div></div><div style="flex:1"><span class="src">SPEECH · LIVE</span><h3 class="h">[Event name]</h3><span class="meta">[Where to watch] · [Time]</span></div><button class="icon-btn" aria-label="Set reminder"><svg width="20" height="20"><use href="#bell"/></svg></button></div>
+<div class="card row"><div class="cal"><div>[MON]</div><div>[##]</div></div><div style="flex:1"><span class="src">TOWN HALL</span><h3 class="h">[Event name]</h3><span class="meta">[City, AZ] · [Time]</span></div><button class="icon-btn" aria-label="Set reminder"><svg width="20" height="20"><use href="#bell"/></svg></button></div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="view" id="v-community">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div class="facts">
+<span class="src">TODAY'S POLL</span>
+<h2 class="h" style="font-size:17px">[Poll question, e.g. Which issue matters most to you?]</h2>
+<button class="poll" data-pct="58"><i></i><span>Economy</span></button>
+<button class="poll" data-pct="30"><i></i><span>Border</span></button>
+<button class="poll" data-pct="12"><i></i><span>Energy</span></button>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center"><div class="label">COMMENTS</div><span style="font-size:11px;font-weight:700;color:var(--blue)">Moderated · Keep it positive</span></div>
+<div id="comments" style="display:flex;flex-direction:column;gap:10px">
+<div class="card" style="cursor:default"><b style="font-size:13px;color:var(--blue)">[Username] · [State]</b><span style="font-size:14px">[Comment text]</span></div>
+<div class="card" style="cursor:default"><b style="font-size:13px;color:var(--blue)">[Username] · [State]</b><span style="font-size:14px">[Comment text]</span></div>
+</div>
+<form id="cform" style="display:flex;gap:8px"><label style="flex:1"><span style="position:absolute;width:1px;height:1px;overflow:hidden">Add a comment</span><input id="cinput" placeholder="Add a comment"></label><button class="pill red" style="min-height:46px">Post</button></form>
+</section>
+
+<!-- FEED -->
+<section class="view" id="v-feed">
+<style>
+.post{border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;background:#fff}
+.who{display:flex;align-items:center;gap:10px}
+.av{width:40px;height:40px;border-radius:50%;flex:none;color:#fff;display:flex;align-items:center;justify-content:center;font:700 17px Oswald,sans-serif}
+.quote{border:2px solid var(--blue);border-radius:12px;overflow:hidden;text-align:left;background:#fff;padding:0;cursor:pointer;font-family:inherit;width:100%}
+.quote .qb{padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.acts{display:flex;gap:6px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:4px 0}
+.act{flex:1;min-height:44px;border:0;background:none;display:flex;align-items:center;justify-content:center;gap:6px;font:700 13px Inter,sans-serif;color:var(--muted);cursor:pointer;border-radius:10px}
+.act.liked{color:var(--red)}.act.reposted{color:var(--blue)}
+.act svg{width:20px;height:20px}
+.cmts{display:flex;flex-direction:column;gap:8px}
+.cmt{background:var(--sky);border-radius:12px;padding:8px 12px;font-size:14px;line-height:1.4}
+.cmt b{display:block;font-size:12px;color:var(--blue)}
+.cform{display:flex;gap:8px}
+.cform input{min-height:42px;padding:8px 12px;font-size:15px}
+</style>
+<div class="pagehead"><div class="k">COMMUNITY</div><h1>Patriot Feed</h1><p>Repost what you read, like it, and talk about it</p></div><div class="stripes"></div>
+<div class="post" style="border:2px solid var(--red)">
+<label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--blue)">Share something you read<textarea id="newPost" rows="2" placeholder="What did you think of it?"></textarea></label>
+<label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--blue)">Story headline or link<input id="newLink" placeholder="Paste a link or headline"></label>
+<div id="fPrev" style="display:none;grid-template-columns:repeat(4,1fr);gap:6px"></div>
+<label style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border:2px dashed var(--red);border-radius:12px;font:700 14px Inter,sans-serif;color:var(--red);cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 8"/></svg><span id="fpName">Add photos (up to 4)</span><input type="file" id="fPhoto" accept="image/*" multiple style="position:absolute;width:1px;height:1px;opacity:0"></label>
+<label style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border:2px dashed var(--blue);border-radius:12px;font:700 14px Inter,sans-serif;color:var(--blue);cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg><span id="fvName">Add a video</span><input type="file" id="fVideo" accept="video/*" style="position:absolute;width:1px;height:1px;opacity:0"></label>
+<label id="fOkRow" style="display:none;align-items:flex-start;gap:8px;font-size:12px;line-height:1.4;color:var(--muted)"><input type="checkbox" id="fOk" style="width:20px;height:20px;flex:none;accent-color:#B22234">These are my own photos or videos, or I have the right to share them, and they are not edited or AI-made to mislead.</label>
+<button class="btn" id="postBtn" style="min-height:46px">Post to Feed</button>
+</div>
+<div class="chips" id="feedFilter"><button class="pill red" data-go="videos">▶ Videos</button><button class="pill on" data-f="all">Everyone</button><button class="pill out" data-f="following">Following</button><button class="pill out" data-f="top">Most Liked</button></div>
+<div id="feedList" style="display:flex;flex-direction:column;gap:12px"></div>
+</section>
+
+<!-- SIGN IN -->
+<style>
+.app.gate>header,.app.gate>.stripes,.app.gate nav.tabs,.app.gate #v-signin>.back[data-back]{display:none}
+.gateBrand{display:none}
+.app.gate .gateBrand{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding-top:12px}
+.app.gate main{padding-bottom:32px}
+</style>
+<section class="view" id="v-signin">
+<div class="gateBrand"><svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z" fill="#B22234" stroke="#0B2A5B" stroke-width="1.5" stroke-linejoin="round"/></svg><span style="font:700 26px Oswald,sans-serif;color:var(--blue);letter-spacing:1px">MAKE AMERICA GREAT</span><span class="meta">Free news · No ads · Every story sourced</span><div class="stripes" style="width:100%;margin-top:6px"></div></div>
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<svg width="100%" height="130" preserveAspectRatio="xMidYMid slice" style="border-radius:14px" aria-hidden="true"><use href="#capitol"/></svg>
+<h1 class="h-big" style="font-size:28px;font-weight:700;text-align:center" id="siTitle">Welcome, Patriot</h1>
+<p style="margin:0;text-align:center;font-size:14px;color:var(--muted)" id="siSub">Sign in to repost, comment and follow friends</p>
+<form id="siform" style="display:flex;flex-direction:column;gap:12px">
+<label id="nameRow" style="display:none;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--blue)">Your name<input id="siName" placeholder="First and last name"></label>
+<label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--blue)">Email<input id="siEmail" type="email" placeholder="you@example.com"></label>
+<label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--blue)">Password<input type="password" placeholder="Password"></label>
+<button class="btn" id="siBtn">Sign In</button>
+</form>
+<div style="display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px"><span style="flex:1;height:1px;background:var(--line)"></span>or<span style="flex:1;height:1px;background:var(--line)"></span></div>
+<button class="btn b" data-social>Continue with Google</button>
+<button class="btn b" style="background:#10182B" data-social>Continue with Apple</button>
+<button class="back" id="siToggle" style="justify-content:center">New here? Create an account</button>
+</section>
+
+<!-- PROFILE -->
+<section class="view" id="v-profile">
+<div style="background:var(--blue);color:#fff;margin:-16px -16px 0;padding:22px 20px 18px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+<label style="position:relative;cursor:pointer" aria-label="Change profile picture"><div id="pAv" style="width:84px;height:84px;border-radius:50%;background:var(--red) center/cover no-repeat;border:3px solid #fff;display:flex;align-items:center;justify-content:center;font:700 32px Oswald,sans-serif">P</div><span style="position:absolute;right:-2px;bottom:-2px;width:30px;height:30px;border-radius:50%;background:#fff;color:var(--blue);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span><input type="file" id="avFile" accept="image/*" style="position:absolute;width:1px;height:1px;opacity:0"></label>
+<span style="font-size:11px;color:#E3EAF6">Tap your picture to change it</span>
+<h1 style="font-family:Oswald,sans-serif;font-size:26px" id="pName">Patriot</h1>
+<span style="font-size:13px;color:#E3EAF6">Arizona · Proud American</span>
+<div style="display:flex;gap:24px;margin-top:4px"><div><b id="pFollowing" style="font:700 20px Oswald,sans-serif">0</b><div style="font-size:12px">Following</div></div><div><b style="font:700 20px Oswald,sans-serif">[#]</b><div style="font-size:12px">Followers</div></div><div><b id="pReposts" style="font:700 20px Oswald,sans-serif">0</b><div style="font-size:12px">Reposts</div></div></div>
+</div><div class="stripes" style="margin:0 -16px 4px"></div>
+<div class="grid3"><button class="pill red" data-go="people">Find Friends</button><button class="pill out" data-toast="Edit profile (demo)">Edit Profile</button><button class="pill out" id="signOut">Sign Out</button></div>
+<div class="chips" id="pTabs"><button class="pill on" data-p="reposts">Reposts</button><button class="pill out" data-p="comments">My Comments</button><button class="pill out" data-p="feed">Friends' Posts</button></div>
+<div id="p-reposts" style="display:flex;flex-direction:column;gap:10px"><div class="card empty" style="cursor:default"><span class="meta">No reposts yet. Open a story and tap ↻ Repost.</span></div></div>
+<div id="p-comments" style="display:none;flex-direction:column;gap:10px"><div class="card empty" style="cursor:default"><span class="meta">No comments yet. Comment on a story to see it here.</span></div></div>
+<div id="p-feed" style="display:none;flex-direction:column;gap:10px">
+<button class="card" data-go="story"><b style="font-size:13px;color:var(--blue)">↻ [Friend's name] reposted</b><h3 class="h">[Headline: new factory opening brings jobs]</h3><span class="meta">"[Friend's comment on the story]"</span></button>
+<button class="card" data-go="story"><b style="font-size:13px;color:var(--blue)">↻ [Friend's name] reposted</b><h3 class="h">[Headline: bill signed into law]</h3><span class="meta">"[Friend's comment on the story]"</span></button>
+</div>
+</section>
+
+<!-- ROAD TO 2028 -->
+<section class="view" id="v-race2028" data-main>
+<style>
+.cand{border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start;background:#fff}
+.cand .ini{width:44px;height:44px;flex:none;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font:700 16px Oswald,sans-serif;background:var(--blue)}
+.cand .info{flex:1;display:flex;flex-direction:column;gap:3px}
+.cand .nm{font-size:16px;font-weight:700;color:var(--blue)}
+.cand .role{font-size:12px;font-weight:600;color:var(--muted)}
+.cand .note{font-size:13px;line-height:1.45;color:#2D3748}
+.sec{display:flex;align-items:center;gap:10px;margin-top:8px}
+.sec b{font:700 18px Oswald,sans-serif;color:var(--blue);letter-spacing:.5px}
+.sec span.ct{min-width:28px;height:28px;border-radius:999px;background:var(--red);color:#fff;font:700 14px Inter,sans-serif;display:flex;align-items:center;justify-content:center;padding:0 8px}
+.sec span.ct.b{background:var(--blue)}.sec span.ct.g{background:#5A6780}
+.cfollow{min-height:36px;flex:none}
+.rate{display:flex;flex-direction:column;gap:6px;margin-top:6px;padding-top:8px;border-top:1px solid var(--line)}
+.stars{display:flex;gap:2px;align-items:center}
+.star{width:36px;height:36px;border:0;background:none;padding:0;cursor:pointer;font-size:28px;line-height:1;color:#C9D6EC}
+.star.on{color:#E8A317}
+.rsum{font-size:12px;font-weight:700;color:var(--muted)}
+.ctog{align-self:flex-start;min-height:36px}
+.cbox{display:none;flex-direction:column;gap:8px}
+.cbox.open{display:flex}
+.ccm{background:var(--sky);border-radius:10px;padding:8px 10px;font-size:13px;line-height:1.4}
+.ccm b{display:block;font-size:12px;color:var(--blue)}
+.lead{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:#fff;border:1px solid var(--line)}
+.lead .rk{width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font:700 15px Oswald,sans-serif;flex:none}
+</style>
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div class="pagehead" style="margin:0;border-radius:14px"><div class="k">REPUBLICAN PRIMARY</div><h1>Road to 2028</h1><p>Who's running, who's thinking about it, and who said no</p></div>
+<div class="grid3"><div class="stat" style="background:var(--red)"><b>2</b><span>Declared</span></div><div class="stat"><b>10</b><span>Exploring or weighing it</span></div><div class="stat" style="background:var(--sky);color:var(--blue)"><b>6+</b><span>Said no</span></div></div>
+<div class="post" style="gap:8px;padding:12px;border:2px solid var(--blue)"><h2 style="font:700 18px Oswald,sans-serif;color:var(--blue);letter-spacing:.5px">★ RATE THE CANDIDATES</h2><span class="meta">Ranked by votes, most liked first. Swipe the line and tap the stars. Tap a name to read more.</span><div class="strip" id="stripRace"></div></div>
+<div class="post" style="gap:8px"><div style="display:flex;align-items:center;gap:8px"><span class="dot" aria-hidden="true"></span><h2 style="font:700 18px Oswald,sans-serif;color:var(--blue);letter-spacing:.5px">LIVE VOTES</h2></div><span class="meta">See who's voting for who, as it happens.</span><div class="live" id="liveRace" aria-live="polite"></div><button class="pill out" id="demoVotes" style="min-height:42px">▶ Show sample voting activity</button></div>
+<div class="post" style="border:2px solid var(--red);gap:8px"><h2 style="font:700 18px Oswald,sans-serif;color:var(--blue);letter-spacing:.5px">★ COMMUNITY FAVORITES</h2><span class="meta">Rated by app members. One rating per person, and you can change yours anytime.</span><div id="leaders" style="display:flex;flex-direction:column;gap:8px"></div></div>
+<div class="facts"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue)">KEY DATES</h2><div><b style="color:var(--red)">★</b> Primary dates: not set yet. Iowa is expected to vote first.</div><div><b style="color:var(--red)">★</b> Election Day: Tuesday, November 7, 2028</div><div style="font-size:12px;color:var(--muted)">Last updated Nov 15, 2026. This changes often. Tap Follow to get updates.</div></div>
+
+<div class="sec"><b>DECLARED</b><span class="ct">2</span></div>
+<div class="cand"><span class="ini" style="background:var(--red)">DG</span><div class="info"><span class="nm">Dan Greaney</span><span class="role">TV writer and lawyer · California</span><span class="note">Announced his campaign May 26, 2026.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:var(--red)">RW</span><div class="info"><span class="nm">Royce White</span><span class="role">Former NBA player · Minnesota</span><span class="note">Announced August 12, 2026, the day after losing Minnesota's Senate primary.</span></div><button class="pill on cfollow">Follow</button></div>
+
+<div class="sec"><b>EXPLORING A RUN</b><span class="ct b">1</span></div>
+<div class="cand"><span class="ini">GB</span><div class="info"><span class="nm">Gregory Bovino</span><span class="role">Former Border Patrol commander</span><span class="note">Formed an exploratory committee June 8, 2026. Says he'll launch a campaign "if it all comes together."</span></div><button class="pill on cfollow">Follow</button></div>
+
+<div class="sec"><b>WEIGHING IT</b><span class="ct b">6</span></div>
+<div class="cand"><span class="ini">JV</span><div class="info"><span class="nm">JD Vance</span><span class="role">Vice President</span><span class="note">Still undecided. Said he'd decide after the midterms. CNN reported Nov 13 that he's seriously weighing whether to run; some allies say he's more likely to run than not.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini">RD</span><div class="info"><span class="nm">Ron DeSantis</span><span class="role">Governor of Florida · leaves office January 2027</span><span class="note">The Washington Post reported Nov 6 that he's preparing a run. DeSantis denied it, but hasn't ruled one out.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini">TC</span><div class="info"><span class="nm">Ted Cruz</span><span class="role">U.S. Senator · Texas</span><span class="note">Ran in 2016. Visited Iowa in May 2026, fueling talk of another run.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini">RP</span><div class="info"><span class="nm">Rand Paul</span><span class="role">U.S. Senator · Kentucky</span><span class="note">Called it a 50-50 chance in March 2026 and said he'd look at a run after the midterms.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini">JK</span><div class="info"><span class="nm">John Kennedy</span><span class="role">U.S. Senator · Louisiana</span><span class="note">Plans to seek re-election but says he'd "never say never" to a presidential run.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini">DB</span><div class="info"><span class="nm">Don Bacon</span><span class="role">U.S. Representative · Nebraska</span><span class="note">Said on a podcast in 2026 that he's interested in running.</span></div><button class="pill on cfollow">Follow</button></div>
+
+<div class="sec"><b>OFTEN MENTIONED</b><span class="ct b">3</span></div>
+<div class="cand"><span class="ini">SS</span><div class="info"><span class="nm">Sarah Huckabee Sanders</span><span class="role">Governor of Arkansas</span><span class="note">Former White House press secretary. Named by media as a possible candidate.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini">BK</span><div class="info"><span class="nm">Brian Kemp</span><span class="role">Governor of Georgia · term ends 2027</span><span class="note">Named by media as a possible candidate.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini">GY</span><div class="info"><span class="nm">Glenn Youngkin</span><span class="role">Former Governor of Virginia</span><span class="note">Launched a parents' education group in August 2026. Named by media as a possible candidate.</span></div><button class="pill on cfollow">Follow</button></div>
+
+<div class="sec"><b>SAID THEY'RE NOT RUNNING</b><span class="ct g">6+</span></div>
+<div class="cand"><span class="ini" style="background:#5A6780">MR</span><div class="info"><span class="nm">Marco Rubio</span><span class="role">Secretary of State</span><span class="note">Says he has no current plans to run and would support Vance if Vance runs.</span></div></div>
+<div class="cand"><span class="ini" style="background:#5A6780">JH</span><div class="info"><span class="nm">Josh Hawley</span><span class="role">U.S. Senator · Missouri</span><span class="note">Ruled out a run in September 2026.</span></div></div>
+<div class="cand" style="flex-direction:column;gap:6px"><span class="nm" style="font-size:14px;font-weight:700;color:var(--blue)">Also said no</span><span class="note" style="font-size:13px;line-height:1.5">Nikki Haley · Mike Pence · Donald Trump Jr. · Vivek Ramaswamy, plus several Cabinet members and senators</span></div>
+
+<div class="check" style="border-color:var(--blue)"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue);margin-bottom:4px">SOURCES</h2>
+<a href="https://en.wikipedia.org/wiki/2028_Republican_Party_presidential_primaries">2028 Republican primaries overview<span>›</span></a>
+<a href="https://www.cnn.com/2026/11/05/politics/midterms-vance-desantis-rubio-2028-race">CNN: Vance, DeSantis after the midterms<span>›</span></a>
+<a href="https://www.washingtonpost.com/politics/2026/11/06/ron-desantis-plans-another-white-house-bid-after-failing-2024/">Washington Post: DeSantis report<span>›</span></a>
+<a href="https://www.foxnews.com/politics/desantis-blasts-washington-post-report-preparing-2028-presidential-bid.amp">Fox News: DeSantis responds<span>›</span></a>
+<a href="https://vinnews.com/2026/09/10/marco-rubio-says-he-has-no-current-plans-to-run-for-president-in-2028/">Rubio: no current plans to run<span>›</span></a>
+</div>
+</section>
+
+<!-- VIDEOS -->
+<section class="view" id="v-videos">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div class="pagehead" style="margin:0;border-radius:14px"><div class="k">WATCH AND SHARE</div><h1>Patriot Videos</h1><p>Videos from the community, checked by moderators</p></div>
+<div class="post" style="border:2px solid var(--red)">
+<label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--blue)">Video title<input id="vTitle" placeholder="e.g. Why I support the President"></label>
+<label style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border:2px dashed var(--blue);border-radius:12px;font:700 14px Inter,sans-serif;color:var(--blue);cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg><span id="vName">Choose a video from your phone</span><input type="file" id="vFile" accept="video/*" style="position:absolute;width:1px;height:1px;opacity:0"></label>
+<label style="display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.4;color:var(--muted)"><input type="checkbox" id="vOk" style="width:20px;height:20px;flex:none;accent-color:#B22234">This is my own video or I have the right to share it, and it is not edited or AI-made to mislead.</label>
+<button class="btn" id="vBtn" style="min-height:46px">Upload Video</button>
+</div>
+<div class="facts"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue)">VIDEO RULES</h2><div><b style="color:var(--red)">★</b> Share your own views, speeches and stories</div><div><b style="color:var(--red)">★</b> No fake, doctored or AI-made clips passed off as real</div><div><b style="color:var(--red)">★</b> No TV or news clips you don't have rights to</div><div><b style="color:var(--red)">★</b> Tap ⚑ Report on anything that breaks the rules</div></div>
+<div id="videoList" style="display:flex;flex-direction:column;gap:12px"></div>
+</section>
+
+<!-- PEOPLE -->
+<section class="view" id="v-people">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<h1 class="h-big" style="font-size:28px;font-weight:700">Find Friends</h1>
+<span class="meta">People who care about the same issues you do</span>
+<label><span style="position:absolute;width:1px;height:1px;overflow:hidden">Search people</span><input placeholder="Search by name or state"></label>
+<div class="label">SUGGESTED FOR YOU</div>
+<div class="card row" style="cursor:default"><span class="num">A</span><div style="flex:1"><h3 class="h">[Name]</h3><span class="meta">Arizona · Follows Economy, Border</span></div><button class="pill on follow" style="min-height:40px">Follow</button></div>
+<div class="card row" style="cursor:default"><span class="num b">B</span><div style="flex:1"><h3 class="h">[Name]</h3><span class="meta">Texas · Follows Energy, Jobs</span></div><button class="pill on follow" style="min-height:40px">Follow</button></div>
+<div class="card row" style="cursor:default"><span class="num">C</span><div style="flex:1"><h3 class="h">[Name]</h3><span class="meta">Florida · Follows Promises Kept</span></div><button class="pill on follow" style="min-height:40px">Follow</button></div>
+<div class="card row" style="cursor:default"><span class="num b">D</span><div style="flex:1"><h3 class="h">[Name]</h3><span class="meta">Arizona · 3 friends in common</span></div><button class="pill on follow" style="min-height:40px">Follow</button></div>
+<button class="btn b" data-toast="Invite link copied (demo)">Invite Friends to the App</button>
+</section>
+
+<!-- DONATE -->
+<section class="view" id="v-donate">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div style="display:flex;justify-content:center"><svg width="90" height="90" fill="#B22234" stroke="#0B2A5B" stroke-width="1" aria-hidden="true"><use href="#heart"/></svg></div>
+<h1 class="h-big" style="text-align:center;font-size:28px;font-weight:700">Donate to the App Creator</h1>
+<p style="margin:0;text-align:center;font-size:15px;line-height:1.55;color:#2D3748">This app is free for every American, with no ads and no paywall. It was built and is run by one independent app creator. If it helps you, a donation keeps it going.</p>
+<div style="background:var(--sky);border-radius:12px;padding:12px 14px;font-size:13px;font-weight:600;line-height:1.5;color:var(--blue);text-align:center">Your donation goes only to the app creator. It does not go to President Trump, any campaign, or any political party.</div>
+<div class="amts" id="amts"><button class="amt">$3</button><button class="amt on">$5</button><button class="amt">$10</button><button class="amt">$25</button></div>
+<label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--muted)">Other amount<input id="other" inputmode="decimal" placeholder="$"></label>
+<label style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;min-height:44px"><input type="checkbox" style="width:22px;height:22px;accent-color:#B22234">Make it monthly</label>
+<button class="btn" id="donateBtn">Donate $5 to the App Creator</button>
+<p class="small">Donations are not a political contribution and are not tax-deductible.</p>
+</section>
+</main>
+
+<nav class="tabs" aria-label="Main">
+<button data-tab="home" class="on"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11l9-7 9 7v9H3z"/></svg>Home</button>
+<button data-tab="brief"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h10"/></svg>Brief</button>
+<button data-tab="race2028" style="position:relative"><span style="width:46px;height:46px;margin-top:-20px;border-radius:50%;background:#B22234;border:3px solid #fff;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg></span>2028</button>
+<button data-tab="feed"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Feed</button>
+<button data-tab="more"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>More</button>
+</nav>
+<div class="toast" id="toast" role="status"></div>
+</div>
+
+<script>
+const tabs=['home','brief','race2028','feed','more'];
+let history_=[];let current='home';
+function show(v,push=true){
+  if(push&&v!==current)history_.push(current);
+  current=v;
+  document.querySelectorAll('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));
+  const t=tabs.includes(v)?v:(['factcheck','state','events','community','votes','profile','people','donate','promises'].includes(v)?'more':(v==='videos'?'feed':null));
+  if(t)document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
+  window.scrollTo(0,0);
+}
+document.addEventListener('click',e=>{
+  const go=e.target.closest('[data-go]');if(go){e.preventDefault();show(go.dataset.go);return}
+  const tab=e.target.closest('[data-tab]');if(tab){history_=[];show(tab.dataset.tab,false);return}
+  if(e.target.closest('[data-back]')){show(history_.pop()||'home',false);return}
+  const ts=e.target.closest('[data-toast]');if(ts){toast(ts.dataset.toast);return}
+  const a=e.target.closest('a[href="#"]');if(a){e.preventDefault();toast('Opens the original source (demo)')}
+});
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',1800)}
+function chipGroup(id,onCls,offCls){const g=document.getElementById(id);g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(x=>{x.classList.remove(onCls);x.classList.add(offCls)});b.classList.remove(offCls);b.classList.add(onCls)})}
+chipGroup('topics','red','out');chipGroup('months','on','out');
+const BR={daily:['YOUR DAILY BRIEF · [DATE]',"Today's 5 Wins for America",'About a 3-minute read · every item sourced',"Share Today's Brief"],weekly:['WEEKLY RECAP · [WEEK OF DATE]','This Week in America','Updated every Sunday · every item sourced','Share This Week'],monthly:['MONTHLY RECAP · [MONTH]','This Month in America','Updated on the 1st of every month','Share This Month']};
+document.getElementById('bTabs').addEventListener('click',e=>{const b=e.target.closest('[data-b]');if(!b)return;const k=b.dataset.b;document.querySelectorAll('#bTabs button').forEach(x=>{x.classList.toggle('on',x===b);x.classList.toggle('out',x!==b)});document.querySelectorAll('.bpanel').forEach(p=>p.style.display=p.id==='b-'+k?'flex':'none');const t=BR[k];bKick.textContent=t[0];bTitle.textContent=t[1];bSub.textContent=t[2];bShare.textContent=t[3]});chipGroup('pfilter','on','out');chipGroup('reps','on','out');
+document.querySelectorAll('.icon-btn').forEach(b=>b.addEventListener('click',()=>{b.classList.toggle('set');toast(b.classList.contains('set')?'Reminder set':'Reminder removed')}));
+let voted=false;document.querySelectorAll('.poll').forEach(p=>p.addEventListener('click',()=>{if(voted)return;voted=true;document.querySelectorAll('.poll').forEach(q=>{q.querySelector('i').style.width=q.dataset.pct+'%';q.querySelector('span').textContent+=' · '+q.dataset.pct+'%'});p.style.background='#EAF0FA';toast('Thanks for voting!')}));
+document.getElementById('cform').addEventListener('submit',e=>{e.preventDefault();const i=document.getElementById('cinput');if(!i.value.trim())return;const d=document.createElement('div');d.className='card';d.style.cursor='default';const b=document.createElement('b');b.style.cssText='font-size:13px;color:#0B2A5B';b.textContent='You · Arizona';const s=document.createElement('span');s.style.fontSize='14px';s.textContent=i.value;d.append(b,s);document.getElementById('comments').prepend(d);i.value='';toast('Comment posted')});
+document.getElementById('checkBtn').addEventListener('click',()=>{const c=document.getElementById('claim').value.trim();if(!c){toast('Type a claim first');return}document.getElementById('claimText').textContent='"'+c+'"';document.getElementById('checkResult').style.display='flex'});
+document.getElementById('stateSel').addEventListener('change',e=>{document.getElementById('stateName').textContent=e.target.value;document.querySelectorAll('.sn').forEach(s=>s.textContent=e.target.value)});
+let amt='$5';const db=document.getElementById('donateBtn');
+document.getElementById('amts').addEventListener('click',e=>{const b=e.target.closest('.amt');if(!b)return;document.querySelectorAll('.amt').forEach(x=>x.classList.remove('on'));b.classList.add('on');amt=b.textContent;document.getElementById('other').value='';db.textContent='Donate '+amt+' to the App Creator'});
+document.getElementById('other').addEventListener('input',e=>{const v=e.target.value.replace(/[^0-9.]/g,'');if(v){document.querySelectorAll('.amt').forEach(x=>x.classList.remove('on'));amt='$'+v;db.textContent='Donate '+amt+' to the App Creator'}});
+db.addEventListener('click',()=>toast('Thank you! Payment would open here (demo)'));
+let signedIn=false,isNew=false,following=0,reposts=0;
+const _show=show;show=function(v,p){if(['profile','people'].includes(v)&&!signedIn){_pending=v;v='signin'}_show(v,p)};let _pending='profile';
+function needSignIn(){if(!signedIn){_pending=current;toast('Sign in first');show('signin');return true}return false}
+siToggle.addEventListener('click',()=>{isNew=!isNew;nameRow.style.display=isNew?'flex':'none';siTitle.textContent=isNew?'Join the Movement':'Welcome, Patriot';siBtn.textContent=isNew?'Create Account':'Sign In';siToggle.textContent=isNew?'Already have an account? Sign in':'New here? Create an account'});
+function doSignIn(name){signedIn=true;document.querySelector('.app').classList.remove('gate');const n=(name||'Patriot').trim()||'Patriot';pName.textContent=n;if(!myPhoto)pAv.textContent=n[0].toUpperCase();toast('Welcome, '+n+'!');history_=[];show(_pending,false)}
+siform.addEventListener('submit',e=>{e.preventDefault();const n=siName.value||(siEmail.value.split('@')[0]);doSignIn(n)});
+document.querySelectorAll('[data-social]').forEach(b=>b.addEventListener('click',()=>doSignIn('Patriot')));
+signOut.addEventListener('click',()=>{signedIn=false;toast('Signed out');_pending='race2028';history_=[];document.querySelector('.app').classList.add('gate');show('signin',false)});
+pTabs.addEventListener('click',e=>{const b=e.target.closest('[data-p]');if(!b)return;pTabs.querySelectorAll('button').forEach(x=>{x.classList.toggle('on',x===b);x.classList.toggle('out',x!==b)});['reposts','comments','feed'].forEach(k=>document.getElementById('p-'+k).style.display=k===b.dataset.p?'flex':'none')});
+function addTo(listId,html){const l=document.getElementById(listId);const em=l.querySelector('.empty');if(em)em.remove();const d=document.createElement('div');d.className='card';d.style.cursor='default';d.append(...html);l.prepend(d)}
+function el(t,css,txt){const e=document.createElement(t);e.style.cssText=css;e.textContent=txt;return e}
+const headline=()=>document.querySelector('#v-story h1').textContent;
+repostBtn.addEventListener('click',()=>{if(needSignIn())return;if(repostBtn.dataset.done){toast('Already reposted');return}repostBtn.dataset.done=1;repostBtn.textContent='✓ Reposted';reposts++;pReposts.textContent=reposts;addTo('p-reposts',[el('b','font-size:13px;color:#0B2A5B','↻ You reposted'),el('h3','font-size:15px;font-weight:700;color:#0B2A5B;margin:0',headline())]);toast('Reposted to your page')});
+likeBtn.addEventListener('click',()=>{if(needSignIn())return;likeBtn.classList.toggle('red');likeBtn.classList.toggle('out');likeBtn.textContent=likeBtn.classList.contains('red')?'★ Liked':'★ Like'});
+sform.addEventListener('submit',e=>{e.preventDefault();if(needSignIn())return;const v=sinput.value.trim();if(!v)return;const who=pName.textContent+' · Arizona';const c=document.createElement('div');c.className='card';c.style.cursor='default';c.append(el('b','font-size:13px;color:#0B2A5B',who),el('span','font-size:14px',v));storyComments.prepend(c);addTo('p-comments',[el('span','font-size:12px;color:#3D4A63','On: '+headline()),el('span','font-size:14px',v)]);sinput.value='';toast('Comment posted')});
+document.querySelectorAll('.follow').forEach(b=>b.addEventListener('click',()=>{const on=b.classList.toggle('out');b.classList.toggle('on',!on);b.textContent=on?'Following':'Follow';following+=on?1:-1;pFollowing.textContent=following;toast(on?'Now following':'Unfollowed')}));
+const COLORS=['#B22234','#0B2A5B'];
+let posts=[
+{id:1,name:'[Friend A]',state:'Arizona',follow:true,head:'[Headline: new factory opening brings jobs to an American town]',topic:'Economy',text:'[Friend comment, e.g. Great news for working families!]',likes:24,liked:false,reposts:6,reposted:false,comments:[{n:'[Friend B]',t:'[Reply comment]'},{n:'[Friend C]',t:'[Reply comment]'}],open:false},
+{id:2,name:'[Friend B]',state:'Texas',follow:false,head:'[Headline: monthly jobs report highlights]',topic:'Jobs',text:'[Friend comment on the jobs report]',likes:41,liked:false,reposts:12,reposted:false,comments:[{n:'[Friend D]',t:'[Reply comment]'}],open:false},
+{id:3,name:'[Friend C]',state:'Florida',follow:true,head:'[Headline: bill signed into law]',topic:'White House',text:'[Friend comment on the new law]',likes:17,liked:false,reposts:3,reposted:false,comments:[],open:false}
+];
+posts.splice(1,0,{id:4,name:'[Video Creator]',state:'Ohio',follow:false,head:'',topic:'Video',text:'[Video title, e.g. Why I support the President]',sampleVideo:true,likes:88,liked:false,reposts:21,reposted:false,comments:[{n:'[Friend A]',t:'[Reply comment]'}],open:false});
+let nextId=10,feedMode='all';
+const ICON={heart:'<svg viewBox="0 0 24 24" fill="currentColor"><use href="#heart"/></svg>',heartO:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-9.5-9.2C1 8.2 3.4 4.5 7 4.5c2 0 3.4 1.1 5 3 1.6-1.9 3-3 5-3 3.6 0 6 3.7 4.5 7.3C19.5 16.4 12 21 12 21z"/></svg>',cmt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H9l-5 4z"/></svg>',rp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9h13l-3-3M20 15H7l3 3"/></svg>'};
+function mk(t,c,txt){const e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e}
+function renderFeed(){drawList('feedList',false);drawList('videoList',true)}
+function drawList(tid,onlyVid){
+  const L=document.getElementById(tid);L.innerHTML='';
+  let list=posts.slice();
+  if(onlyVid){list=list.filter(p=>p.video||p.sampleVideo);if(!list.length){L.append(mk('div','meta','No videos yet. Be the first to upload one!'));return}}
+  else if(feedMode==='following')list=list.filter(p=>p.follow||p.mine);
+  if(feedMode==='top')list.sort((a,b)=>b.likes-a.likes);
+  if(!list.length){L.append(mk('div','meta','No posts yet. Follow friends to see their reposts here.'));return}
+  list.forEach((p,i)=>{
+    const card=mk('article','post');
+    const who=mk('div','who');const av=mk('div','av',p.name.replace(/[^A-Za-z]/g,'')[0]||'P');av.style.background=COLORS[p.id%2];if(p.mine&&myPhoto){av.style.background='center/cover no-repeat url('+myPhoto+')';av.textContent=''}
+    const nm=mk('div');nm.append(mk('b','h',p.name),mk('div','meta',(p.mine?'You':p.state)+' · '+(p.isRepost?'reposted':'shared')+' · '+(p.mine?'just now':(i+1)+'h ago')));
+    who.append(av,nm);
+    if(!p.mine){const fb=mk('button','pill '+(p.follow?'out':'on'),p.follow?'Following':'Follow');fb.style.marginLeft='auto';fb.onclick=()=>{if(needSignIn())return;p.follow=!p.follow;following+=p.follow?1:-1;pFollowing.textContent=following;renderFeed()};who.append(fb)}
+    card.append(who);
+    if(p.text){const tp=mk('p',null,p.text);tp.style.cssText='margin:0;font-size:15px;line-height:1.45';card.append(tp)}
+    if(p.video){const k='_v'+tid;if(!p[k]){const v=mk('video');v.src=p.video;v.controls=true;v.playsInline=true;v.preload='metadata';v.style.cssText='width:100%;max-height:420px;border-radius:12px;background:#000';p[k]=v}card.append(p[k])}
+    else if(p.sampleVideo){const s=mk('button','quote');s.setAttribute('aria-label','Play sample video');s.style.cssText='position:relative;border:0;border-radius:12px;padding:0;overflow:hidden';s.innerHTML='<svg width="100%" height="200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#capitol"/></svg><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="width:64px;height:64px;border-radius:50%;background:rgba(178,34,52,.92);display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span></span><span style="position:absolute;left:10px;bottom:10px;background:rgba(11,42,91,.9);color:#fff;font:700 11px Inter,sans-serif;padding:4px 8px;border-radius:6px">VIDEO · [2:45]</span>';s.onclick=()=>toast('Sample video. Real uploads play right here.');card.append(s)}
+    if(p.images&&p.images.length){const g=mk('div');const n=p.images.length;g.style.cssText='display:grid;gap:4px;border-radius:12px;overflow:hidden;grid-template-columns:'+(n===1?'1fr':'1fr 1fr');p.images.forEach((src,ix)=>{const im=mk('img');im.src=src;im.alt='Photo '+(ix+1)+' shared by '+p.name;im.style.cssText='width:100%;display:block;object-fit:cover;background:#EAF0FA;height:'+(n===1?'auto;max-height:440px':(n===3&&ix===0?'240px;grid-column:span 2':'170px'));im.style.cursor='pointer';im.onclick=()=>openPhoto(src,im.alt);g.append(im)});card.append(g)}
+    if(p.head){const q=mk('button','quote');q.onclick=()=>{document.querySelector('#v-story h1').textContent=p.head;show('story')};
+    const qb=mk('div','qb');qb.append(mk('span','src',p.topic.toUpperCase()),mk('span','h',p.head),mk('span','meta','✓ Sourced · tap to read'));
+    q.innerHTML='<svg width="100%" height="90" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#capitol"/></svg>';q.append(qb);card.append(q);}
+    const acts=mk('div','acts');
+    const lb=mk('button','act'+(p.liked?' liked':''));lb.innerHTML=(p.liked?ICON.heart:ICON.heartO);lb.append(mk('span',null,p.likes+(p.liked?' Liked':' Like')));lb.setAttribute('aria-pressed',p.liked);
+    lb.onclick=()=>{if(needSignIn())return;p.liked=!p.liked;p.likes+=p.liked?1:-1;renderFeed()};
+    const cb=mk('button','act');cb.innerHTML=ICON.cmt;cb.append(mk('span',null,p.comments.length+' Comment'+(p.comments.length===1?'':'s')));cb.onclick=()=>{p.open=!p.open;renderFeed();if(p.open)setTimeout(()=>{const i=document.getElementById(tid+'ci'+p.id);i&&i.focus()},0)};
+    const rb=mk('button','act'+(p.reposted?' reposted':''));rb.innerHTML=ICON.rp;rb.append(mk('span',null,p.reposts+(p.reposted?' Reposted':' Repost')));
+    rb.onclick=()=>{if(needSignIn())return;if(p.reposted){toast('Already reposted');return}p.reposted=true;p.reposts++;posts.unshift({id:nextId++,name:pName.textContent,mine:true,isRepost:true,head:p.head,topic:p.topic,video:p.video||null,images:p.images||null,sampleVideo:!!p.sampleVideo,text:p.head?'':p.text,likes:0,liked:false,reposts:0,reposted:true,comments:[],open:false});reposts++;pReposts.textContent=reposts;addTo('p-reposts',[el('b','font-size:13px;color:#0B2A5B','↻ You reposted'),el('h3','font-size:15px;font-weight:700;color:#0B2A5B;margin:0',p.head)]);toast('Reposted to the feed and your page');renderFeed()};
+    acts.append(lb,cb,rb);card.append(acts);
+    const rep=mk('button','back','⚑ Report');rep.style.cssText='min-height:32px;font-size:12px;color:#3D4A63;align-self:flex-end';rep.onclick=()=>toast('Reported. A moderator will review it.');card.append(rep);
+    const cm=mk('div','cmts');
+    const shown=p.open?p.comments:p.comments.slice(-1);
+    shown.forEach(c=>{const d=mk('div','cmt');d.append(mk('b',null,c.n),mk('span',null,c.t));cm.append(d)});
+    if(!p.open&&p.comments.length>1){const m=mk('button','back','View all '+p.comments.length+' comments');m.style.minHeight='32px';m.onclick=()=>{p.open=true;renderFeed()};cm.append(m)}
+    const f=mk('form','cform');const lab=mk('label');lab.style.flex='1';const inp=mk('input');inp.id=tid+'ci'+p.id;inp.placeholder='Write a comment...';inp.setAttribute('aria-label','Write a comment');lab.append(inp);
+    const pb=mk('button','pill red','Post');pb.style.minHeight='42px';f.append(lab,pb);
+    f.onsubmit=e=>{e.preventDefault();if(needSignIn())return;const v=inp.value.trim();if(!v)return;p.comments.push({n:pName.textContent,t:v});p.open=true;addTo('p-comments',[el('span','font-size:12px;color:#3D4A63','On: '+p.head),el('span','font-size:14px',v)]);toast('Comment posted');renderFeed()};
+    cm.append(f);card.append(cm);
+    L.append(card);
+  });
+}
+feedFilter.addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(!b)return;feedMode=b.dataset.f;feedFilter.querySelectorAll('button').forEach(x=>{x.classList.toggle('on',x===b);x.classList.toggle('out',x!==b)});renderFeed()});
+fVideo.addEventListener('change',()=>{const f=fVideo.files[0];fvName.textContent=f?'✓ '+f.name:'Add a video'});
+vFile.addEventListener('change',()=>{const f=vFile.files[0];vName.textContent=f?'✓ '+f.name:'Choose a video from your phone'});
+function vidUrl(f){try{return URL.createObjectURL(f)}catch(e){return null}}
+let myPhoto=null,pending=[];
+function updOk(){fOkRow.style.display=(fVideo.files[0]||pending.length)?'flex':'none'}
+fVideo.addEventListener('change',updOk);
+function drawPrev(){fPrev.innerHTML='';fPrev.style.display=pending.length?'grid':'none';fpName.textContent=pending.length?'✓ '+pending.length+' photo'+(pending.length>1?'s':'')+' added':'Add photos (up to 4)';pending.forEach((src,ix)=>{const w=mk('div');w.style.cssText='position:relative';const im=mk('img');im.src=src;im.alt='Selected photo '+(ix+1);im.style.cssText='width:100%;height:72px;object-fit:cover;border-radius:8px;display:block';const x=mk('button',null,'×');x.setAttribute('aria-label','Remove photo '+(ix+1));x.style.cssText='position:absolute;top:2px;right:2px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(11,42,91,.9);color:#fff;font-weight:700;cursor:pointer';x.onclick=e=>{e.preventDefault();pending.splice(ix,1);drawPrev();updOk()};w.append(im,x);fPrev.append(w)})}
+fPhoto.addEventListener('change',()=>{const fs=[...fPhoto.files];if(pending.length+fs.length>4)toast('Up to 4 photos per post');fs.slice(0,4-pending.length).forEach(f=>{const u=vidUrl(f);if(u)pending.push(u)});fPhoto.value='';drawPrev();updOk()});
+avFile.addEventListener('change',()=>{const f=avFile.files[0];if(!f)return;myPhoto=vidUrl(f);pAv.style.background='center/cover no-repeat url('+myPhoto+')';pAv.textContent='';toast('Profile picture updated');renderFeed()});
+function openPhoto(src,alt){let o=document.getElementById('photoView');if(!o){o=mk('div');o.id='photoView';o.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:50;display:flex;align-items:center;justify-content:center;padding:16px';const im=mk('img');im.style.cssText='max-width:100%;max-height:90vh;border-radius:8px';const c=mk('button',null,'× Close');c.style.cssText='position:absolute;top:16px;right:16px;min-height:44px;padding:0 16px;border-radius:999px;border:0;background:#fff;color:#0B2A5B;font:700 14px Inter,sans-serif;cursor:pointer';c.onclick=()=>o.style.display='none';o.onclick=e=>{if(e.target===o)o.style.display='none'};o.append(im,c);document.body.append(o)}o.querySelector('img').src=src;o.querySelector('img').alt=alt;o.style.display='flex'}
+postBtn.addEventListener('click',()=>{if(needSignIn())return;const t=newPost.value.trim(),l=newLink.value.trim(),f=fVideo.files[0],imgs=pending.slice();if(!t&&!l&&!f&&!imgs.length){toast('Write something, paste a link, or add photos or a video');return}if((f||imgs.length)&&!fOk.checked){toast('Please confirm the photo and video rules first');return}posts.unshift({id:nextId++,name:pName.textContent,mine:true,head:l||((f||imgs.length)?'':'[Story you shared]'),topic:f?'Video':(imgs.length?'Photos':'Shared'),text:t,video:f?vidUrl(f):null,images:imgs,likes:0,liked:false,reposts:0,reposted:false,comments:[],open:false});newPost.value='';newLink.value='';fVideo.value='';fvName.textContent='Add a video';pending=[];drawPrev();fOk.checked=false;fOkRow.style.display='none';toast('Posted to the feed');renderFeed()});
+vBtn.addEventListener('click',()=>{if(needSignIn())return;const f=vFile.files[0];if(!f){toast('Choose a video first');return}if(!vOk.checked){toast('Please confirm the video rules first');return}posts.unshift({id:nextId++,name:pName.textContent,mine:true,head:'',topic:'Video',text:vTitle.value.trim()||'[Untitled video]',video:vidUrl(f),likes:0,liked:false,reposts:0,reposted:false,comments:[],open:false});vTitle.value='';vFile.value='';vName.textContent='Choose a video from your phone';vOk.checked=false;toast('Video uploaded to Videos and the Feed');renderFeed()});
+repostBtn.addEventListener('click',()=>{if(!signedIn||repostBtn.dataset.fed)return;repostBtn.dataset.fed=1;posts.unshift({id:nextId++,name:pName.textContent,mine:true,isRepost:true,head:headline(),topic:'News',text:'',likes:0,liked:false,reposts:0,reposted:true,comments:[],open:false});renderFeed()});
+renderFeed();
+document.querySelectorAll('.cfollow').forEach(b=>b.addEventListener('click',()=>{const nm=b.closest('.cand').querySelector('.nm').textContent;const on=b.classList.toggle('out');b.classList.toggle('on',!on);b.textContent=on?'Following':'Follow';toast(on?"You'll get updates on "+nm:'Stopped updates on '+nm)}));
+const ratings={};
+function drawLeaders(){const L=document.getElementById('leaders');L.innerHTML='';const arr=Object.entries(ratings).filter(([k,r])=>r.count>0).map(([k,r])=>({k,avg:r.sum/r.count,count:r.count})).sort((a,b)=>b.avg-a.avg||b.count-a.count).slice(0,5);if(!arr.length){L.append(mk('span','meta','No ratings yet. Rate the candidates below to see who comes out on top.'));return}arr.forEach((x,i)=>{const d=mk('div','lead');const rk=mk('span','rk',String(i+1));if(i>0)rk.style.background='#0B2A5B';const nm=mk('span','h',x.k);nm.style.flex='1';const sc=mk('span',null,'★ '+x.avg.toFixed(1));sc.style.cssText='font-weight:700;color:#B5790C';const ct=mk('span','meta',' ('+x.count+')');d.append(rk,nm,sc,ct);L.append(d)})}
+document.querySelectorAll('#v-race2028 .cand').forEach(c=>{
+  if(!c.querySelector('.cfollow'))return;
+  const info=c.querySelector('.info');const name=info.querySelector('.nm').textContent;
+  const r=ratings[name]={sum:0,count:0,mine:0,comments:[]};
+  const box=mk('div','rate');
+  const st=mk('div','stars');st.setAttribute('role','group');st.setAttribute('aria-label','Rate '+name);
+  const sum=mk('span','rsum','No ratings yet. Be the first!');
+  const btns=[];
+  function paint(n){btns.forEach((b,i)=>b.classList.toggle('on',i<n))}
+  function upd(){paint(r.mine);if(!r.count){sum.textContent='No ratings yet. Be the first!'}else{sum.textContent='★ '+(r.sum/r.count).toFixed(1)+' average · '+r.count+' rating'+(r.count>1?'s':'')+(r.mine?' · You gave '+r.mine:'')}}
+  for(let i=1;i<=5;i++){const b=mk('button','star','★');b.setAttribute('aria-label','Rate '+name+' '+i+' star'+(i>1?'s':''));b.onmouseenter=()=>paint(i);b.onmouseleave=()=>paint(r.mine);b.onclick=()=>rateCand(name,i);btns.push(b);st.append(b)}
+  r.upd=upd;r.card=c;
+  const tog=mk('button','pill out ctog','Comments (0)');
+  const cb=mk('div','cbox');const list=mk('div');list.style.cssText='display:flex;flex-direction:column;gap:6px';
+  const f=mk('form','cform');const lab=mk('label');lab.style.flex='1';const inp=mk('input');inp.placeholder='Why do you rate '+name.split(' ')[0]+' this way?';inp.setAttribute('aria-label','Comment on '+name);lab.append(inp);const pb=mk('button','pill red','Post');pb.style.minHeight='42px';f.append(lab,pb);
+  function drawC(){list.innerHTML='';if(!r.comments.length)list.append(mk('span','meta','No comments yet. Keep it respectful.'));r.comments.forEach(x=>{const d=mk('div','ccm');d.append(mk('b',null,x.n+(x.s?' · '+'★'.repeat(x.s):'')),mk('span',null,x.t));list.append(d)});tog.textContent=(cb.classList.contains('open')?'Hide comments':'Comments')+' ('+r.comments.length+')'}
+  tog.onclick=()=>{cb.classList.toggle('open');drawC();if(cb.classList.contains('open'))inp.focus()};
+  f.onsubmit=e=>{e.preventDefault();if(needSignIn())return;const v=inp.value.trim();if(!v)return;r.comments.unshift({n:pName.textContent,t:v,s:r.mine});inp.value='';drawC();toast('Comment posted')};
+  cb.append(list,f);box.append(st,sum,tog,cb);info.append(box);drawC();
+});
+const ACT=[];let demoT=null,demoN=0;
+document.querySelectorAll('#v-race2028 .cand').forEach(c=>{const nm=c.querySelector('.nm').textContent;const r=ratings[nm];if(r){const ini=c.querySelector('.ini');r.ini=ini.textContent;r.bg=ini.style.background||'#0B2A5B'}});
+function rateCand(name,i,who){const r=ratings[name];const mine=!who;if(mine){if(needSignIn())return;if(r.mine){r.sum-=r.mine;r.count--}r.mine=i}r.sum+=i;r.count++;ACT.unshift({who:mine?pName.textContent+' (you)':who,name,s:i,t:Date.now(),sample:!mine});if(ACT.length>40)ACT.pop();refreshAll();if(mine)toast('You rated '+name+' '+i+' star'+(i>1?'s':''))}
+function ago(t){const s=Math.round((Date.now()-t)/1000);return s<10?'just now':s<60?s+'s ago':Math.round(s/60)+'m ago'}
+function starStr(n){return '★'.repeat(n)+'☆'.repeat(5-n)}
+function drawStrips(){['stripHome','stripRace'].forEach(id=>{const S=document.getElementById(id);if(!S)return;const x=S.scrollLeft;S.innerHTML='';const order=Object.keys(ratings).map((n,ix)=>({n,ix,r:ratings[n]})).sort((a,b)=>{const A=a.r.count?a.r.sum/a.r.count:-1,B=b.r.count?b.r.sum/b.r.count:-1;return (B-A)||(b.r.count-a.r.count)||(a.ix-b.ix)});let rank=0;order.forEach(({n:name})=>{const r=ratings[name];const t=mk('div','ctile');t.style.position='relative';if(r.count){rank++;const rb=mk('span',null,'#'+rank);rb.style.cssText='position:absolute;top:6px;left:6px;min-width:26px;height:26px;padding:0 6px;border-radius:999px;display:flex;align-items:center;justify-content:center;font:700 13px Oswald,sans-serif;color:#fff;background:'+(rank===1?'#B22234':'#0B2A5B');t.append(rb);if(rank===1)t.style.borderColor='#B22234'}const av=mk('div','cav',r.ini||name[0]);av.style.background=r.bg||'#0B2A5B';const nb=mk('button','cn',name);nb.onclick=()=>{show('race2028');setTimeout(()=>r.card&&r.card.scrollIntoView({behavior:'smooth',block:'center'}),60)};const ms=mk('div','mstars');ms.setAttribute('role','group');ms.setAttribute('aria-label','Rate '+name);const shown=r.mine||(r.count?Math.round(r.sum/r.count):0);for(let i=1;i<=5;i++){const b=mk('button','mstar'+(i<=shown?' on':''),'★');b.setAttribute('aria-label','Rate '+name+' '+i+' star'+(i>1?'s':''));b.onclick=()=>rateCand(name,i);ms.append(b)}const cr=mk('span','cr',r.count?'★ '+(r.sum/r.count).toFixed(1)+' · '+r.count+' vote'+(r.count>1?'s':''):'No votes yet');t.append(av,nb,ms,cr);if(r.mine){const y=mk('span',null,'You: '+r.mine+'★');y.style.cssText='font-size:11px;font-weight:700;color:#B22234';t.append(y)}S.append(t)});S.scrollLeft=x})}
+function drawLive(){const L=document.getElementById('liveRace');L.innerHTML='';if(!ACT.length){L.append(mk('span','meta','No votes yet. Tap the stars above, and votes will show up here live.'))}ACT.slice(0,8).forEach(a=>{const d=mk('div','lv');const dot=mk('span','dot');dot.setAttribute('aria-hidden','true');const tx=mk('span');tx.style.flex='1';const b=mk('b',null,a.who);b.style.color='#0B2A5B';tx.append(b,document.createTextNode(' rated '),Object.assign(mk('b',null,a.name),{}),document.createTextNode(a.sample?' (sample)':''));const st=mk('span','st',starStr(a.s));const tm=mk('span','meta',ago(a.t));tm.style.whiteSpace='nowrap';d.append(dot,tx,st,tm);L.append(d)});const H=document.getElementById('liveHome');H.innerHTML='';if(ACT.length){const a=ACT[0];const dot=mk('span','dot');H.append(dot,document.createTextNode('LIVE: '+a.who+' gave '+a.name+' '+a.s+'★ · '+ago(a.t)))}}
+function refreshAll(){Object.values(ratings).forEach(r=>r.upd&&r.upd());drawLeaders();drawStrips();drawLive()}
+document.getElementById('demoVotes').addEventListener('click',e=>{const b=e.currentTarget;if(demoT){clearInterval(demoT);demoT=null;b.textContent='▶ Show sample voting activity';return}b.textContent='■ Stop sample activity';const names=Object.keys(ratings);const tick=()=>{demoN++;const nm=names[Math.floor(Math.random()*names.length)];const s=[3,4,4,5,5,2,5,4,3,5][Math.floor(Math.random()*10)];rateCand(nm,s,'[Sample voter '+demoN+'] · '+['AZ','TX','FL','OH','PA','GA'][demoN%6])};tick();demoT=setInterval(tick,2500)});
+setInterval(drawLive,15000);
+refreshAll();
+document.querySelector('#v-race2028 > .back').style.display='none';
+_pending='race2028';document.querySelector('.app').classList.add('gate');
+show('signin',false);
+</script>
+</body>
+</html>
