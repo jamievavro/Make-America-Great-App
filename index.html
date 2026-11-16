@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Make America Great</title>
+<title>Make Republican Great Again</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 :root{--blue:#0B2A5B;--red:#B22234;--sky:#EAF0FA;--line:#D5DDEB;--muted:#3D4A63}
@@ -12,7 +12,7 @@ html,body{margin:0;background:#C9D6EC;font-family:Inter,sans-serif;color:#10182B
 .app{max-width:440px;margin:0 auto;min-height:100vh;background:#fff;display:flex;flex-direction:column;position:relative}
 .top{background:var(--blue);color:#fff;padding:16px 16px 12px;position:sticky;top:0;z-index:5}
 .toprow{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.brand{display:flex;align-items:center;gap:8px;font-family:Oswald,sans-serif;font-weight:700;font-size:19px;letter-spacing:.5px}
+.brand{display:flex;align-items:center;gap:6px;font-family:Oswald,sans-serif;font-weight:700;font-size:min(15px,3.7vw);letter-spacing:.2px;white-space:nowrap;min-width:0}
 .sub{font-size:12px;font-weight:600;color:#E3EAF6;margin-top:6px}
 .stripes{height:12px;background:repeating-linear-gradient(180deg,var(--red) 0 3px,#fff 3px 6px)}
 .pill{border:0;border-radius:999px;padding:8px 14px;font:700 13px Inter,sans-serif;cursor:pointer;white-space:nowrap}
@@ -89,7 +89,7 @@ nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
 <div class="app">
 <header class="top">
 <div class="toprow">
-<div class="brand"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z" fill="#B22234" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>MAKE AMERICA GREAT</div>
+<div class="brand"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z" fill="#B22234" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>MAKE REPUBLICAN GREAT AGAIN</div>
 <button data-go="profile" aria-label="My profile" style="width:44px;height:44px;border-radius:50%;border:2px solid #fff;background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></button>
 </div>
 <div class="toprow" style="margin-top:8px"><div class="sub" style="margin:0">Free · No ads · Sourced</div>
@@ -120,35 +120,114 @@ nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
 @keyframes pulse{50%{opacity:.25}}
 </style>
 <div class="post" style="gap:8px;padding:12px;border:2px solid var(--red)"><div style="display:flex;justify-content:space-between;align-items:center"><h2 style="font:700 17px Oswald,sans-serif;color:var(--blue);letter-spacing:.5px">★ RATE THE 2028 FIELD</h2><button class="back" data-go="race2028" style="min-height:36px;font-size:13px">See all ›</button></div><span class="meta">Most liked first. Swipe the line and tap the stars to vote.</span><div class="strip" id="stripHome"></div><div id="liveHome" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--blue)"></div></div>
-<button class="card big" data-go="story">
+<button class="card big" data-go="story" data-story="gop">
 <svg width="100%" height="160" preserveAspectRatio="xMidYMid slice" role="img" aria-label="U.S. Capitol under a starry sky"><use href="#capitol"/></svg>
 <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px">
-<div style="display:flex;gap:8px;align-items:center"><span class="tag">TOP WIN</span><span class="meta">Economy · 2h ago</span></div>
-<h2 class="h-big">[Headline: new factory opening brings jobs to an American town]</h2>
-<span class="src">✓ 3 primary sources linked</span>
+<div style="display:flex;gap:8px;align-items:center"><span class="tag">TOP STORY</span><span class="meta">Midterms · Nov. 2026</span></div>
+<h2 class="h-big">Where Republicans held on in the midterms</h2>
+<span class="src">✓ Sourced · tap to read</span>
 </div>
 </button>
-<button class="card row" data-go="story"><svg width="84" height="84" style="flex:none;border-radius:10px" role="img" aria-label="American flag"><use href="#flag"/></svg><div style="display:flex;flex-direction:column;gap:6px"><span class="meta">Jobs · 4h ago</span><h3 class="h">[Headline: monthly jobs report highlights]</h3><span class="src">Source: BLS report</span></div></button>
-<button class="card row" data-go="story"><svg width="84" height="84" style="flex:none;border-radius:10px" role="img" aria-label="White House"><use href="#wh"/></svg><div style="display:flex;flex-direction:column;gap:6px"><span class="meta">White House · 6h ago</span><h3 class="h">[Headline: bill signed into law]</h3><span class="src">Source: congress.gov</span></div></button>
-<button class="card row" data-go="story"><svg width="84" height="84" style="flex:none;border-radius:10px" role="img" aria-label="American flag"><use href="#flag"/></svg><div style="display:flex;flex-direction:column;gap:6px"><span class="meta">Energy · 8h ago</span><h3 class="h">[Headline: energy production news]</h3><span class="src">Source: EIA data</span></div></button>
+<button class="card row" data-go="story" data-story="vance"><svg width="84" height="84" style="flex:none;border-radius:10px" role="img" aria-label="American flag"><use href="#flag"/></svg><div style="display:flex;flex-direction:column;gap:6px"><span class="meta">2028 · Republicans · Nov. 13, 2026</span><h3 class="h">JD Vance weighing whether to run in 2028</h3><span class="src">Source: Yahoo News</span></div></button>
+<button class="card row" data-go="story" data-story="desantis"><svg width="84" height="84" style="flex:none;border-radius:10px" role="img" aria-label="White House"><use href="#wh"/></svg><div style="display:flex;flex-direction:column;gap:6px"><span class="meta">2028 · Republicans · Nov. 6–7, 2026</span><h3 class="h">DeSantis denies report he's planning a 2028 run</h3><span class="src">Source: Washington Post report</span></div></button>
+<button class="card row" data-go="story" data-story="ms"><svg width="84" height="84" style="flex:none;border-radius:10px" role="img" aria-label="American flag"><use href="#flag"/></svg><div style="display:flex;flex-direction:column;gap:6px"><span class="meta">Senate · Mississippi · Called Nov. 11</span><h3 class="h">Mississippi Senate race called for Scott Colom</h3><span class="src">Source: California Today</span></div></button>
+<button class="card row" data-go="story" data-story="newsom"><svg width="84" height="84" style="flex:none;border-radius:10px" role="img" aria-label="White House"><use href="#wh"/></svg><div style="display:flex;flex-direction:column;gap:6px"><span class="meta">2028 · Democrats · Nov. 12, 2026</span><h3 class="h">Newsom to decide on 2028 by early January</h3><span class="src">Source: Wikipedia</span></div></button>
 </section>
 
 <!-- STORY -->
 <section class="view" id="v-story">
 <button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
 <svg width="100%" height="170" preserveAspectRatio="xMidYMid slice" style="border-radius:14px" role="img" aria-label="U.S. Capitol"><use href="#capitol"/></svg>
-<div style="display:flex;gap:8px;align-items:center"><span class="tag">NEWS</span><span class="meta">Economy · [Date]</span></div>
+<div style="display:flex;gap:8px;align-items:center"><span class="tag" id="stTag">NEWS</span><span class="meta" id="stMeta">Economy · [Date]</span></div>
 <h1 class="h-big" style="font-size:26px">[Headline: new factory opening brings jobs to an American town]</h1>
-<p style="margin:0;font-size:15px;line-height:1.55;color:#2D3748">[Story summary in plain language: what happened, who it helps, and what comes next.]</p>
-<div class="facts"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue)">KEY FACTS</h2><div><b style="color:var(--red)">★</b> [Fact, e.g. number of jobs]</div><div><b style="color:var(--red)">★</b> [Fact, e.g. investment amount]</div></div>
-<div class="check"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--red);margin-bottom:4px">CHECK IT YOURSELF</h2><a href="#">White House statement<span>›</span></a><a href="#">State jobs data<span>›</span></a><a href="#">Company press release<span>›</span></a></div>
+<p id="stSum" style="margin:0;font-size:15px;line-height:1.55;color:#2D3748">[Story summary in plain language: what happened, who it helps, and what comes next.]</p>
+<div class="facts"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue)">KEY FACTS</h2><div id="stFacts" style="display:flex;flex-direction:column;gap:8px"><div><b style="color:var(--red)">★</b> [Fact, e.g. number of jobs]</div><div><b style="color:var(--red)">★</b> [Fact, e.g. investment amount]</div></div></div>
+<div class="check"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--red);margin-bottom:4px">CHECK IT YOURSELF</h2><div id="stSrc"><a href="#">White House statement<span>›</span></a><a href="#">State jobs data<span>›</span></a><a href="#">Company press release<span>›</span></a></div></div>
 <div class="grid3"><button class="pill on" id="repostBtn" style="min-height:46px">↻ Repost</button><button class="pill out" id="likeBtn" style="min-height:46px">★ Like</button><button class="pill red" data-go="share" style="min-height:46px">Share</button></div>
 <div style="display:flex;justify-content:space-between;align-items:center"><div class="label">COMMENTS</div><span style="font-size:11px;font-weight:700;color:var(--blue)">Moderated · Keep it positive</span></div>
 <div id="storyComments" style="display:flex;flex-direction:column;gap:10px"><div class="card" style="cursor:default"><b style="font-size:13px;color:var(--blue)">[Username] · [State]</b><span style="font-size:14px">[Comment text]</span></div></div>
 <form id="sform" style="display:flex;gap:8px"><label style="flex:1"><span style="position:absolute;width:1px;height:1px;overflow:hidden">Comment on this story</span><input id="sinput" placeholder="Comment on this story"></label><button class="pill red" style="min-height:46px">Post</button></form>
 </section>
 
+<!-- CANDIDATE PROFILE -->
+<section class="view" id="v-cand">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div class="pfhead"><span class="pfav" id="pfAv">?</span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span class="tag" id="pfStatus">STATUS</span><h1 class="h-big" style="font-size:26px;margin:0" id="pfName">Name</h1><span class="meta" id="pfRole">Role</span></div></div>
+<button class="pill on" id="pfFollow" style="min-height:44px">Follow</button>
+<p id="pfAbout" style="margin:0;font-size:15px;line-height:1.55;color:#2D3748"></p>
+<div class="facts"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue)">BACKGROUND</h2><div id="pfBg" style="display:flex;flex-direction:column;gap:8px"></div></div>
+<div><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue);margin:0 0 8px">WHERE THEY STAND</h2><div id="pfStands" style="display:flex;flex-direction:column;gap:8px"></div></div>
+<div class="facts" style="background:#FFF4F4"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--red)">2028 STATUS</h2><span id="pfNow" style="font-size:14px;line-height:1.5"></span></div>
+<div class="card" id="pfRateBox" style="cursor:default;gap:8px"><b style="font-size:13px;letter-spacing:.5px;color:var(--blue)">YOUR RATING</b><div class="stars" id="pfStars" role="group" aria-label="Rate this candidate"></div><span class="rsum" id="pfRsum"></span></div>
+<div class="check"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--red);margin-bottom:4px">CHECK IT YOURSELF</h2><div id="pfSrc"></div></div>
+<span class="meta" style="font-size:12px">Summarized from public records, the candidate's own statements, and news reports. Positions can change.</span>
+<div class="label">COMMENTS</div>
+<div id="pfCm" style="display:flex;flex-direction:column;gap:8px"></div>
+<form id="pfForm" style="display:flex;gap:8px"><label style="flex:1"><span style="position:absolute;width:1px;height:1px;overflow:hidden">Comment on this candidate</span><input id="pfInput" placeholder="Share your thoughts"></label><button class="pill red" style="min-height:46px">Post</button></form>
+</section>
+
+<!-- COMPARE -->
+<section class="view" id="v-compare">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div class="pagehead" style="margin:0;border-radius:14px"><div class="k">SIDE BY SIDE</div><h1>Compare Candidates</h1><p>Pick two and see where each one stands</p></div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px"><label class="selbox">First<select id="cmpA"></select></label><label class="selbox">Second<select id="cmpB"></select></label></div>
+<div id="cmpHead" class="cmpgrid cmphead"></div>
+<div id="cmpRows" style="display:flex;flex-direction:column;gap:8px"></div>
+<span class="meta" style="font-size:12px">"No clear stance" means we didn't find a clear public position. Based on public records and statements; positions can change.</span>
+</section>
+
+<!-- QUIZ -->
+<section class="view" id="v-quiz">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div class="pagehead" style="margin:0;border-radius:14px"><div class="k">8 QUICK QUESTIONS</div><h1>Who Matches Me?</h1><p>Answer and see which candidates share your views</p></div>
+<div id="quizQs" style="display:flex;flex-direction:column;gap:10px"></div>
+<button class="btn" id="quizGo">See My Matches</button>
+<div id="quizRes" style="display:none;flex-direction:column;gap:8px"></div>
+</section>
+
+<!-- POLLS -->
+<section class="view" id="v-polls">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div class="pagehead" style="margin:0;border-radius:14px"><div class="k">REPUBLICAN PRIMARY</div><h1>2028 Polls</h1><p>Every poll with its source and dates</p></div>
+<div class="facts" style="background:#FFF4F4"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--red)">IN THIS APP</h2><div id="pollApp" style="display:flex;flex-direction:column;gap:6px"></div></div>
+<div id="pollList" style="display:flex;flex-direction:column;gap:12px"></div>
+<span class="meta" style="font-size:12px">Early polls change a lot. Some people polled, like Marco Rubio, have said they aren't running.</span>
+</section>
+
+<!-- ALERTS -->
+<section class="view" id="v-alerts">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div class="pagehead" style="margin:0;border-radius:14px"><div class="k">CANDIDATES YOU FOLLOW</div><h1>Your Alerts</h1><p>The latest on everyone you follow</p></div>
+<button class="btn" id="notifBtn">🔔 Turn on phone notifications</button>
+<span class="meta" id="notifNote" style="font-size:12px"></span>
+<div id="alertList" style="display:flex;flex-direction:column;gap:10px"></div>
+</section>
+
+<!-- CALENDAR + HOW TO VOTE -->
+<section class="view" id="v-calendar">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div class="pagehead" style="margin:0;border-radius:14px"><div class="k">MARK YOUR CALENDAR</div><h1>Election Calendar</h1><p>Key dates on the road to 2028</p></div>
+<div id="calList" style="display:flex;flex-direction:column;gap:10px"></div>
+<div class="label" style="margin-top:6px">HOW TO VOTE</div>
+<div class="check" style="border-color:var(--blue)"><div style="font-size:14px;line-height:1.5;margin:6px 0">Rules and deadlines are different in every state. Always check the official sites:</div>
+<a href="https://vote.gov/" target="_blank" rel="noopener">Register to vote · vote.gov<span>›</span></a>
+<a href="https://www.usa.gov/how-to-vote" target="_blank" rel="noopener">How to vote, step by step · USA.gov<span>›</span></a>
+<a href="https://www.usa.gov/find-polling-place" target="_blank" rel="noopener">Find your polling place · USA.gov<span>›</span></a>
+<a href="https://www.eac.gov/voters/register-and-vote-in-your-state" target="_blank" rel="noopener">Your state's election office · EAC<span>›</span></a></div>
+</section>
+
+<!-- INSTALL -->
+<section class="view" id="v-install">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div class="pagehead" style="margin:0;border-radius:14px"><div class="k">ONE TAP AWAY</div><h1>Add to Home Screen</h1><p>Open the app like any other app on your phone</p></div>
+<button class="btn" id="installBtn" style="display:none">⬇ Install the App</button>
+<div class="facts"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue)">IPHONE (SAFARI)</h2><div>1. Tap the <b>Share</b> button (square with an arrow)</div><div>2. Scroll and tap <b>Add to Home Screen</b></div><div>3. Tap <b>Add</b></div></div>
+<div class="facts"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue)">ANDROID (CHROME)</h2><div>1. Tap the <b>⋮</b> menu</div><div>2. Tap <b>Install app</b> or <b>Add to Home screen</b></div></div>
+<span class="meta" id="installNote" style="font-size:12px">Works from the app's public web address.</span>
+</section>
+
 <!-- SHARE -->
+
 <section class="view" id="v-share">
 <button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
 <h2 class="h" style="font-size:18px">Your share card</h2>
@@ -156,8 +235,8 @@ nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
 <svg width="100%" height="150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#capitol"/></svg>
 <div style="background:var(--blue);color:#fff;padding:16px;display:flex;flex-direction:column;gap:8px">
 <span style="font-size:11px;font-weight:700;letter-spacing:1px;color:#E3EAF6">AMERICA IS WINNING</span>
-<b style="font:700 22px/1.2 Oswald,sans-serif">[Headline: new factory opening brings jobs to an American town]</b>
-<span style="font-size:12px;color:#E3EAF6">Sourced · Make America Great app</span>
+<b style="font:700 22px/1.2 Oswald,sans-serif" id="shHead">[Headline: new factory opening brings jobs to an American town]</b>
+<span style="font-size:12px;color:#E3EAF6">Sourced · Make Republican Great Again app</span>
 </div>
 <div class="stripes"></div>
 </div>
@@ -168,22 +247,29 @@ nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
 
 <!-- BRIEF -->
 <section class="view" id="v-brief">
-<div class="pagehead"><div class="k" id="bKick">YOUR DAILY BRIEF · [DATE]</div><h1 id="bTitle">Today's 5 Wins for America</h1><p id="bSub">About a 3-minute read · every item sourced</p></div><div class="stripes"></div>
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
+<div class="pagehead"><div class="k" id="bKick">YOUR DAILY BRIEF · NOV 16, 2026</div><h1 id="bTitle">Today's Top 5 Stories</h1><p id="bSub">About a 3-minute read · every item sourced</p></div><div class="stripes"></div>
 <div class="grid3" id="bTabs" role="tablist"><button class="pill on" data-b="daily" role="tab">Daily</button><button class="pill out" data-b="weekly" role="tab">Weekly</button><button class="pill out" data-b="monthly" role="tab">Monthly</button></div>
 <div class="bpanel" id="b-daily" style="display:flex;flex-direction:column;gap:12px">
-<button class="card row" data-go="story"><span class="num">1</span><div><h3 class="h">[Economy win summary]</h3><span class="src">View source</span></div></button>
-<button class="card row" data-go="story"><span class="num b">2</span><div><h3 class="h">[Jobs win summary]</h3><span class="src">View source</span></div></button>
-<button class="card row" data-go="story"><span class="num">3</span><div><h3 class="h">[Border or security update]</h3><span class="src">View source</span></div></button>
-<button class="card row" data-go="story"><span class="num b">4</span><div><h3 class="h">[Energy or manufacturing news]</h3><span class="src">View source</span></div></button>
-<button class="card row" data-go="story"><span class="num">5</span><div><h3 class="h">[Good news from communities]</h3><span class="src">View source</span></div></button>
+<button class="card row" data-go="story" data-story="gop"><span class="num">1</span><div><span class="meta">Republican Wins</span><h3 class="h">Where Republicans held on in the midterms</h3><span class="src">Tap to read · sourced</span></div></button>
+<button class="card row" data-go="story" data-story="vance"><span class="num b">2</span><div><span class="meta">2028 · Republicans</span><h3 class="h">JD Vance weighing whether to run in 2028</h3><span class="src">Tap to read · sourced</span></div></button>
+<button class="card row" data-go="story" data-story="ms"><span class="num">3</span><div><span class="meta">Senate</span><h3 class="h">Mississippi Senate race called for Scott Colom</h3><span class="src">Tap to read · sourced</span></div></button>
+<button class="card row" data-go="story" data-story="ks"><span class="num b">4</span><div><span class="meta">Governor</span><h3 class="h">Kansas governor: Cindy Holscher wins by a hair</h3><span class="src">Tap to read · sourced</span></div></button>
+<button class="card row" data-go="story" data-story="newsom"><span class="num">5</span><div><span class="meta">2028 · Democrats</span><h3 class="h">Newsom to decide on 2028 by early January</h3><span class="src">Tap to read · sourced</span></div></button>
 </div>
 <div class="bpanel" id="b-weekly" style="display:none;flex-direction:column;gap:12px">
-<div class="grid3"><div class="stat"><b>[#]</b><span>Wins this week</span></div><div class="stat" style="background:var(--red)"><b>[#]</b><span>Bills signed</span></div><div class="stat" style="background:var(--sky);color:var(--blue)"><b>[#]</b><span>Promises kept</span></div></div>
-<div class="label">TOP STORIES THIS WEEK</div>
-<button class="card row" data-go="story"><span class="num">1</span><div><span class="meta">Monday</span><h3 class="h">[Biggest win of the week]</h3><span class="src">View source</span></div></button>
-<button class="card row" data-go="story"><span class="num b">2</span><div><span class="meta">Wednesday</span><h3 class="h">[Economy or jobs highlight]</h3><span class="src">View source</span></div></button>
-<button class="card row" data-go="story"><span class="num">3</span><div><span class="meta">Friday</span><h3 class="h">[Border or security highlight]</h3><span class="src">View source</span></div></button>
-<div class="facts"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue)">COMING UP NEXT WEEK</h2><div><b style="color:var(--red)">★</b> [Upcoming vote or signing]</div><div><b style="color:var(--red)">★</b> [Upcoming speech or event]</div></div>
+<div class="grid3"><div class="stat"><b>8</b><span>Senate seats changed parties</span></div><div class="stat" style="background:var(--red)"><b>6</b><span>Governor's offices changed parties</span></div><div class="stat" style="background:var(--sky);color:var(--blue)"><b>1</b><span>Senate race still counting (Alaska)</span></div></div>
+<div class="label">MIDTERM RESULTS: FINAL CALLS</div>
+<div class="card" style="cursor:default;flex-direction:row;gap:12px;align-items:flex-start"><span class="num">1</span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span class="src">SENATE · MISSISSIPPI</span><h3 class="h">Mississippi Senate race called for Scott Colom</h3><span style="font-size:13px;line-height:1.45;color:#2D3748">Democrat Scott Colom edged Sen. Cindy Hyde-Smith 49.3% to 48.6%. The race was called Nov. 11.</span><a href="https://californiatoday.com/guides/elections/2026-midterm-election-results-master-guide/" style="font-size:12px;font-weight:700;color:#B22234">Source: California Today ›</a></div></div>
+<div class="card" style="cursor:default;flex-direction:row;gap:12px;align-items:flex-start"><span class="num b">2</span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span class="src">GOVERNOR · KANSAS</span><h3 class="h">Kansas governor: Cindy Holscher wins by a hair</h3><span style="font-size:13px;line-height:1.45;color:#2D3748">Holscher (D) beat Ty Masterson (R) 50.3% to 49.7%. Called Nov. 12; a close-race audit was ordered.</span><a href="https://californiatoday.com/guides/elections/2026-midterm-election-results-master-guide/" style="font-size:12px;font-weight:700;color:#B22234">Source: California Today ›</a></div></div>
+<div class="card" style="cursor:default;flex-direction:row;gap:12px;align-items:flex-start"><span class="num">3</span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span class="src">GOVERNOR · ALASKA</span><h3 class="h">Alaska governor's race called</h3><span style="font-size:13px;line-height:1.45;color:#2D3748">Jonathan Kreiss-Tomkins (D) was called the winner Nov. 14. Alaska's Senate race was still being counted.</span><a href="https://californiatoday.com/guides/elections/2026-midterm-election-results-master-guide/" style="font-size:12px;font-weight:700;color:#B22234">Source: California Today ›</a></div></div>
+<div class="card" style="cursor:default;flex-direction:row;gap:12px;align-items:flex-start"><span class="num b">4</span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span class="src">REPUBLICAN BRIGHT SPOTS</span><h3 class="h">Where Republicans held on</h3><span style="font-size:13px;line-height:1.45;color:#2D3748">Republicans held Senate seats in Florida (Ashley Moody) and Louisiana (Julia Letlow), and won governor's races in Florida (Byron Donalds), New Hampshire (Kelly Ayotte) and Tennessee (Marsha Blackburn).</span><a href="https://californiatoday.com/guides/elections/2026-midterm-election-results-master-guide/" style="font-size:12px;font-weight:700;color:#B22234">Source: California Today ›</a></div></div>
+<div class="label">ROAD TO 2028</div>
+<div class="card" style="cursor:default;flex-direction:row;gap:12px;align-items:flex-start"><span class="num">5</span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span class="src">REPUBLICANS</span><h3 class="h">JD Vance weighing whether to run</h3><span style="font-size:13px;line-height:1.45;color:#2D3748">CNN reported Nov. 13 that the vice president is considering not running after the midterms. Some allies still say he is more likely than not to run.</span><a href="https://www.yahoo.com/news/politics/articles/jd-vance-considering-not-running-172743584.html" style="font-size:12px;font-weight:700;color:#B22234">Source: Yahoo News / CNN ›</a></div></div>
+<div class="card" style="cursor:default;flex-direction:row;gap:12px;align-items:flex-start"><span class="num b">6</span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span class="src">DEMOCRATS</span><h3 class="h">Newsom to decide by early January</h3><span style="font-size:13px;line-height:1.45;color:#2D3748">On Nov. 12, California Gov. Gavin Newsom said he would decide on a 2028 run by early January.</span><a href="https://en.wikipedia.org/wiki/2028_Democratic_Party_presidential_primaries" style="font-size:12px;font-weight:700;color:#B22234">Source: Wikipedia ›</a></div></div>
+<div class="card" style="cursor:default;flex-direction:row;gap:12px;align-items:flex-start"><span class="num">7</span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span class="src">DEMOCRATS</span><h3 class="h">Ro Khanna allies form "Run Ro" group</h3><span style="font-size:13px;line-height:1.45;color:#2D3748">Supporters of Rep. Ro Khanna formed a group in November to prepare for a possible 2028 campaign.</span><a href="https://en.wikipedia.org/wiki/2028_Democratic_Party_presidential_primaries" style="font-size:12px;font-weight:700;color:#B22234">Source: Wikipedia ›</a></div></div>
+<div class="facts"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue)">WHAT TO WATCH NEXT WEEK</h2><div><b style="color:var(--red)">★</b> Kansas governor close-race audit</div><div><b style="color:var(--red)">★</b> Alaska Senate count (Peltola vs. Sullivan)</div><div><b style="color:var(--red)">★</b> More 2028 decisions now that the midterms are over</div></div>
+<button class="btn b" data-go="map">See every state on the Map ›</button>
 </div>
 <div class="bpanel" id="b-monthly" style="display:none;flex-direction:column;gap:12px">
 <div class="chips" id="months"><button class="pill on">November</button><button class="pill out">October</button><button class="pill out">September</button><button class="pill out">August</button></div>
@@ -199,6 +285,7 @@ nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
 
 <!-- PROMISES -->
 <section class="view" id="v-promises">
+<button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
 <div class="pagehead"><div class="k">TRACKER</div><h1>Promises Kept</h1><p>Each promise linked to the order or law behind it</p></div><div class="stripes"></div>
 <div class="grid3"><div class="stat"><b>[#]</b><span>Kept</span></div><div class="stat" style="background:var(--red)"><b>[#]</b><span>In progress</span></div><div class="stat" style="background:var(--sky);color:var(--blue)"><b>[#]</b><span>Not started</span></div></div>
 <div class="chips" id="pfilter"><button class="pill on">All</button><button class="pill out">Economy</button><button class="pill out">Border</button><button class="pill out">Energy</button></div>
@@ -221,6 +308,13 @@ nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
 <!-- MORE -->
 <section class="view more" id="v-more">
 <div class="pagehead"><div class="k">EXPLORE</div><h1>More</h1></div><div class="stripes"></div>
+<button class="card" data-go="compare"><span class="h">⚖ Compare Candidates</span><span>›</span></button>
+<button class="card" data-go="quiz"><span class="h">✔ Who Matches Me?</span><span>›</span></button>
+<button class="card" data-go="polls"><span class="h">📊 2028 Polls</span><span>›</span></button>
+<button class="card" data-go="alerts"><span class="h">🔔 Your Alerts</span><span>›</span></button>
+<button class="card" data-go="calendar"><span class="h">📅 Election Calendar &amp; How to Vote</span><span>›</span></button>
+<button class="card" data-go="install"><span class="h">⬇ Add the App to Your Home Screen</span><span>›</span></button>
+<button class="card" data-go="brief"><span class="h">Daily, Weekly &amp; Monthly Brief</span><span>›</span></button>
 <button class="card" data-go="promises"><span class="h">★ Promises Kept</span><span>›</span></button>
 <button class="card" data-go="videos"><span class="h">▶ Videos</span><span>›</span></button>
 <button class="card" data-go="profile"><span class="h">My Profile</span><span>›</span></button>
@@ -324,7 +418,7 @@ nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
 .app.gate main{padding-bottom:32px}
 </style>
 <section class="view" id="v-signin">
-<div class="gateBrand"><svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z" fill="#B22234" stroke="#0B2A5B" stroke-width="1.5" stroke-linejoin="round"/></svg><span style="font:700 26px Oswald,sans-serif;color:var(--blue);letter-spacing:1px">MAKE AMERICA GREAT</span><span class="meta">Free news · No ads · Every story sourced</span><div class="stripes" style="width:100%;margin-top:6px"></div></div>
+<div class="gateBrand"><svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z" fill="#B22234" stroke="#0B2A5B" stroke-width="1.5" stroke-linejoin="round"/></svg><span style="font:700 23px Oswald,sans-serif;color:var(--blue);letter-spacing:.5px">MAKE REPUBLICAN GREAT AGAIN</span><span class="meta">Free news · No ads · Every story sourced</span><div class="stripes" style="width:100%;margin-top:6px"></div></div>
 <button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
 <svg width="100%" height="130" preserveAspectRatio="xMidYMid slice" style="border-radius:14px" aria-hidden="true"><use href="#capitol"/></svg>
 <h1 class="h-big" style="font-size:28px;font-weight:700;text-align:center" id="siTitle">Welcome, Patriot</h1>
@@ -373,6 +467,30 @@ nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
 .sec b{font:700 18px Oswald,sans-serif;color:var(--blue);letter-spacing:.5px}
 .sec span.ct{min-width:28px;height:28px;border-radius:999px;background:var(--red);color:#fff;font:700 14px Inter,sans-serif;display:flex;align-items:center;justify-content:center;padding:0 8px}
 .sec span.ct.b{background:var(--blue)}.sec span.ct.g{background:#5A6780}
+.pfhead{display:flex;gap:14px;align-items:center}
+.pfav{width:72px;height:72px;flex:none;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font:700 26px Oswald,sans-serif;background:var(--blue);border:3px solid #fff;box-shadow:0 0 0 3px var(--red)}
+.pfrow{border:1px solid var(--line);border-left:4px solid var(--red);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;background:#fff}
+.pfrow b{font-size:13px;color:var(--blue)}.pfrow span{font-size:14px;line-height:1.45;color:#2D3748}
+.pflink{cursor:pointer;text-decoration:underline;text-decoration-color:rgba(178,34,52,.4);text-underline-offset:3px}
+.vprof{align-self:flex-start;background:none;border:0;padding:4px 0;min-height:32px;font:700 13px inherit;font-size:13px;font-weight:700;color:var(--red);cursor:pointer}
+.selbox{min-width:0;display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:700;color:var(--blue)}
+.selbox select{width:100%;min-width:0;min-height:44px;border:1.5px solid var(--line);border-radius:10px;padding:0 8px;font:600 14px inherit;font-size:14px;background:#fff;color:var(--blue)}
+.cmpgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.cmpwho{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;text-align:center}
+.cmpwho b{color:var(--blue);font-size:14px}
+.cmpav{width:44px;height:44px;flex:none;border-radius:50%;color:#fff;display:inline-flex;align-items:center;justify-content:center;font:700 16px Oswald,sans-serif;background:var(--blue)}
+.cmprow{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;background:#fff}
+.cmprow>b{color:var(--blue);font-size:14px}
+.cmpcell{border-radius:8px;padding:8px;font-size:13px;font-weight:700;text-align:center}
+.cmpcell.sy{background:#E7F1FF;color:#0B2A5B}.cmpcell.sn{background:#FDECEE;color:#B22234}.cmpcell.su{background:#F2F4F7;color:#5A6780;font-weight:600}
+.qres{flex-direction:row!important;align-items:center;gap:10px}
+.qbar{display:block;height:8px;border-radius:99px;background:#E3EAF6;overflow:hidden;flex:1}.qbar>i{display:block;height:100%;background:linear-gradient(90deg,#B22234,#0B2A5B);border-radius:99px}
+.qpct{font:700 20px Oswald,sans-serif;color:var(--red)}
+.prow{display:grid;grid-template-columns:110px 1fr 76px;gap:8px;align-items:center;font-size:13px}.prow b{text-align:right;color:var(--blue)}
+.calrow{display:flex;gap:12px;border:1px solid var(--line);border-left:4px solid var(--red);border-radius:12px;padding:10px 12px;background:#fff;font-size:14px;line-height:1.45}
+.calrow b{color:var(--blue)}.caldate{flex:none;width:84px;font:700 14px Oswald,sans-serif;color:var(--red)}
+.tools28{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.tools28 button{min-height:48px;font-size:13px}
+#syncNote{font-size:12px;font-weight:600;color:var(--muted)}#syncNote.live{color:#1F7A3D}
 .cfollow{min-height:36px;flex:none}
 .rate{display:flex;flex-direction:column;gap:6px;margin-top:6px;padding-top:8px;border-top:1px solid var(--line)}
 .stars{display:flex;gap:2px;align-items:center}
@@ -388,13 +506,23 @@ nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
 .lead .rk{width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font:700 15px Oswald,sans-serif;flex:none}
 </style>
 <button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
-<div class="pagehead" style="margin:0;border-radius:14px"><div class="k">REPUBLICAN PRIMARY</div><h1>Road to 2028</h1><p>Who's running, who's thinking about it, and who said no</p></div>
+<div class="pagehead" style="margin:0;border-radius:14px"><div class="k">2028 PRESIDENTIAL RACE</div><h1>Road to 2028</h1><p>Who's running, who's thinking about it, and who said no</p></div>
+<div class="grid3" id="partyFilter2028" style="grid-template-columns:repeat(4,1fr);gap:6px"><button class="pill on" data-p28="all">All</button><button class="pill out" data-p28="R">GOP</button><button class="pill out" data-p28="D">Dem</button><button class="pill out" data-p28="O">Other</button></div>
+<style>.pgrp{display:flex;flex-direction:column;gap:12px}</style>
+<div class="pgrp" data-party="R">
+<div class="label" style="color:var(--red)">THE PRESIDENT</div>
+<div class="cand" data-pres="1" style="border:2px solid var(--red)"><span class="ini" style="background:var(--red)">DT</span><div class="info"><span class="nm">Donald Trump</span><span class="role">47th President of the United States</span><span class="note">Serving his second term through January 2029. The 22nd Amendment limits presidents to two terms, so he isn't on the 2028 ballot.</span></div><button class="pill on cfollow">Follow</button></div>
 <div class="grid3"><div class="stat" style="background:var(--red)"><b>2</b><span>Declared</span></div><div class="stat"><b>10</b><span>Exploring or weighing it</span></div><div class="stat" style="background:var(--sky);color:var(--blue)"><b>6+</b><span>Said no</span></div></div>
+<div class="tools28"><button class="pill red" data-go="compare">⚖ Compare</button><button class="pill on" data-go="quiz">✔ Who matches me?</button><button class="pill out" data-go="polls">📊 Polls</button></div>
+<span id="syncNote"></span>
 <div class="post" style="gap:8px;padding:12px;border:2px solid var(--blue)"><h2 style="font:700 18px Oswald,sans-serif;color:var(--blue);letter-spacing:.5px">★ RATE THE CANDIDATES</h2><span class="meta">Ranked by votes, most liked first. Swipe the line and tap the stars. Tap a name to read more.</span><div class="strip" id="stripRace"></div></div>
 <div class="post" style="gap:8px"><div style="display:flex;align-items:center;gap:8px"><span class="dot" aria-hidden="true"></span><h2 style="font:700 18px Oswald,sans-serif;color:var(--blue);letter-spacing:.5px">LIVE VOTES</h2></div><span class="meta">See who's voting for who, as it happens.</span><div class="live" id="liveRace" aria-live="polite"></div><button class="pill out" id="demoVotes" style="min-height:42px">▶ Show sample voting activity</button></div>
 <div class="post" style="border:2px solid var(--red);gap:8px"><h2 style="font:700 18px Oswald,sans-serif;color:var(--blue);letter-spacing:.5px">★ COMMUNITY FAVORITES</h2><span class="meta">Rated by app members. One rating per person, and you can change yours anytime.</span><div id="leaders" style="display:flex;flex-direction:column;gap:8px"></div></div>
+</div>
 <div class="facts"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue)">KEY DATES</h2><div><b style="color:var(--red)">★</b> Primary dates: not set yet. Iowa is expected to vote first.</div><div><b style="color:var(--red)">★</b> Election Day: Tuesday, November 7, 2028</div><div style="font-size:12px;color:var(--muted)">Last updated Nov 15, 2026. This changes often. Tap Follow to get updates.</div></div>
 
+<div class="pgrp" data-party="R">
+<div class="sec"><b style="color:#B22234">REPUBLICANS</b></div>
 <div class="sec"><b>DECLARED</b><span class="ct">2</span></div>
 <div class="cand"><span class="ini" style="background:var(--red)">DG</span><div class="info"><span class="nm">Dan Greaney</span><span class="role">TV writer and lawyer · California</span><span class="note">Announced his campaign May 26, 2026.</span></div><button class="pill on cfollow">Follow</button></div>
 <div class="cand"><span class="ini" style="background:var(--red)">RW</span><div class="info"><span class="nm">Royce White</span><span class="role">Former NBA player · Minnesota</span><span class="note">Announced August 12, 2026, the day after losing Minnesota's Senate primary.</span></div><button class="pill on cfollow">Follow</button></div>
@@ -420,12 +548,42 @@ nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
 <div class="cand"><span class="ini" style="background:#5A6780">JH</span><div class="info"><span class="nm">Josh Hawley</span><span class="role">U.S. Senator · Missouri</span><span class="note">Ruled out a run in September 2026.</span></div></div>
 <div class="cand" style="flex-direction:column;gap:6px"><span class="nm" style="font-size:14px;font-weight:700;color:var(--blue)">Also said no</span><span class="note" style="font-size:13px;line-height:1.5">Nikki Haley · Mike Pence · Donald Trump Jr. · Vivek Ramaswamy, plus several Cabinet members and senators</span></div>
 
+</div>
+<div class="pgrp" data-party="D">
+<div class="sec"><b style="color:#2F6FDE">DEMOCRATS</b></div>
+<div class="sec"><b>DECLARED</b><span class="ct" style="background:#2F6FDE">0</span></div>
+<div class="facts" style="gap:4px"><span style="font-size:13px;line-height:1.45;color:#2D3748">No major Democrat has formally declared yet. Most are expected to decide in the months after the midterms.</span></div>
+<div class="sec"><b>WEIGHING IT</b><span class="ct" style="background:#2F6FDE">10</span></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">AB</span><div class="info"><span class="nm">Andy Beshear</span><span class="role">Governor of Kentucky</span><span class="note">Said he will decide after his time leading the Democratic Governors Association ends.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">PB</span><div class="info"><span class="nm">Pete Buttigieg</span><span class="role">Former U.S. Transportation Secretary</span><span class="note">Said in August 2026 he was "more inclined than not" to run.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">MK</span><div class="info"><span class="nm">Mark Kelly</span><span class="role">U.S. Senator · Arizona</span><span class="note">Has said he is considering a run.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">RK</span><div class="info"><span class="nm">Ro Khanna</span><span class="role">U.S. Representative · California</span><span class="note">Said he is "strongly considering" it and would decide after the midterms.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">DL</span><div class="info"><span class="nm">Don Lemon</span><span class="role">Former CNN anchor</span><span class="note">Says he is "seriously considering" a run.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">GN</span><div class="info"><span class="nm">Gavin Newsom</span><span class="role">Governor of California</span><span class="note">Said Nov. 12 he will decide by early January. Has said he won't run if Kamala Harris does.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">AO</span><div class="info"><span class="nm">Alexandria Ocasio-Cortez</span><span class="role">U.S. Representative · New York</span><span class="note">Deciding after the midterms whether to run for president or for the U.S. Senate.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">ES</span><div class="info"><span class="nm">Elissa Slotkin</span><span class="role">U.S. Senator · Michigan</span><span class="note">Said in April 2026 she is considering a run.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">CV</span><div class="info"><span class="nm">Chris Van Hollen</span><span class="role">U.S. Senator · Maryland</span><span class="note">Said he is "kicking the tires" on a run.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">GW</span><div class="info"><span class="nm">Gretchen Whitmer</span><span class="role">Governor of Michigan</span><span class="note">Has said she is unsure, and "never say never."</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="sec"><b>OFTEN MENTIONED</b><span class="ct" style="background:#2F6FDE">4</span></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">KH</span><div class="info"><span class="nm">Kamala Harris</span><span class="role">Former Vice President</span><span class="note">Leads early Democratic polling, but hasn't said whether she will run.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">JS</span><div class="info"><span class="nm">Josh Shapiro</span><span class="role">Governor of Pennsylvania</span><span class="note">Named in early 2028 Democratic polls.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">JP</span><div class="info"><span class="nm">JB Pritzker</span><span class="role">Governor of Illinois</span><span class="note">Named in early 2028 Democratic polls.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#2F6FDE">JO</span><div class="info"><span class="nm">Jon Ossoff</span><span class="role">U.S. Senator · Georgia</span><span class="note">Named in early 2028 Democratic polls.</span></div><button class="pill on cfollow">Follow</button></div>
+</div>
+<div class="pgrp" data-party="O">
+<div class="sec"><b style="color:#6B4FB8">THIRD PARTIES &amp; INDEPENDENTS</b><span class="ct" style="background:#6B4FB8">3</span></div>
+<div class="cand"><span class="ini" style="background:#6B4FB8">RT</span><div class="info"><span class="nm">Randy Toler</span><span class="role">Green Party</span><span class="note">Declared for the Green Party nomination.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#6B4FB8">JJ</span><div class="info"><span class="nm">Jo Jorgensen</span><span class="role">Libertarian Party</span><span class="note">Formed an exploratory committee on May 28, 2026.</span></div><button class="pill on cfollow">Follow</button></div>
+<div class="cand"><span class="ini" style="background:#6B4FB8">AY</span><div class="info"><span class="nm">Andrew Yang</span><span class="role">Forward Party</span><span class="note">Has not ruled out a run (August 2026).</span></div><button class="pill on cfollow">Follow</button></div>
+</div>
 <div class="check" style="border-color:var(--blue)"><h2 style="font-size:13px;letter-spacing:.5px;color:var(--blue);margin-bottom:4px">SOURCES</h2>
 <a href="https://en.wikipedia.org/wiki/2028_Republican_Party_presidential_primaries">2028 Republican primaries overview<span>›</span></a>
 <a href="https://www.cnn.com/2026/11/05/politics/midterms-vance-desantis-rubio-2028-race">CNN: Vance, DeSantis after the midterms<span>›</span></a>
 <a href="https://www.washingtonpost.com/politics/2026/11/06/ron-desantis-plans-another-white-house-bid-after-failing-2024/">Washington Post: DeSantis report<span>›</span></a>
 <a href="https://www.foxnews.com/politics/desantis-blasts-washington-post-report-preparing-2028-presidential-bid.amp">Fox News: DeSantis responds<span>›</span></a>
 <a href="https://vinnews.com/2026/09/10/marco-rubio-says-he-has-no-current-plans-to-run-for-president-in-2028/">Rubio: no current plans to run<span>›</span></a>
+<a href="https://en.wikipedia.org/wiki/2028_Democratic_Party_presidential_primaries">2028 Democratic primaries overview<span>›</span></a>
+<a href="https://en.wikipedia.org/wiki/2028_United_States_presidential_election">Third-party and independent candidates<span>›</span></a>
 </div>
 </section>
 
@@ -457,6 +615,35 @@ nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
 <button class="btn b" data-toast="Invite link copied (demo)">Invite Friends to the App</button>
 </section>
 
+<!-- MAP -->
+<section class="view" id="v-map">
+<style>
+.mapgrid{display:grid;grid-template-columns:repeat(11,1fr);gap:3px;margin:4px 0}
+.tile{aspect-ratio:1;border:0;border-radius:6px;font:800 11px Inter,sans-serif;color:#fff;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;min-height:28px}
+.tile.R{background:#B22234}.tile.D{background:#2F6FDE}.tile.I{background:#6B4FB8}.tile.none{background:#D5DDEB;color:#3D4A63}.tile.dim{background:#E4E9F2;color:#5A6780}
+.tile.pending{box-shadow:inset 0 0 0 3px #E8A317}
+.tile.sel{outline:3px solid #0B2A5B;outline-offset:1px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;font-weight:700;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:5px}.legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+.race{border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.race h3{font:700 18px Oswald,sans-serif;color:var(--blue);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.badge{font:800 11px Inter,sans-serif;padding:4px 8px;border-radius:6px;color:#fff;white-space:nowrap}
+.crow{display:flex;align-items:center;gap:10px;font-size:14px}
+.pchip{width:30px;height:30px;flex:none;border-radius:50%;color:#fff;font:800 12px Inter,sans-serif;display:flex;align-items:center;justify-content:center}
+.pchip.R{background:#B22234}.pchip.D{background:#2F6FDE}.pchip.I{background:#6B4FB8}
+.bar{height:8px;border-radius:4px;background:#E4E9F2;overflow:hidden;margin-top:4px}.bar b{display:block;height:100%}
+</style>
+<div class="pagehead"><div class="k">2026 MIDTERM RESULTS</div><h1>State Map</h1><p>Tap any state to see who ran and who won</p></div><div class="stripes"></div>
+<div class="grid3" id="raceSel" style="grid-template-columns:1fr 1fr"><button class="pill on" data-race="sen">U.S. Senate</button><button class="pill out" data-race="gov">Governor</button></div>
+<div class="grid3" id="partySel" style="grid-template-columns:1fr 1fr"><button class="pill on" data-pf="all">All parties</button><button class="pill out" data-pf="R">Republicans only</button></div>
+<div class="mapgrid" id="mapGrid" role="group" aria-label="Map of states"></div>
+<div class="legend" id="mapLegend"></div>
+<div class="facts" id="mapSum" style="gap:4px"></div>
+<div id="stateDetail" style="display:flex;flex-direction:column;gap:12px"></div>
+<p class="small" style="text-align:left">Results as reported Nov. 13–14, 2026 (AP race calls via the California Today 2026 midterm results guide). Numbers can change until states certify. Alaska's Senate race was still being counted.</p>
+<a class="src" href="https://californiatoday.com/guides/elections/2026-midterm-election-results-master-guide/" style="font-size:13px">See the full source ›</a>
+</section>
+
 <!-- DONATE -->
 <section class="view" id="v-donate">
 <button class="back" data-back><svg width="18" height="18"><use href="#chev"/></svg>Back</button>
@@ -474,7 +661,7 @@ nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
 
 <nav class="tabs" aria-label="Main">
 <button data-tab="home" class="on"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11l9-7 9 7v9H3z"/></svg>Home</button>
-<button data-tab="brief"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h10"/></svg>Brief</button>
+<button data-tab="map"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg>Map</button>
 <button data-tab="race2028" style="position:relative"><span style="width:46px;height:46px;margin-top:-20px;border-radius:50%;background:#B22234;border:3px solid #fff;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg></span>2028</button>
 <button data-tab="feed"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Feed</button>
 <button data-tab="more"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>More</button>
@@ -483,13 +670,13 @@ nav.tabs button.on svg{stroke:#fff;fill:var(--red)}
 </div>
 
 <script>
-const tabs=['home','brief','race2028','feed','more'];
+const tabs=['home','map','race2028','feed','more'];
 let history_=[];let current='home';
 function show(v,push=true){
   if(push&&v!==current)history_.push(current);
   current=v;
   document.querySelectorAll('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));
-  const t=tabs.includes(v)?v:(['factcheck','state','events','community','votes','profile','people','donate','promises'].includes(v)?'more':(v==='videos'?'feed':null));
+  const t=tabs.includes(v)?v:(['factcheck','state','events','community','votes','profile','people','donate','promises','brief'].includes(v)?'more':(v==='videos'?'feed':(['cand','compare','quiz','polls'].includes(v)?'race2028':(['alerts','calendar','install'].includes(v)?'more':null))));
   if(t)document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
   window.scrollTo(0,0);
 }
@@ -503,7 +690,7 @@ document.addEventListener('click',e=>{
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',1800)}
 function chipGroup(id,onCls,offCls){const g=document.getElementById(id);g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(x=>{x.classList.remove(onCls);x.classList.add(offCls)});b.classList.remove(offCls);b.classList.add(onCls)})}
 chipGroup('topics','red','out');chipGroup('months','on','out');
-const BR={daily:['YOUR DAILY BRIEF · [DATE]',"Today's 5 Wins for America",'About a 3-minute read · every item sourced',"Share Today's Brief"],weekly:['WEEKLY RECAP · [WEEK OF DATE]','This Week in America','Updated every Sunday · every item sourced','Share This Week'],monthly:['MONTHLY RECAP · [MONTH]','This Month in America','Updated on the 1st of every month','Share This Month']};
+const BR={daily:['YOUR DAILY BRIEF · NOV 16, 2026',"Today's Top 5 Stories",'About a 3-minute read · every item sourced',"Share Today's Brief"],weekly:['WEEKLY RECAP · NOV 9–15, 2026','This Week in America','Updated every Sunday · every item sourced','Share This Week'],monthly:['MONTHLY RECAP · [MONTH]','This Month in America','Updated on the 1st of every month','Share This Month']};
 document.getElementById('bTabs').addEventListener('click',e=>{const b=e.target.closest('[data-b]');if(!b)return;const k=b.dataset.b;document.querySelectorAll('#bTabs button').forEach(x=>{x.classList.toggle('on',x===b);x.classList.toggle('out',x!==b)});document.querySelectorAll('.bpanel').forEach(p=>p.style.display=p.id==='b-'+k?'flex':'none');const t=BR[k];bKick.textContent=t[0];bTitle.textContent=t[1];bSub.textContent=t[2];bShare.textContent=t[3]});chipGroup('pfilter','on','out');chipGroup('reps','on','out');
 document.querySelectorAll('.icon-btn').forEach(b=>b.addEventListener('click',()=>{b.classList.toggle('set');toast(b.classList.contains('set')?'Reminder set':'Reminder removed')}));
 let voted=false;document.querySelectorAll('.poll').forEach(p=>p.addEventListener('click',()=>{if(voted)return;voted=true;document.querySelectorAll('.poll').forEach(q=>{q.querySelector('i').style.width=q.dataset.pct+'%';q.querySelector('span').textContent+=' · '+q.dataset.pct+'%'});p.style.background='#EAF0FA';toast('Thanks for voting!')}));
@@ -600,7 +787,8 @@ document.querySelectorAll('.cfollow').forEach(b=>b.addEventListener('click',()=>
 const ratings={};
 function drawLeaders(){const L=document.getElementById('leaders');L.innerHTML='';const arr=Object.entries(ratings).filter(([k,r])=>r.count>0).map(([k,r])=>({k,avg:r.sum/r.count,count:r.count})).sort((a,b)=>b.avg-a.avg||b.count-a.count).slice(0,5);if(!arr.length){L.append(mk('span','meta','No ratings yet. Rate the candidates below to see who comes out on top.'));return}arr.forEach((x,i)=>{const d=mk('div','lead');const rk=mk('span','rk',String(i+1));if(i>0)rk.style.background='#0B2A5B';const nm=mk('span','h',x.k);nm.style.flex='1';const sc=mk('span',null,'★ '+x.avg.toFixed(1));sc.style.cssText='font-weight:700;color:#B5790C';const ct=mk('span','meta',' ('+x.count+')');d.append(rk,nm,sc,ct);L.append(d)})}
 document.querySelectorAll('#v-race2028 .cand').forEach(c=>{
-  if(!c.querySelector('.cfollow'))return;
+  if(!c.querySelector('.cfollow')||c.dataset.pres)return;
+  const grp=c.closest('[data-party]');if(grp&&grp.dataset.party!=='R')return;
   const info=c.querySelector('.info');const name=info.querySelector('.nm').textContent;
   const r=ratings[name]={sum:0,count:0,mine:0,comments:[]};
   const box=mk('div','rate');
@@ -616,15 +804,15 @@ document.querySelectorAll('#v-race2028 .cand').forEach(c=>{
   const f=mk('form','cform');const lab=mk('label');lab.style.flex='1';const inp=mk('input');inp.placeholder='Why do you rate '+name.split(' ')[0]+' this way?';inp.setAttribute('aria-label','Comment on '+name);lab.append(inp);const pb=mk('button','pill red','Post');pb.style.minHeight='42px';f.append(lab,pb);
   function drawC(){list.innerHTML='';if(!r.comments.length)list.append(mk('span','meta','No comments yet. Keep it respectful.'));r.comments.forEach(x=>{const d=mk('div','ccm');d.append(mk('b',null,x.n+(x.s?' · '+'★'.repeat(x.s):'')),mk('span',null,x.t));list.append(d)});tog.textContent=(cb.classList.contains('open')?'Hide comments':'Comments')+' ('+r.comments.length+')'}
   tog.onclick=()=>{cb.classList.toggle('open');drawC();if(cb.classList.contains('open'))inp.focus()};
-  f.onsubmit=e=>{e.preventDefault();if(needSignIn())return;const v=inp.value.trim();if(!v)return;r.comments.unshift({n:pName.textContent,t:v,s:r.mine});inp.value='';drawC();toast('Comment posted')};
-  cb.append(list,f);box.append(st,sum,tog,cb);info.append(box);drawC();
+  f.onsubmit=e=>{e.preventDefault();if(needSignIn())return;const v=inp.value.trim();if(!v)return;addComment(name,v);inp.value='';toast('Comment posted')};
+  cb.append(list,f);box.append(st,sum,tog,cb);info.append(box);r.drawC=drawC;drawC();
 });
 const ACT=[];let demoT=null,demoN=0;
 document.querySelectorAll('#v-race2028 .cand').forEach(c=>{const nm=c.querySelector('.nm').textContent;const r=ratings[nm];if(r){const ini=c.querySelector('.ini');r.ini=ini.textContent;r.bg=ini.style.background||'#0B2A5B'}});
 function rateCand(name,i,who){const r=ratings[name];const mine=!who;if(mine){if(needSignIn())return;if(r.mine){r.sum-=r.mine;r.count--}r.mine=i}r.sum+=i;r.count++;ACT.unshift({who:mine?pName.textContent+' (you)':who,name,s:i,t:Date.now(),sample:!mine});if(ACT.length>40)ACT.pop();refreshAll();if(mine)toast('You rated '+name+' '+i+' star'+(i>1?'s':''))}
 function ago(t){const s=Math.round((Date.now()-t)/1000);return s<10?'just now':s<60?s+'s ago':Math.round(s/60)+'m ago'}
 function starStr(n){return '★'.repeat(n)+'☆'.repeat(5-n)}
-function drawStrips(){['stripHome','stripRace'].forEach(id=>{const S=document.getElementById(id);if(!S)return;const x=S.scrollLeft;S.innerHTML='';const order=Object.keys(ratings).map((n,ix)=>({n,ix,r:ratings[n]})).sort((a,b)=>{const A=a.r.count?a.r.sum/a.r.count:-1,B=b.r.count?b.r.sum/b.r.count:-1;return (B-A)||(b.r.count-a.r.count)||(a.ix-b.ix)});let rank=0;order.forEach(({n:name})=>{const r=ratings[name];const t=mk('div','ctile');t.style.position='relative';if(r.count){rank++;const rb=mk('span',null,'#'+rank);rb.style.cssText='position:absolute;top:6px;left:6px;min-width:26px;height:26px;padding:0 6px;border-radius:999px;display:flex;align-items:center;justify-content:center;font:700 13px Oswald,sans-serif;color:#fff;background:'+(rank===1?'#B22234':'#0B2A5B');t.append(rb);if(rank===1)t.style.borderColor='#B22234'}const av=mk('div','cav',r.ini||name[0]);av.style.background=r.bg||'#0B2A5B';const nb=mk('button','cn',name);nb.onclick=()=>{show('race2028');setTimeout(()=>r.card&&r.card.scrollIntoView({behavior:'smooth',block:'center'}),60)};const ms=mk('div','mstars');ms.setAttribute('role','group');ms.setAttribute('aria-label','Rate '+name);const shown=r.mine||(r.count?Math.round(r.sum/r.count):0);for(let i=1;i<=5;i++){const b=mk('button','mstar'+(i<=shown?' on':''),'★');b.setAttribute('aria-label','Rate '+name+' '+i+' star'+(i>1?'s':''));b.onclick=()=>rateCand(name,i);ms.append(b)}const cr=mk('span','cr',r.count?'★ '+(r.sum/r.count).toFixed(1)+' · '+r.count+' vote'+(r.count>1?'s':''):'No votes yet');t.append(av,nb,ms,cr);if(r.mine){const y=mk('span',null,'You: '+r.mine+'★');y.style.cssText='font-size:11px;font-weight:700;color:#B22234';t.append(y)}S.append(t)});S.scrollLeft=x})}
+function drawStrips(){['stripHome','stripRace'].forEach(id=>{const S=document.getElementById(id);if(!S)return;const x=S.scrollLeft;S.innerHTML='';const order=Object.keys(ratings).map((n,ix)=>({n,ix,r:ratings[n]})).sort((a,b)=>{const A=a.r.count?a.r.sum/a.r.count:-1,B=b.r.count?b.r.sum/b.r.count:-1;return (B-A)||(b.r.count-a.r.count)||(a.ix-b.ix)});let rank=0;order.forEach(({n:name})=>{const r=ratings[name];const t=mk('div','ctile');t.style.position='relative';if(r.count){rank++;const rb=mk('span',null,'#'+rank);rb.style.cssText='position:absolute;top:6px;left:6px;min-width:26px;height:26px;padding:0 6px;border-radius:999px;display:flex;align-items:center;justify-content:center;font:700 13px Oswald,sans-serif;color:#fff;background:'+(rank===1?'#B22234':'#0B2A5B');t.append(rb);if(rank===1)t.style.borderColor='#B22234'}const av=mk('div','cav',r.ini||name[0]);av.style.background=r.bg||'#0B2A5B';const nb=mk('button','cn',name);nb.onclick=()=>{if(typeof PROFILES!=='undefined'&&PROFILES[name]){openProfile(name);return}show('race2028');setTimeout(()=>r.card&&r.card.scrollIntoView({behavior:'smooth',block:'center'}),60)};const ms=mk('div','mstars');ms.setAttribute('role','group');ms.setAttribute('aria-label','Rate '+name);const shown=r.mine||(r.count?Math.round(r.sum/r.count):0);for(let i=1;i<=5;i++){const b=mk('button','mstar'+(i<=shown?' on':''),'★');b.setAttribute('aria-label','Rate '+name+' '+i+' star'+(i>1?'s':''));b.onclick=()=>rateCand(name,i);ms.append(b)}const cr=mk('span','cr',r.count?'★ '+(r.sum/r.count).toFixed(1)+' · '+r.count+' vote'+(r.count>1?'s':''):'No votes yet');t.append(av,nb,ms,cr);if(r.mine){const y=mk('span',null,'You: '+r.mine+'★');y.style.cssText='font-size:11px;font-weight:700;color:#B22234';t.append(y)}S.append(t)});S.scrollLeft=x})}
 function drawLive(){const L=document.getElementById('liveRace');L.innerHTML='';if(!ACT.length){L.append(mk('span','meta','No votes yet. Tap the stars above, and votes will show up here live.'))}ACT.slice(0,8).forEach(a=>{const d=mk('div','lv');const dot=mk('span','dot');dot.setAttribute('aria-hidden','true');const tx=mk('span');tx.style.flex='1';const b=mk('b',null,a.who);b.style.color='#0B2A5B';tx.append(b,document.createTextNode(' rated '),Object.assign(mk('b',null,a.name),{}),document.createTextNode(a.sample?' (sample)':''));const st=mk('span','st',starStr(a.s));const tm=mk('span','meta',ago(a.t));tm.style.whiteSpace='nowrap';d.append(dot,tx,st,tm);L.append(d)});const H=document.getElementById('liveHome');H.innerHTML='';if(ACT.length){const a=ACT[0];const dot=mk('span','dot');H.append(dot,document.createTextNode('LIVE: '+a.who+' gave '+a.name+' '+a.s+'★ · '+ago(a.t)))}}
 function refreshAll(){Object.values(ratings).forEach(r=>r.upd&&r.upd());drawLeaders();drawStrips();drawLive()}
 document.getElementById('demoVotes').addEventListener('click',e=>{const b=e.currentTarget;if(demoT){clearInterval(demoT);demoT=null;b.textContent='▶ Show sample voting activity';return}b.textContent='■ Stop sample activity';const names=Object.keys(ratings);const tick=()=>{demoN++;const nm=names[Math.floor(Math.random()*names.length)];const s=[3,4,4,5,5,2,5,4,3,5][Math.floor(Math.random()*10)];rateCand(nm,s,'[Sample voter '+demoN+'] · '+['AZ','TX','FL','OH','PA','GA'][demoN%6])};tick();demoT=setInterval(tick,2500)});
@@ -633,6 +821,316 @@ refreshAll();
 document.querySelector('#v-race2028 > .back').style.display='none';
 _pending='race2028';document.querySelector('.app').classList.add('gate');
 show('signin',false);
+
+// ===== 2026 midterm map =====
+const ST_NAMES={AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",CO:"Colorado",CT:"Connecticut",DE:"Delaware",DC:"District of Columbia",FL:"Florida",GA:"Georgia",HI:"Hawaii",ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",LA:"Louisiana",ME:"Maine",MD:"Maryland",MA:"Massachusetts",MI:"Michigan",MN:"Minnesota",MS:"Mississippi",MO:"Missouri",MT:"Montana",NE:"Nebraska",NV:"Nevada",NH:"New Hampshire",NJ:"New Jersey",NM:"New Mexico",NY:"New York",NC:"North Carolina",ND:"North Dakota",OH:"Ohio",OK:"Oklahoma",OR:"Oregon",PA:"Pennsylvania",RI:"Rhode Island",SC:"South Carolina",SD:"South Dakota",TN:"Tennessee",TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming"};
+const GRID={AK:[0,0],ME:[10,0],WI:[5,1],VT:[9,1],NH:[10,1],WA:[0,2],ID:[1,2],MT:[2,2],ND:[3,2],MN:[4,2],IL:[5,2],MI:[6,2],NY:[8,2],MA:[9,2],OR:[0,3],NV:[1,3],WY:[2,3],SD:[3,3],IA:[4,3],IN:[5,3],OH:[6,3],PA:[7,3],NJ:[8,3],CT:[9,3],RI:[10,3],CA:[0,4],UT:[1,4],CO:[2,4],NE:[3,4],MO:[4,4],KY:[5,4],WV:[6,4],VA:[7,4],MD:[8,4],DE:[9,4],AZ:[1,5],NM:[2,5],KS:[3,5],AR:[4,5],TN:[5,5],NC:[6,5],SC:[7,5],DC:[8,5],OK:[3,6],LA:[4,6],MS:[5,6],AL:[6,6],GA:[7,6],HI:[0,7],TX:[3,7],FL:[8,7]};
+const PNAME={R:"Republican",D:"Democrat",I:"Independent / other"};
+// [state, winner/leader, party, %, runner-up, party, %, seat held by, called?, note, incumbent name, [[other, party, %]...]]
+const SENATE=[
+["AL","Barry Moore","R",54.7,"Everett Wess","D",45.3,"R",1],
+["AK","Mary Peltola","D",49.8,"Dan Sullivan","R",46.1,"R",0,"","Dan Sullivan",[["Daniel J. Sullivan Jr. (no party)","I",1.6]]],
+["AR","Tom Cotton","R",54.3,"Hallie Shoffner","D",42.4,"R",1,"","Tom Cotton"],
+["CO","John Hickenlooper","D",60.5,"Mark Baisley","R",35.0,"D",1,"","John Hickenlooper"],
+["DE","Chris Coons","D",63.4,"Michael Katz","R",36.3,"D",1,"","Chris Coons"],
+["FL","Ashley Moody","R",50.9,"Angie Nixon","D",48.0,"R",1,"Special election","Ashley Moody"],
+["GA","Jon Ossoff","D",59.0,"Mike Collins","R",41.0,"D",1,"","Jon Ossoff"],
+["ID","Jim Risch","R",56.5,"Todd Achilles","I",33.6,"R",1,"","Jim Risch"],
+["IL","Juliana Stratton","D",61.9,"Don Tracy","R",36.5,"D",1],
+["IA","Josh Turek","D",50.6,"Ashley Hinson","R",46.4,"R",1],
+["KS","Adam Hamilton","D",51.0,"Roger Marshall","R",46.0,"R",1,"","Roger Marshall"],
+["KY","Andy Barr","R",55.0,"Charles Booker","D",42.9,"R",1],
+["LA","Julia Letlow","R",50.9,"Jamie Davis","D",49.1,"R",1],
+["ME","Troy Jackson","D",53.1,"Susan Collins","R",46.9,"R",1,"","Susan Collins"],
+["MA","Ed Markey","D",63.4,"John Deaton","R",32.1,"D",1,"","Ed Markey"],
+["MI","Abdul El-Sayed","D",52.5,"Mike Rogers","R",45.5,"D",1],
+["MN","Peggy Flanagan","D",53.7,"Michele Tafoya","R",43.6,"D",1],
+["MS","Scott Colom","D",49.3,"Cindy Hyde-Smith","R",48.6,"R",1,"","Cindy Hyde-Smith",[["Ty Pinkins","I",2.1]]],
+["MT","Kurt Alme","R",48.2,"Seth Bodnar","I",37.7,"R",1],
+["NE","Pete Ricketts","R",50.0,"Dan Osborn","I",44.1,"R",1,"","Pete Ricketts"],
+["NH","Chris Pappas","D",55.9,"John Sununu","R",42.2,"D",1],
+["NJ","Cory Booker","D",62.5,"Justin Murphy","R",34.9,"D",1,"","Cory Booker"],
+["NM","Ben Ray Luján","D",63.3,"Larry Marker","R",36.7,"D",1,"","Ben Ray Luján"],
+["NC","Roy Cooper","D",58.8,"Michael Whatley","R",39.1,"R",1],
+["OH","Sherrod Brown","D",50.0,"Jon Husted","R",45.2,"R",1,"Special election","Jon Husted"],
+["OK","Kevin Hern","R",57.2,"N'Kiyla Thomas","D",39.3,"R",1],
+["OR","Jeff Merkley","D",58.0,"David Brock Smith","R",38.7,"D",1,"","Jeff Merkley"],
+["RI","Jack Reed","D",66.8,"Raymond McKay","R",29.3,"D",1,"","Jack Reed"],
+["SC","Annie Andrews","D",51.1,"Darline Graham","R",46.6,"R",1,"","Darline Graham"],
+["SD","Mike Rounds","R",60.5,"Brian Bengs","I",39.5,"R",1,"","Mike Rounds"],
+["TN","Bill Hagerty","R",55.1,"Marquita Bradshaw","D",42.9,"R",1,"","Bill Hagerty"],
+["TX","James Talarico","D",55.1,"Ken Paxton","R",43.0,"R",1],
+["VA","Mark Warner","D",61.5,"Bert Mizusawa","R",38.3,"D",1,"","Mark Warner"],
+["WV","Shelley Moore Capito","R",58.3,"Rachel Anderson","D",37.9,"R",1,"","Shelley Moore Capito"],
+["WY","Harriet Hageman","R",64.9,"James Byrd","D",34.6,"R",1]
+];
+const GOV=[
+["AL","Tommy Tuberville","R",52.0,"Doug Jones","D",48.0,"R",1],
+["AK","Jonathan Kreiss-Tomkins","D",50.8,"Bernadette Wilson","R",28.1,"R",1],
+["AZ","Katie Hobbs","D",55.7,"Andy Biggs","R",42.5,"D",1,"","Katie Hobbs"],
+["AR","Sarah Huckabee Sanders","R",53.9,"Fred Love","D",38.6,"R",1,"","Sarah Huckabee Sanders"],
+["CA","Xavier Becerra","D",65.6,"Steve Hilton","R",34.4,"D",1],
+["CO","Phil Weiser","D",61.1,"Victor Marx","R",33.2,"D",1],
+["CT","Ned Lamont","D",59.6,"Ryan Fazio","R",40.4,"D",1,"","Ned Lamont"],
+["FL","Byron Donalds","R",50.0,"David Jolly","D",48.7,"R",1],
+["GA","Keisha Lance Bottoms","D",54.3,"Rick Jackson","R",45.7,"R",1],
+["HI","Josh Green","D",72.6,"Gary Cordery","R",27.4,"D",1,"","Josh Green"],
+["ID","Brad Little","R",57.0,"Terri Pickens","D",32.3,"R",1,"","Brad Little"],
+["IL","JB Pritzker","D",60.7,"Darren Bailey","R",36.0,"D",1,"","JB Pritzker"],
+["IA","Rob Sand","D",55.5,"Zach Lahn","R",44.5,"R",1],
+["KS","Cindy Holscher","D",50.3,"Ty Masterson","R",49.7,"D",1,"Very close; a close-race audit was ordered"],
+["ME","Hannah Pingree","D",54.5,"Bobby Charles","R",37.5,"D",1],
+["MD","Wes Moore","D",64.9,"Dan Cox","R",31.1,"D",1,"","Wes Moore"],
+["MA","Maura Healey","D",62.0,"Michael Minogue","R",34.7,"D",1,"","Maura Healey"],
+["MI","Jocelyn Benson","D",54.6,"John James","R",43.7,"D",1],
+["MN","Amy Klobuchar","D",55.5,"Lisa Demuth","R",42.6,"D",1],
+["NE","Jim Pillen","R",50.3,"Lynne Walz","D",42.6,"R",1,"","Jim Pillen"],
+["NV","Aaron Ford","D",51.6,"Joe Lombardo","R",44.0,"R",1,"","Joe Lombardo"],
+["NH","Kelly Ayotte","R",51.4,"Cinde Warmington","D",47.1,"R",1,"","Kelly Ayotte"],
+["NM","Deb Haaland","D",57.4,"Greggory Hull","R",42.6,"D",1],
+["NY","Kathy Hochul","D",59.7,"Bruce Blakeman","R",40.0,"D",1,"","Kathy Hochul"],
+["OH","Amy Acton","D",52.3,"Vivek Ramaswamy","R",44.4,"R",1],
+["OK","Mike Mazzei","R",51.9,"Cyndi Munson","D",45.9,"R",1],
+["OR","Tina Kotek","D",53.2,"Christine Drazan","R",43.8,"D",1,"","Tina Kotek"],
+["PA","Josh Shapiro","D",60.5,"Stacy Garrity","R",38.2,"D",1,"","Josh Shapiro"],
+["RI","Helena Foulkes","D",57.7,"Kenneth Block","I",27.8,"D",1],
+["SC","Alan Wilson","R",51.6,"Jermaine Johnson","D",47.1,"R",1],
+["SD","Larry Rhoden","R",63.5,"Dan Ahlers","D",36.5,"R",1,"","Larry Rhoden"],
+["TN","Marsha Blackburn","R",45.5,"Jerri Green","D",43.0,"R",1,"","",[["David Hatley","I",9.3]]],
+["TX","Gina Hinojosa","D",52.8,"Greg Abbott","R",45.7,"R",1,"","Greg Abbott"],
+["VT","Phil Scott","R",52.4,"Amanda Janoo","D",45.8,"R",1,"","Phil Scott"],
+["WI","David Crowley","D",54.0,"Tom Tiffany","R",46.0,"D",1],
+["WY","Eric Barlow","R",68.1,"Rebecca Bextel (Constitution Party)","I",16.7,"R",1]
+];
+const toMap=a=>Object.fromEntries(a.map(r=>[r[0],{st:r[0],cands:[[r[1],r[2],r[3],1],[r[4],r[5],r[6],0],...((r[11]||[]).map(o=>[o[0],o[1],o[2],0]))],wp:r[2],held:r[7],called:!!r[8],note:r[9]||"",inc:r[10]||""}]));
+const RACES={sen:toMap(SENATE),gov:toMap(GOV)};
+let mapRace="sen",mapPF="all",mapSel=null;
+function drawMap(){
+  const G=document.getElementById('mapGrid');G.innerHTML='';
+  const data=RACES[mapRace];
+  for(let row=0;row<8;row++)for(let col=0;col<11;col++){
+    const st=Object.keys(GRID).find(k=>GRID[k][0]===col&&GRID[k][1]===row);
+    if(!st){G.append(mk('span'));continue}
+    const r=data[st];let cls='tile ';
+    if(!r)cls+='none';else if(mapPF==='R'&&r.wp!=='R')cls+='dim';else cls+=r.wp;
+    if(r&&!r.called)cls+=' pending';if(st===mapSel)cls+=' sel';
+    const b=mk('button',cls,st);
+    const lbl=ST_NAMES[st]+': '+(r?(r.called?PNAME[r.wp]+' won':PNAME[r.wp]+' leading, not called'):'no '+(mapRace==='sen'?'Senate':'governor')+' race in 2026');
+    b.setAttribute('aria-label',lbl);b.title=lbl;
+    b.onclick=()=>{mapSel=st;drawMap();drawDetail();document.getElementById('stateDetail').scrollIntoView({behavior:'smooth',block:'start'})};
+    G.append(b);
+  }
+  const L=document.getElementById('mapLegend');L.innerHTML='';
+  [['#B22234','Republican won'],['#2F6FDE','Democrat won'],['#6B4FB8','Independent'],['#D5DDEB','No race'],['#fff','Not called yet']].forEach(([c,t],i)=>{
+    if(mapPF==='R'&&(i===1||i===2))return;
+    const s=mk('span');const ic=mk('i');ic.style.background=c;if(i===4)ic.style.boxShadow='inset 0 0 0 3px #E8A317';s.append(ic,document.createTextNode(t));L.append(s)});
+  if(mapPF==='R'){const s=mk('span');const ic=mk('i');ic.style.background='#E4E9F2';s.append(ic,document.createTextNode('Other party won'));L.append(s)}
+  const vals=Object.values(data);const cnt=p=>vals.filter(r=>r.called&&r.wp===p).length;
+  const S=document.getElementById('mapSum');S.innerHTML='';
+  const h=mk('b',null,(mapRace==='sen'?'Senate':'Governor')+' races on the ballot: '+vals.length);h.style.color='#0B2A5B';S.append(h);
+  const line=(t,c)=>{const d=mk('div',null,t);d.style.cssText='font-size:14px;font-weight:700;color:'+c;S.append(d)};
+  line('Republican wins: '+cnt('R'),'#B22234');
+  if(mapPF==='all'){line('Democratic wins: '+cnt('D'),'#2F6FDE');}
+  const flipsR=vals.filter(r=>r.called&&r.wp!==r.held);const nc=vals.filter(r=>!r.called);
+  line('Seats that changed parties: '+flipsR.length,'#3D4A63');
+  if(nc.length)line('Not called yet: '+nc.map(r=>ST_NAMES[r.st]).join(', '),'#9A6B00');
+  if(!mapSel){const d=mk('div','meta','Tap a state above to see every candidate.');d.style.marginTop='6px';S.append(d)}
+}
+function raceCard(title,r){
+  const box=mk('div','race');
+  const h=mk('h3');h.append(document.createTextNode(title));
+  if(!r){box.append(h,mk('span','meta','No '+title.toLowerCase()+' race in this state in 2026.'));return box}
+  const flip=r.called&&r.wp!==r.held;
+  const bd=mk('span','badge',!r.called?'NOT CALLED':flip?PNAME[r.wp].split(' ')[0].toUpperCase()+' FLIP':PNAME[r.wp].split(' ')[0].toUpperCase()+' HOLD');
+  bd.style.background=!r.called?'#9A6B00':r.wp==='R'?'#B22234':r.wp==='D'?'#2F6FDE':'#6B4FB8';h.append(bd);box.append(h);
+  if(r.note){const n=mk('span','meta',r.note);n.style.fontWeight='700';box.append(n)}
+  const list=r.cands.filter(c=>mapPF==='all'||c[1]==='R');
+  if(!list.length){box.append(mk('span','meta','No Republican on the ballot in this race.'))}
+  list.forEach(c=>{
+    const row=mk('div','crow');const ch=mk('span','pchip '+c[1],c[1]);ch.setAttribute('aria-label',PNAME[c[1]]);
+    const info=mk('div');info.style.flex='1';
+    const nm=mk('div');nm.style.fontWeight='800';nm.style.color='#0B2A5B';
+    nm.textContent=c[0]+(c[0]===r.inc?' (incumbent)':'');
+    const sub=mk('div','meta',PNAME[c[1]]+' · '+c[2].toFixed(1)+'%'+(c[3]?(r.called?'  ✓ Winner':'  · Leading'):''));
+    if(c[3])sub.style.fontWeight='800',sub.style.color=r.called?'#1B6B3A':'#9A6B00';
+    const bar=mk('div','bar');const bb=mk('b');bb.style.width=Math.min(100,c[2])+'%';bb.style.background=c[1]==='R'?'#B22234':c[1]==='D'?'#2F6FDE':'#6B4FB8';bar.append(bb);
+    info.append(nm,sub,bar);row.append(ch,info);box.append(row)});
+  if(mapPF==='R'){const w=r.cands[0];if(w[1]!=='R'){const m=mk('span','meta',(r.called?'Winner: ':'Leading: ')+w[0]+' ('+PNAME[w[1]]+')');m.style.fontWeight='700';box.append(m)}}
+  const held=mk('span','meta','Seat held by: '+PNAME[r.held]+' going in');box.append(held);
+  return box;
+}
+function drawDetail(){
+  const D=document.getElementById('stateDetail');D.innerHTML='';
+  if(!mapSel)return;
+  const head=mk('div');head.style.cssText='display:flex;justify-content:space-between;align-items:center';
+  const h=mk('h2',null,ST_NAMES[mapSel]);h.style.cssText='font:700 28px Oswald,sans-serif;color:#0B2A5B';
+  const x=mk('button','pill out','Close');x.onclick=()=>{mapSel=null;drawMap();drawDetail()};head.append(h,x);D.append(head);
+  D.append(raceCard('U.S. Senate',RACES.sen[mapSel]),raceCard('Governor',RACES.gov[mapSel]));
+}
+document.getElementById('raceSel').addEventListener('click',e=>{const b=e.target.closest('[data-race]');if(!b)return;mapRace=b.dataset.race;document.querySelectorAll('#raceSel button').forEach(x=>{x.classList.toggle('on',x===b);x.classList.toggle('out',x!==b)});drawMap()});
+document.getElementById('partySel').addEventListener('click',e=>{const b=e.target.closest('[data-pf]');if(!b)return;mapPF=b.dataset.pf;document.querySelectorAll('#partySel button').forEach(x=>{x.classList.toggle('on',x===b);x.classList.toggle('out',x!==b)});drawMap();drawDetail()});
+drawMap();
+// ===== 2028 party filter =====
+document.getElementById('partyFilter2028').addEventListener('click',e=>{const b=e.target.closest('[data-p28]');if(!b)return;const f=b.dataset.p28;
+  document.querySelectorAll('#partyFilter2028 button').forEach(x=>{x.classList.toggle('on',x===b);x.classList.toggle('out',x!==b)});
+  document.querySelectorAll('#v-race2028 [data-party]').forEach(el=>{el.style.display=(f==='all'||el.dataset.party===f)?'':'none'})});
+
+// ===== real stories =====
+const STORIES={"gop": {"tag": "REPUBLICAN WINS", "meta": "Midterms · Nov. 2026", "head": "Where Republicans held on in the midterms", "sum": "In a tough year for the party, Republicans still held key Senate seats and won several governor's races.", "facts": ["Ashley Moody won Florida's Senate special election, 50.9% to 48.0%", "Julia Letlow held Louisiana's Senate seat, 50.9% to 49.1%", "Byron Donalds (FL), Kelly Ayotte (NH) and Marsha Blackburn (TN) won governor's races"], "src": [["California Today: 2026 midterm results guide", "https://californiatoday.com/guides/elections/2026-midterm-election-results-master-guide/"]]}, "ms": {"tag": "SENATE", "meta": "Mississippi · Called Nov. 11", "head": "Mississippi Senate race called for Scott Colom", "sum": "Democrat Scott Colom narrowly beat Republican Sen. Cindy Hyde-Smith, flipping the seat.", "facts": ["Scott Colom (D) 49.3%", "Cindy Hyde-Smith (R, incumbent) 48.6%", "Ty Pinkins (Independent) 2.1%"], "src": [["California Today: 2026 midterm results guide", "https://californiatoday.com/guides/elections/2026-midterm-election-results-master-guide/"]]}, "ks": {"tag": "GOVERNOR", "meta": "Kansas · Called Nov. 12", "head": "Kansas governor: Cindy Holscher wins by a hair", "sum": "Democrat Cindy Holscher beat Republican Ty Masterson in one of the closest races of the year. A close-race audit was ordered.", "facts": ["Cindy Holscher (D) 50.3%", "Ty Masterson (R) 49.7%", "Close-race audit ordered"], "src": [["California Today: 2026 midterm results guide", "https://californiatoday.com/guides/elections/2026-midterm-election-results-master-guide/"]]}, "ak": {"tag": "GOVERNOR", "meta": "Alaska · Called Nov. 14", "head": "Alaska governor's race called for Jonathan Kreiss-Tomkins", "sum": "Democrat Jonathan Kreiss-Tomkins was called the winner. Alaska's U.S. Senate race was still being counted.", "facts": ["Jonathan Kreiss-Tomkins (D) 50.8%", "Bernadette Wilson (R) 28.1%", "Alaska Senate race: still counting"], "src": [["California Today: 2026 midterm results guide", "https://californiatoday.com/guides/elections/2026-midterm-election-results-master-guide/"]]}, "vance": {"tag": "2028 · REPUBLICANS", "meta": "Nov. 13, 2026", "head": "JD Vance weighing whether to run in 2028", "sum": "CNN reported that the vice president is considering not running after the midterm results. Some allies still say a run is more likely than not.", "facts": ["Vance has not made a decision", "Allies cite his growing family and divisions in the movement", "President Trump has not endorsed a Vance bid"], "src": [["Yahoo News: Vance considering not running", "https://www.yahoo.com/news/politics/articles/jd-vance-considering-not-running-172743584.html"]]}, "desantis": {"tag": "2028 · REPUBLICANS", "meta": "Nov. 6–7, 2026", "head": "DeSantis denies report he's planning a 2028 run", "sum": "The Washington Post reported Florida Gov. Ron DeSantis is preparing a 2028 bid. DeSantis denied it but hasn't ruled out running.", "facts": ["DeSantis leaves office in January", "He said he'll \"look to see the landscape\" after that", "He ran for the 2024 nomination and dropped out after New Hampshire"], "src": [["Washington Post report", "https://www.washingtonpost.com/politics/2026/11/06/ron-desantis-plans-another-white-house-bid-after-failing-2024/"], ["Washington Times: DeSantis denies", "https://www.washingtontimes.com/news/2026/nov/7/desantis-denies-reports-planning-2028-presidential-campaign/"]]}, "newsom": {"tag": "2028 · DEMOCRATS", "meta": "Nov. 12, 2026", "head": "Newsom to decide on 2028 by early January", "sum": "California Gov. Gavin Newsom said he would decide whether to run for president by early January.", "facts": ["Newsom has said he won't run if Kamala Harris runs", "No major Democrat has formally declared yet"], "src": [["Wikipedia: 2028 Democratic primaries", "https://en.wikipedia.org/wiki/2028_Democratic_Party_presidential_primaries"]]}, "khanna": {"tag": "2028 · DEMOCRATS", "meta": "Nov. 2026", "head": "Ro Khanna allies form \"Run Ro\" group", "sum": "Supporters of Rep. Ro Khanna formed a group to prepare for a possible 2028 presidential campaign.", "facts": ["Khanna has said he'd decide after the midterms"], "src": [["Wikipedia: 2028 Democratic primaries", "https://en.wikipedia.org/wiki/2028_Democratic_Party_presidential_primaries"]]}};
+function openStory(id){const t=STORIES[id];if(!t)return;
+  document.getElementById('stTag').textContent=t.tag;document.getElementById('stMeta').textContent=t.meta;
+  document.querySelector('#v-story h1').textContent=t.head;document.getElementById('stSum').textContent=t.sum;
+  const F=document.getElementById('stFacts');F.innerHTML='';t.facts.forEach(f=>{const d=mk('div');const b=mk('b',null,'★ ');b.style.color='#B22234';d.append(b,document.createTextNode(f));F.append(d)});
+  const S=document.getElementById('stSrc');S.innerHTML='';t.src.forEach(([n,u])=>{const a=mk('a');a.href=u;a.textContent=n;a.append(mk('span',null,'›'));S.append(a)});
+  document.getElementById('shHead').textContent=t.head;
+  repostBtn.textContent='↻ Repost';delete repostBtn.dataset.done;delete repostBtn.dataset.fed;
+}
+document.addEventListener('click',e=>{const c=e.target.closest('[data-story]');if(c)openStory(c.dataset.story)},true);
+openStory('gop');
+// ===== candidate profiles =====
+const W=n=>'https://en.wikipedia.org/wiki/'+n;
+const PROFILES={
+"Donald Trump":{noRate:1,ini:"DT",bgc:"#B22234",status:"47th President · in office",about:"The 45th and 47th President of the United States, and the leader of the Republican Party. He is one of only two presidents to serve two non-consecutive terms.",bg:["Born June 14, 1946, in Queens, New York","University of Pennsylvania, Wharton School","Built the Trump Organization in real estate, hotels and golf","Host of The Apprentice (2004–2015)","45th President, 2017–2021","47th President since January 20, 2025"],stands:[["America First","His agenda puts American workers, borders and interests first"],["Trade","Uses tariffs to push other countries for better trade deals and bring back factories"],["Immigration","Tightened border enforcement and launched large-scale deportations"],["Taxes","Signed the 2017 tax cuts and the 2025 \"One Big Beautiful Bill\" extending them, with no tax on tips"],["Energy","\"Drill, baby, drill\": more American oil, gas and coal"],["Courts","Appointed three Supreme Court justices and many federal judges"]],now:"Not running: the 22nd Amendment allows two terms. His term ends January 20, 2029.",src:[["Wikipedia: Donald Trump",W("Donald_Trump")],["The White House","https://www.whitehouse.gov/"],["National Archives: 22nd Amendment","https://www.archives.gov/founding-docs/amendments-11-27#xxii"]]},
+"Dan Greaney":{status:"Declared · May 26, 2026",about:"An Emmy-winning TV writer and former lawyer, best known for the 2000 Simpsons episode that joked about a future Trump presidency. He calls himself a \"progressive Republican in the tradition of Lincoln and Teddy Roosevelt.\"",bg:["Born September 28, 1964","Harvard University (BA and law degree)","Worked as a lawyer before writing for TV","Writer on The Simpsons (seasons 7–11) and The Office","Campaign slogan: \"America for all\""],stands:[["Democracy","Wants to restore democratic norms"],["Health care","Supports universal health care"],["Energy & climate","Supports the Green New Deal"],["Courts","Wants to expand the Supreme Court"],["Money in politics","Wants to overturn the Citizens United decision"],["The party","Has criticized President Trump and Vice President Vance"]],now:"Running for the Republican nomination. In November 2026 he started a 17-state \"Springfield, USA\" tour of towns named Springfield.",src:[["Wikipedia: Dan Greaney",W("Dan_Greaney")],["Euronews: campaign announcement","https://www.euronews.com/culture/2026/05/27/the-simpsons-writer-who-predicted-trump-presidency-makes-2028-white-house-bid"],["Boston.com: Springfield tour","https://www.boston.com/news/off-beat/2026/11/06/simpsons-writer-presidential-campaign-springfield/"]]},
+"Royce White":{status:"Declared · August 2026",about:"A former NBA first-round pick turned \"America First\" populist. He became known as a mental health advocate during his basketball career.",bg:["Played college basketball at Iowa State","Drafted by the Houston Rockets in 2012","Advocate for mental health awareness","Republican nominee for U.S. Senate in Minnesota in 2024 (lost to Amy Klobuchar by about 16 points)","Lost Minnesota's 2026 Republican Senate primary"],stands:[["Spending","Makes the national debt a top issue"],["Freedom","Focuses on civil liberties and pushing back on federal overreach"],["Health","Mental health advocacy"],["COVID","Opposed vaccine mandates as a matter of personal and religious freedom"],["Movement","\"America First\" populist"]],now:"Announced a presidential run right after losing the 2026 Senate primary.",src:[["Mediaite: presidential announcement","https://www.mediaite.com/media/sports/ex-nba-player-royce-white-announces-presidential-bid-after-getting-crushed-in-senate-primary/"],["Alpha News: 2024 Senate result","https://alphanews.org/?p=54879"],["Prediction Edge: positions","https://www.predictionedge.com/elections/profile/royce-white/"]]},
+"Gregory Bovino":{status:"Exploring · committee formed June 2026",about:"A Border Patrol veteran of about 30 years who led the administration's immigration crackdowns in Los Angeles, Chicago and Minneapolis.",bg:["Nearly 30 years with the U.S. Border Patrol","Served as Border Patrol Commander-at-Large","Reassigned in January 2026 after federal officers fatally shot two people, Renee Good and Alex Pretti, in Minneapolis","Retired in March 2026","President Trump called him \"a pretty out there kind of guy\" but added \"in some cases that's good\""],stands:[["Immigration","Says his one priority is deporting what he puts at 106 million people in the country illegally"],["Border","Promises to \"liberate America from this invasion\""],["Leadership","Says he would lead deportation efforts from the front lines"],["The party","Has said the administration has gone soft on immigration"]],now:"Has an exploratory committee (Bovino2028.com). Says he'll launch a full campaign \"if it all comes together.\"",src:[["KMPH / National News Desk: exploratory committee","https://kmph.com/news/nation-world/greg-bovino-launches-a-committee-to-explore-a-2028-presidential-run-trump-administration-border-patrol-minneapolis"],["Ground News: coverage roundup","https://ground.news/article/ex-border-patrol-commander-bovino-exploring-2028-white-house-run"]]},
+"JD Vance":{status:"Weighing a run",about:"The 50th Vice President. He grew up in Ohio and Kentucky and became known nationally for his memoir, Hillbilly Elegy.",bg:["Born 1984 in Middletown, Ohio","U.S. Marine Corps veteran who served in Iraq","Ohio State University and Yale Law School","Author of Hillbilly Elegy (2016); worked in venture capital","U.S. Senator from Ohio, 2023–2025","Vice President since January 2025"],stands:[["Jobs & trade","Supports tariffs to bring back American manufacturing"],["Immigration","Backs strong border enforcement and deportations"],["Foreign policy","Skeptical of large overseas spending, including aid to Ukraine"],["Family","Supports pro-family policies, like a bigger child tax credit"],["Big Tech","A critic of the power of large tech companies"]],now:"Said he'd decide after the midterms. CNN reported in November 2026 that he's seriously weighing whether to run.",src:[["Wikipedia: JD Vance",W("JD_Vance")],["Yahoo News: Vance weighing 2028","https://www.yahoo.com/news/politics/articles/jd-vance-considering-not-running-172743584.html"]]},
+"Ron DeSantis":{status:"Weighing a run",about:"Two-term Governor of Florida, a Navy veteran, and a 2024 presidential candidate who dropped out and endorsed Donald Trump.",bg:["Born 1978","Yale (BA) and Harvard Law School","U.S. Navy officer (JAG); served in Iraq","U.S. Representative, 2013–2018","Governor of Florida since 2019; re-elected in 2022 by about 19 points","Leaves office in January 2027"],stands:[["Education","Expanded school choice to every Florida family; signed parental-rights laws"],["COVID","Reopened Florida schools and businesses early"],["Immigration","Takes a hard line on illegal immigration"],["Abortion","Signed Florida's six-week abortion limit (2023)"],["Taxes","Keeps Florida's no-income-tax system and cuts other taxes"]],now:"The Washington Post reported in November 2026 that he's preparing a run. He denied it but hasn't ruled it out.",src:[["Wikipedia: Ron DeSantis",W("Ron_DeSantis")],["Washington Times: DeSantis denies report","https://www.washingtontimes.com/news/2026/nov/7/desantis-denies-reports-planning-2028-presidential-campaign/"]]},
+"Ted Cruz":{status:"Weighing a run",about:"U.S. Senator from Texas since 2013 and runner-up to Donald Trump in the 2016 Republican primaries.",bg:["Born 1970","Princeton and Harvard Law School","Clerked for Chief Justice William Rehnquist","Solicitor General of Texas, 2003–2008","U.S. Senator since 2013","Hosts the podcast Verdict"],stands:[["Constitution","Strict constitutional conservative"],["Taxes","Favors a simpler, flatter tax system"],["Border","Backs strong border security"],["Abortion","Pro-life"],["Education","Supports school choice"],["Congress","Supports term limits for members of Congress"]],now:"Visited Iowa in May 2026, which fueled talk of another run.",src:[["Wikipedia: Ted Cruz",W("Ted_Cruz")]]},
+"Rand Paul":{status:"Weighing a run",about:"An eye doctor turned U.S. Senator from Kentucky, known for his libertarian-leaning views. He ran for president in 2016.",bg:["Born 1963","Duke University School of Medicine; practiced as an eye surgeon","U.S. Senator since 2011","Chairs the Senate Homeland Security Committee (2025–)","Son of former Rep. Ron Paul"],stands:[["Spending","Wants to cut spending and balance the budget; often votes against debt-limit increases"],["Freedom","Defends civil liberties and opposes warrantless government surveillance"],["Foreign policy","Opposes foreign wars and most foreign aid"],["Trade","Has opposed broad tariffs"],["COVID","Pushed for investigations into the origins of COVID"]],now:"Called it a 50-50 chance in March 2026 and said he'd look at a run after the midterms.",src:[["Wikipedia: Rand Paul",W("Rand_Paul")]]},
+"John Kennedy":{status:"Weighing a run",about:"U.S. Senator from Louisiana since 2017, known for his blunt, folksy one-liners in hearings.",bg:["Born 1951","Vanderbilt, University of Virginia Law, and Oxford","Louisiana State Treasurer, 1999–2017","Switched from the Democratic to the Republican Party in 2007","U.S. Senator since 2017"],stands:[["Spending","A fiscal conservative who targets wasteful government spending"],["Border","Supports tougher border security"],["Crime","Tough-on-crime views"],["Abortion","Pro-life"]],now:"Plans to seek re-election, but says he'd \"never say never\" to a presidential run.",src:[["Wikipedia: John Kennedy (Louisiana)",W("John_Kennedy_(Louisiana_politician)")]]},
+"Don Bacon":{status:"Weighing a run",about:"A retired Air Force general and U.S. Representative from Nebraska, known for working across the aisle.",bg:["Born 1963","Served about 30 years in the U.S. Air Force; retired as a brigadier general","U.S. Representative for Nebraska's 2nd District since 2017","Chose not to run for re-election in 2026"],stands:[["Defense","Strong national defense; supports NATO and aid to Ukraine"],["Trade","Has criticized broad tariffs"],["Congress","Often works with both parties"],["Abortion","Pro-life"]],now:"Said on a podcast in 2026 that he's interested in running.",src:[["Wikipedia: Don Bacon",W("Don_Bacon")]]},
+"Sarah Huckabee Sanders":{status:"Often mentioned",about:"Governor of Arkansas and former White House press secretary under President Trump.",bg:["Born 1982 in Hope, Arkansas","Daughter of former Arkansas Gov. Mike Huckabee","White House press secretary, 2017–2019","Governor of Arkansas since January 2023"],stands:[["Education","Signed the LEARNS Act: school choice for every family and a $50,000 teacher starting salary"],["Taxes","Has cut the state income tax"],["Abortion","Pro-life"],["Government","Focused on cutting state bureaucracy"]],now:"Named by media as a possible candidate. Hasn't announced plans.",src:[["Wikipedia: Sarah Huckabee Sanders",W("Sarah_Huckabee_Sanders")]]},
+"Brian Kemp":{status:"Often mentioned",about:"Two-term Governor of Georgia and a former small-business owner.",bg:["Born 1963","Builder and businessman","Georgia Secretary of State, 2010–2018","Governor of Georgia since 2019; re-elected in 2022","Term ends January 2027"],stands:[["Jobs","Brought large manufacturing investments to Georgia"],["Economy","Reopened Georgia early during COVID"],["Taxes","Cut income taxes and suspended the gas tax in 2022"],["Elections","Followed state law and certified Georgia's 2020 results"],["Abortion","Signed Georgia's heartbeat law (2019)"]],now:"Named by media as a possible candidate. Hasn't announced plans.",src:[["Wikipedia: Brian Kemp",W("Brian_Kemp")]]},
+"Glenn Youngkin":{status:"Often mentioned",about:"Former Governor of Virginia and former business executive who won a state Democrats had carried in recent elections.",bg:["Born 1966","Rice University and Harvard Business School","Co-CEO of the investment firm Carlyle Group","Governor of Virginia, 2022–2026"],stands:[["Education","Made parents' rights in schools his signature issue; raised teacher pay"],["Taxes","Cut taxes, including the grocery tax"],["Jobs","Focused on bringing businesses to Virginia"],["Crime","Backed police funding and recruiting"]],now:"Launched a parents' education group in August 2026. Named by media as a possible candidate.",src:[["Wikipedia: Glenn Youngkin",W("Glenn_Youngkin")]]}
+};
+let profName=null;
+const PRES_R={comments:[],mine:0,sum:0,count:0};
+function openProfile(name){const p=PROFILES[name];let r=ratings[name];if(p&&p.noRate){r=PRES_R;r.ini=p.ini;r.bg=p.bgc;r.card=document.querySelector('#v-race2028 [data-pres]')}if(!p||!r)return;profName=name;
+  const V=document.getElementById('v-cand');
+  const av=document.getElementById('pfAv');av.textContent=r.ini||name[0];av.style.background=r.bg||'#0B2A5B';
+  pfName.textContent=name;pfRole.textContent=r.card?r.card.querySelector('.role').textContent:'';pfStatus.textContent=p.status;
+  pfAbout.textContent=p.about;pfNow.textContent=p.now;
+  pfBg.innerHTML='';p.bg.forEach(t=>{const d=mk('div');const b=mk('b',null,'★ ');b.style.color='#B22234';d.append(b,document.createTextNode(t));pfBg.append(d)});
+  pfStands.innerHTML='';p.stands.forEach(([k,v])=>{const d=mk('div','pfrow');d.append(mk('b',null,k),mk('span',null,v));pfStands.append(d)});
+  pfSrc.innerHTML='';p.src.forEach(([n,u])=>{const a=mk('a');a.href=u;a.target='_blank';a.rel='noopener';a.textContent=n;a.append(mk('span',null,'›'));pfSrc.append(a)});
+  const fb=r.card&&r.card.querySelector('.cfollow');pfFollow.textContent=fb?fb.textContent:'Follow';pfFollow.className=(fb?fb.className:'pill on').replace('cfollow','pfcf');
+  drawPRate();show('cand');V.dataset.name=name}
+function drawPRate(){if(!profName)return;const pp=PROFILES[profName];const r=pp.noRate?PRES_R:ratings[profName];document.getElementById('pfRateBox').style.display=pp.noRate?'none':'flex';pfStars.innerHTML='';for(let i=1;i<=5;i++){const b=mk('button','star'+(i<=r.mine?' on':''),'★');b.setAttribute('aria-label','Rate '+profName+' '+i+' star'+(i>1?'s':''));b.onclick=()=>rateCand(profName,i);pfStars.append(b)}
+  pfRsum.textContent=r.count?'★ '+(r.sum/r.count).toFixed(1)+' average · '+r.count+' rating'+(r.count>1?'s':'')+(r.mine?' · You gave '+r.mine:''):'No ratings yet. Be the first!';
+  pfCm.innerHTML='';if(!r.comments.length)pfCm.append(mk('span','meta','No comments yet. Keep it respectful.'));r.comments.forEach(x=>{const d=mk('div','ccm');d.append(mk('b',null,x.n+(x.s?' · '+'★'.repeat(x.s):'')),mk('span',null,x.t));pfCm.append(d)})}
+const _refreshAll=refreshAll;refreshAll=function(){_refreshAll();if(current==='cand')drawPRate()};
+pfForm.addEventListener('submit',e=>{e.preventDefault();if(needSignIn())return;const v=pfInput.value.trim();if(!v||!profName)return;if(PROFILES[profName].noRate){PRES_R.comments.unshift({n:pName.textContent,t:v,s:0})}else addComment(profName,v);pfInput.value='';drawPRate();refreshAll();toast('Comment posted')});
+pfFollow.addEventListener('click',()=>{const rr=PROFILES[profName].noRate?PRES_R:ratings[profName];const fb=rr&&rr.card&&rr.card.querySelector('.cfollow');if(fb){fb.click();pfFollow.textContent=fb.textContent;pfFollow.className=fb.className.replace('cfollow','pfcf')}});
+// make names tappable on the 2028 page
+Object.keys(PROFILES).forEach(n=>{const r=PROFILES[n].noRate?{card:document.querySelector('#v-race2028 [data-pres]')}:ratings[n];if(!r||!r.card)return;const nm=r.card.querySelector('.nm');nm.setAttribute('role','button');nm.tabIndex=0;nm.classList.add('pflink');nm.onclick=()=>openProfile(n);nm.onkeydown=e=>{if(e.key==='Enter')openProfile(n)};
+  const vp=mk('button','vprof','View profile ›');vp.onclick=()=>openProfile(n);nm.after(vp)});
+// ===== issues: compare + quiz =====
+const ISSUES=[
+ ["tariffs","Trade","Use tariffs to protect American jobs and factories"],
+ ["deport","Immigration","Deport people living in the U.S. illegally on a large scale"],
+ ["ukraine","Ukraine","Keep sending U.S. aid to Ukraine"],
+ ["spend","Spending","Cut federal spending to shrink the debt, even if programs get smaller"],
+ ["abortion","Abortion","Put strict limits on abortion"],
+ ["school","School choice","Let public school money follow students to any school, including private"],
+ ["health","Health care","Create government-run universal health care"],
+ ["climate","Climate","Pass major climate laws like the Green New Deal"]];
+// 1 = supports, -1 = opposes, missing = no clear public stance
+const STANCE={
+ "Donald Trump":{tariffs:1,deport:1,school:1,health:-1,climate:-1},
+ "JD Vance":{tariffs:1,deport:1,ukraine:-1,abortion:1,health:-1,climate:-1},
+ "Ron DeSantis":{deport:1,ukraine:-1,spend:1,abortion:1,school:1,health:-1,climate:-1},
+ "Ted Cruz":{deport:1,spend:1,abortion:1,school:1,health:-1,climate:-1},
+ "Rand Paul":{tariffs:-1,ukraine:-1,spend:1,abortion:1,school:1,health:-1,climate:-1},
+ "John Kennedy":{spend:1,abortion:1,health:-1,climate:-1},
+ "Don Bacon":{tariffs:-1,ukraine:1,abortion:1,health:-1,climate:-1},
+ "Sarah Huckabee Sanders":{spend:1,abortion:1,school:1,health:-1,climate:-1},
+ "Brian Kemp":{abortion:1,school:1,health:-1,climate:-1},
+ "Glenn Youngkin":{abortion:1,school:1,health:-1,climate:-1},
+ "Dan Greaney":{health:1,climate:1},
+ "Royce White":{spend:1},
+ "Gregory Bovino":{deport:1}};
+const stanceTxt=v=>v===1?'Supports':v===-1?'Opposes':'No clear stance';
+const pIni=n=>(ratings[n]&&ratings[n].ini)||(PROFILES[n]&&PROFILES[n].ini)||n[0];
+const pBg=n=>(ratings[n]&&ratings[n].bg)||(PROFILES[n]&&PROFILES[n].bgc)||'#0B2A5B';
+(function(){const names=Object.keys(PROFILES);[cmpA,cmpB].forEach((s,k)=>{names.forEach(n=>{const o=mk('option',null,n);o.value=n;s.append(o)});s.value=k===0?'JD Vance':'Ron DeSantis';s.onchange=drawCompare})})();
+function drawCompare(){const A=cmpA.value,B=cmpB.value;cmpHead.innerHTML='';[A,B].forEach(n=>{const b=mk('button','cmpwho');const av=mk('span','cmpav',pIni(n));av.style.background=pBg(n);b.append(av,mk('b',null,n),mk('span','meta',PROFILES[n].status));b.onclick=()=>openProfile(n);cmpHead.append(b)});
+  cmpRows.innerHTML='';ISSUES.forEach(([k,t,q])=>{const row=mk('div','cmprow');row.append(mk('b',null,t),mk('span','meta',q));const g=mk('div','cmpgrid');[A,B].forEach(n=>{const v=(STANCE[n]||{})[k];const c=mk('span','cmpcell s'+(v===1?'y':v===-1?'n':'u'),stanceTxt(v));g.append(c)});row.append(g);cmpRows.append(row)})}
+drawCompare();
+const QA={};
+ISSUES.forEach(([k,t,q],i)=>{const d=mk('div','card');d.style.cursor='default';d.append(mk('span','meta',(i+1)+' of '+ISSUES.length+' · '+t),mk('b',null,q));const g=mk('div','grid3');g.dataset.q=k;[['Agree',1],['Not sure',0],['Disagree',-1]].forEach(([l,v])=>{const b=mk('button','pill out',l);b.dataset.v=v;b.style.minHeight='42px';b.onclick=()=>{QA[k]=v;g.querySelectorAll('button').forEach(x=>{x.classList.toggle('on',x===b);x.classList.toggle('out',x!==b)})};g.append(b)});d.append(g);quizQs.append(d)});
+quizGo.onclick=()=>{const ans=Object.entries(QA).filter(([k,v])=>v!==0);if(ans.length<3){toast('Answer at least 3 questions with Agree or Disagree');return}
+  const res=[],thin=[];Object.keys(STANCE).forEach(n=>{if(PROFILES[n].noRate)return;let cmp=0,ag=0;ans.forEach(([k,v])=>{const s=STANCE[n][k];if(s){cmp++;if(s===v)ag++}});if(cmp>=2)res.push({n,cmp,ag,p:Math.round(ag/cmp*100)});else thin.push(n)});
+  res.sort((a,b)=>b.p-a.p||b.cmp-a.cmp);quizRes.innerHTML='';quizRes.style.display='flex';quizRes.append(mk('div','label','YOUR MATCHES'));
+  res.forEach((x,i)=>{const b=mk('button','card qres');const av=mk('span','cmpav',pIni(x.n));av.style.background=pBg(x.n);const mid=mk('div');mid.style.cssText='flex:1;display:flex;flex-direction:column;gap:4px;text-align:left';mid.append(mk('b',null,(i===0?'★ ':'')+x.n),mk('span','meta','Agrees with you on '+x.ag+' of '+x.cmp+' issues · tap for profile'));const bar=mk('i','qbar');const fill=mk('i');fill.style.width=x.p+'%';bar.append(fill);mid.append(bar);b.append(av,mid,mk('span','qpct',x.p+'%'));b.onclick=()=>openProfile(x.n);quizRes.append(b)});
+  if(thin.length)quizRes.append(mk('span','meta','Not enough public positions to compare yet: '+thin.join(', ')));
+  quizRes.scrollIntoView({behavior:'smooth',block:'start'})};
+
+// ===== polls =====
+const POLLS=[
+ {who:"New York Times / Siena",when:"Oct. 12–19, 2026",note:"3,494 voters interviewed",rows:[["JD Vance",33],["Marco Rubio",23],["Ron DeSantis",3],["Donald Trump Jr.",1]],src:["Boston Globe","https://www.bostonglobe.com/2026/10/24/nation/2028-poll-vance-rubio-democrats/"]},
+ {who:"FocalData",when:"Oct. 2–5, 2026",note:"2,553 U.S. adults. Vance led Rubio and DeSantis.",rows:[["JD Vance",39,"~4 in 10"]],src:["FOX 5 Atlanta","https://www.fox5atlanta.com/news/harris-leads-democrats-vance-tops-gop-2028-primary-front-runner-poll"]},
+ {who:"Emerson College",when:"May 24–25, 2026",note:"Likely Republican primary voters. In February Emerson had Vance 52%, Rubio 20%.",rows:[["JD Vance",36],["Marco Rubio",35],["Ron DeSantis",5],["Nikki Haley",5],["Undecided",15]],src:["The Daily Signal","https://www.dailysignal.com/2026/05/28/vance-rubio-dead-heat-2028/"]}];
+function drawPolls(){pollList.innerHTML='';POLLS.forEach(p=>{const c=mk('div','card');c.style.cursor='default';c.append(mk('b',null,p.who),mk('span','meta',p.when+' · '+p.note));p.rows.forEach(([n,v,lab])=>{const r=mk('div','prow');const bar=mk('i','qbar');const f=mk('i');f.style.width=Math.min(100,v*1.6)+'%';bar.append(f);r.append(mk('span',null,n),bar,mk('b',null,lab||v+'%'));c.append(r)});const a=mk('a','src');a.href=p.src[1];a.target='_blank';a.rel='noopener';a.textContent='Source: '+p.src[0]+' ›';c.append(a);pollList.append(c)});
+  pollApp.innerHTML='';const top=Object.entries(ratings).filter(([k,r])=>r.count).map(([k,r])=>[k,r.sum/r.count,r.count]).sort((a,b)=>b[1]-a[1]||b[2]-a[2]).slice(0,3);
+  if(!top.length)pollApp.append(mk('span',null,'No star ratings yet. Rate the candidates to see who leads here.'));top.forEach(([k,a,c],i)=>pollApp.append(mk('div',null,(i+1)+'. '+k+' · ★ '+a.toFixed(1)+' ('+c+' vote'+(c>1?'s':'')+')')))}
+drawPolls();
+
+// ===== alerts =====
+const followed=()=>[...document.querySelectorAll('#v-race2028 .cand')].filter(c=>{const b=c.querySelector('.cfollow');return b&&b.classList.contains('out')}).map(c=>c.querySelector('.nm').textContent);
+function drawAlerts(){alertList.innerHTML='';const f=followed();if(!f.length){const e=mk('div','card');e.style.cursor='default';e.append(mk('b',null,'You aren\'t following anyone yet'),mk('span','meta','Tap Follow on any candidate on the 2028 page and their latest news shows up here.'));const g=mk('button','pill red','Go to the 2028 page');g.dataset.tab='race2028';e.append(g);alertList.append(e);return}
+  f.forEach(n=>{const p=PROFILES[n];const c=mk('button','card');const top=mk('div');top.style.cssText='display:flex;gap:10px;align-items:center';const av=mk('span','cmpav',pIni(n));av.style.background=pBg(n);top.append(av,mk('b',null,n));c.append(top);
+   const last=n.split(' ').slice(-1)[0];Object.entries(STORIES).forEach(([id,s])=>{if(s.head.includes(last)){const l=mk('span','meta','📰 '+s.meta+': '+s.head);c.append(l)}});
+   c.append(mk('span',null,p?p.now:'Following for updates.'));if(p)c.onclick=()=>openProfile(n);alertList.append(c)})}
+const canNotify=()=>{try{return 'Notification' in window&&window.isSecureContext}catch(e){return false}};
+notifBtn.onclick=async()=>{if(!canNotify()){notifNote.textContent='Your browser here doesn\'t allow notifications. They work once the app is added to your home screen from its public web address.';return}
+  notifNote.textContent='Waiting for your answer…';try{const r=await Promise.race([Notification.requestPermission(),new Promise(z=>setTimeout(()=>z('timeout'),8000))]);if(r==='timeout'){notifNote.textContent='No answer yet. Tap again if you didn\'t see a prompt.';return}notifNote.textContent=r==='granted'?'Notifications are on. You\'ll get alerts for candidates you follow.':'Notifications are off. You can turn them on in your phone\'s settings.';if(r==='granted')notifBtn.textContent='🔔 Notifications are on'}catch(e){notifNote.textContent='Notifications aren\'t available here.'}};
+function notify(t){try{if(canNotify()&&Notification.permission==='granted')new Notification('Make Republican Great Again',{body:t})}catch(e){}}
+
+// ===== calendar =====
+const CAL=[
+ ["Jan. 2027","New governors sworn in","Ron DeSantis (Florida) and Brian Kemp (Georgia) leave office.",null],
+ ["Early 2028","Republican primaries begin","The Republican calendar isn't set yet. Iowa and New Hampshire have traditionally gone first.",["FrontloadingHQ: 2028 calendar","https://www.frontloadinghq.com/p/the-2028-presidential-primary-calendar.html"]],
+ ["Jan. 22, 2028","First Democratic primary","South Carolina leads the Democratic calendar, then Nevada (Feb. 1) and New Hampshire (Feb. 8).",["Ballotpedia","https://news.ballotpedia.org/?p=49981"]],
+ ["Summer 2028","Republican National Convention","Houston, Texas, at the Toyota Center. Exact dates not announced yet.",["Wikipedia: 2028 RNC","https://en.wikipedia.org/wiki/2028_Republican_National_Convention"]],
+ ["Nov. 7, 2028","Election Day","Americans vote for the next president.",["Wikipedia: 2028 election","https://en.wikipedia.org/wiki/2028_United_States_presidential_election"]],
+ ["Jan. 20, 2029","Inauguration Day","The next president is sworn in, and President Trump's term ends.",["National Archives: 20th Amendment","https://www.archives.gov/founding-docs/amendments-11-27#xx"]]];
+CAL.forEach(([d,t,n,s])=>{const c=mk('div','calrow');c.append(mk('span','caldate',d));const m=mk('div');m.style.cssText='flex:1;display:flex;flex-direction:column;gap:3px';m.append(mk('b',null,t),mk('span',null,n));if(s){const a=mk('a','src');a.href=s[1];a.target='_blank';a.rel='noopener';a.textContent=s[0]+' ›';m.append(a)}c.append(m);calList.append(c)});
+
+// ===== install =====
+let _inst=null;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();_inst=e;installBtn.style.display='block'});
+installBtn.onclick=async()=>{if(!_inst)return;_inst.prompt();try{const r=await _inst.userChoice;if(r.outcome==='accepted')toast('Installed!')}catch(e){}_inst=null;installBtn.style.display='none'};
+if(/github\.io$/.test(location.hostname)){const l=document.createElement('link');l.rel='manifest';l.href='manifest.json';document.head.append(l);const ap=document.createElement('link');ap.rel='apple-touch-icon';ap.href='icon-192.png';document.head.append(ap);if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{})}
+
+// ===== saving + shared live votes =====
+const SYNC={db:null,uid:null,r:{},c:[],f:[],others:{},agg:{},state:'local',writing:false,pending:false,ro:false};
+const okName=n=>typeof n==='string'&&Object.prototype.hasOwnProperty.call(ratings,n);
+const clean=(s,max)=>typeof s==='string'?s.slice(0,max):'';
+function lsSave(){try{localStorage.setItem('mrga1',JSON.stringify({r:SYNC.r,c:SYNC.c.slice(0,60),f:SYNC.f}))}catch(e){}}
+function setMine(n,v){const r=ratings[n];if(!r||!(v>=1&&v<=5))return;if(r.mine){r.sum-=r.mine;r.count--}r.mine=v;r.sum+=v;r.count++;SYNC.r[n]=v}
+function rebuildComments(){const me=pName.textContent||'You';Object.entries(ratings).forEach(([n,r])=>{const all=SYNC.c.filter(x=>x.k===n).map(x=>({n:me,t:x.t,s:SYNC.r[n]||0,ts:x.ts}));Object.values(SYNC.others).forEach(o=>(o.c||[]).forEach(x=>{if(x&&x.k===n)all.push({n:clean(o.n,40)||'Someone',t:clean(x.t,500),s:(o.r&&o.r[n])|0,ts:+x.ts||0})}));all.sort((a,b)=>b.ts-a.ts);r.comments=all;r.drawC&&r.drawC()})}
+function addComment(n,t){SYNC.c.unshift({k:n,t:clean(t,500),ts:Date.now()});rebuildComments();save()}
+function save(){lsSave();if(!SYNC.db||SYNC.ro)return;SYNC.pending=true;if(!SYNC.writing)flush()}
+async function flush(){SYNC.writing=true;while(SYNC.pending){SYNC.pending=false;try{await SYNC.db.doc('votes/'+SYNC.uid).set({n:clean(pName.textContent,40),r:SYNC.r,c:SYNC.c.slice(0,60),ts:Date.now()});await SYNC.db.doc('data/users/'+SYNC.uid+'/prefs').set({f:SYNC.f})}catch(e){if(e&&e.code==='invalid_argument'){SYNC.ro=true;setSync('readonly')}break}}SYNC.writing=false}
+function setFollow(n,on,quiet){const r=ratings[n];const card=r?r.card:[...document.querySelectorAll('#v-race2028 .cand')].find(c=>c.querySelector('.nm').textContent===n);const b=card&&card.querySelector('.cfollow');if(!b)return;b.classList.toggle('out',on);b.classList.toggle('on',!on);b.textContent=on?'Following':'Follow'}
+function setSync(s){SYNC.state=s;const el=document.getElementById('syncNote');if(!el)return;const people=Object.keys(SYNC.others).length+1;el.textContent=s==='live'?'● Live: ratings and comments are shared with everyone ('+people+' '+(people>1?'people':'person')+' so far)':s==='readonly'?'● Live: you can see everyone\'s ratings. Your own are saved on this phone.':'Your ratings, comments and follows are saved on this phone.';el.classList.toggle('live',s!=='local')}
+function applyOthers(o){const agg={};Object.values(o).forEach(d=>{if(!d||typeof d.r!=='object')return;Object.entries(d.r).forEach(([n,v])=>{v=+v;if(!okName(n)||!(v>=1&&v<=5))return;const a=agg[n]||(agg[n]={s:0,c:0});a.s+=Math.round(v);a.c++})});
+  Object.keys(ratings).forEach(n=>{const o1=SYNC.agg[n]||{s:0,c:0},n1=agg[n]||{s:0,c:0};ratings[n].sum+=n1.s-o1.s;ratings[n].count+=n1.c-o1.c});SYNC.agg=agg;SYNC.others=o;rebuildComments();refreshAll();if(SYNC.state!=='local')setSync(SYNC.state)}
+// restore what was saved on this phone
+(function(){let d=null;try{d=JSON.parse(localStorage.getItem('mrga1')||'null')}catch(e){}if(!d)return;Object.entries(d.r||{}).forEach(([n,v])=>okName(n)&&setMine(n,+v));SYNC.c=(d.c||[]).filter(x=>x&&okName(x.k)).map(x=>({k:x.k,t:clean(x.t,500),ts:+x.ts||0}));SYNC.f=(d.f||[]).filter(n=>typeof n==='string');SYNC.f.forEach(n=>setFollow(n,true,1));rebuildComments();refreshAll()})();
+// keep the saved copy in step with taps
+const _rateCand=rateCand;rateCand=function(n,i,who){const before=ratings[n]&&ratings[n].mine;_rateCand(n,i,who);if(!who&&ratings[n]&&ratings[n].mine!==before){SYNC.r[n]=ratings[n].mine;rebuildComments();save()}};
+document.querySelectorAll('#v-race2028 .cfollow').forEach(b=>b.addEventListener('click',()=>{const n=b.closest('.cand').querySelector('.nm').textContent;const on=b.classList.contains('out');SYNC.f=SYNC.f.filter(x=>x!==n);if(on){SYNC.f.push(n);notify('You\'ll get updates on '+n)}save()}));
+setSync('local');
+// connect to the shared database when the app runs where one is available
+(async()=>{try{if(!window.claude||typeof claude.use!=='function')return;const db=await claude.use('db');if(!db)return;const u=await claude.use('user');const uid=u&&await u.id();if(!uid)return;SYNC.db=db;SYNC.uid=uid;
+  const mine=await db.doc('votes/'+uid).get();if(mine.exists){const d=mine.data()||{};Object.entries(d.r||{}).forEach(([n,v])=>{if(okName(n)&&!SYNC.r[n])setMine(n,+v)});(Array.isArray(d.c)?d.c:[]).forEach(x=>{if(x&&okName(x.k)&&!SYNC.c.some(y=>y.ts===x.ts&&y.t===x.t))SYNC.c.push({k:x.k,t:clean(x.t,500),ts:+x.ts||0})});SYNC.c.sort((a,b)=>b.ts-a.ts)}
+  const pf=await db.doc('data/users/'+uid+'/prefs').get();if(pf.exists){const f=(pf.data()||{}).f;(Array.isArray(f)?f:[]).forEach(n=>{if(typeof n==='string'&&!SYNC.f.includes(n)){SYNC.f.push(n);setFollow(n,true,1)}})}
+  rebuildComments();refreshAll();setSync('live');save();
+  db.collection('votes').onSnapshot(s=>{const o={};s.docs.forEach(d=>{if(d.id!==uid&&d.exists)o[d.id]=d.data()});applyOthers(o)},()=>{});
+ }catch(e){}})();
+
+const _show2=show;show=function(v,p){_show2(v,p);if(v==='polls')drawPolls();if(v==='alerts')drawAlerts();if(v==='race2028')rebuildComments()};
 </script>
 </body>
 </html>

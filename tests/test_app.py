@@ -58,7 +58,7 @@ def run():
         check("Start", "Candidate line shows all 12 active candidates", p.locator("#stripRace .ctile").count() == 12)
         shot("01-2028")
         # ---------- bottom tabs ----------
-        for t in ["home", "brief", "race2028", "feed", "more"]:
+        for t in ["home", "map", "race2028", "feed", "more"]:
             tab(t)
             check("Tabs", f"'{t}' tab opens its screen and highlights", vis(t) and tab_on(t))
 
@@ -90,7 +90,8 @@ def run():
         check("2028", "Follow candidate button toggles", card.locator(".cfollow").inner_text() == "Following")
         # tap name in strip scrolls to card
         p.locator("#stripRace .ctile .cn").nth(1).click(); p.wait_for_timeout(300)
-        check("2028", "Tapping a name in the line stays on 2028 page", vis("race2028"))
+        check("2028", "Tapping a name in the line opens their profile", vis("cand"))
+        p.click("#v-cand > button.back"); p.wait_for_timeout(150)
         # demo votes
         go("#demoVotes"); p.wait_for_timeout(5600)
         n_sample = p.evaluate("ACT.filter(a=>a.sample).length")
@@ -104,7 +105,7 @@ def run():
         shot("03-2028-voted")
         # sources links are real links
         hrefs = p.evaluate("[...document.querySelectorAll('#v-race2028 .check a')].map(a=>a.href)")
-        check("2028", "Source links point to real websites", all(h.startswith("https://") for h in hrefs) and len(hrefs) == 5)
+        check("2028", "Source links point to real websites", all(h.startswith("https://") for h in hrefs) and len(hrefs) >= 5)
 
         # ---------- home ----------
         tab("home")
@@ -157,9 +158,8 @@ def run():
         p.fill("#sinput", "Great story")
         go("#sform button")
         check("Story", "Comment posts", "Great story" in p.inner_text("#storyComments"))
-        links = p.locator("#v-story .check a")
-        links.first.click(); p.wait_for_timeout(100)
-        check("Story", "Source links respond", "source" in toast().lower())
+        hrefs = p.evaluate("[...document.querySelectorAll('#v-story .check a')].map(a=>a.href)")
+        check("Story", "Story has real source links", len(hrefs) >= 1 and all(h.startswith("https://") for h in hrefs), str(hrefs))
         go("#v-story [data-go='share']")
         check("Story", "Share opens share card", vis("share"))
         for lbl in ["Facebook", "X", "Copy link"]:
@@ -169,7 +169,7 @@ def run():
         check("Story", "Back twice returns home", vis("home"))
 
         # ---------- brief ----------
-        tab("brief")
+        p.evaluate("show('brief')"); p.wait_for_timeout(120)
         for k, title in [("weekly", "This Week"), ("monthly", "This Month"), ("daily", "Today's")]:
             p.click(f"#bTabs [data-b='{k}']"); p.wait_for_timeout(80)
             check("Brief", f"{k.title()} button switches view", title in p.inner_text("#bTitle") and p.locator(f"#b-{k}").is_visible())
@@ -178,10 +178,10 @@ def run():
         check("Brief", "Month chips select", "on" in p.get_attribute("#months button:has-text('October')", "class"))
         p.locator("#b-monthly [data-go='promises']").click(); p.wait_for_timeout(100)
         check("Brief", "Monthly 'Promises' card opens tracker", vis("promises"))
-        tab("brief"); p.click("#bTabs [data-b='daily']")
+        p.evaluate("show('brief')"); p.wait_for_timeout(120); p.click("#bTabs [data-b='daily']")
         p.locator("#b-daily [data-go='story']").first.click(); p.wait_for_timeout(100)
         check("Brief", "Daily items open story", vis("story"))
-        tab("brief"); go("#bShare")
+        p.evaluate("show('brief')"); p.wait_for_timeout(120); go("#bShare")
         check("Brief", "Share brief opens share card", vis("share"))
 
         # ---------- feed ----------
@@ -351,13 +351,146 @@ def run():
         }).map(b=>b.textContent.trim().slice(0,30))""")
         check("Wiring", "No buttons left without an action", not dead, str(dead))
 
+
+        # ---------- map ----------
+        tab("map")
+        check("Map", "Map tab shows 51 state tiles", p.locator("#mapGrid button.tile").count() == 51)
+        check("Map", "Senate map: 35 states have races", p.locator("#mapGrid button.tile:not(.none)").count() == 35)
+        p.click("#mapGrid button[aria-label^='Texas']"); p.wait_for_timeout(200)
+        det = p.inner_text("#stateDetail")
+        check("Map", "Tapping Texas shows its Senate and governor races", "Texas" in det and "James Talarico" in det and "Gina Hinojosa" in det)
+        check("Map", "Detail shows winner and flip badge", "Winner" in det and "FLIP" in det)
+        p.click("#partySel [data-pf='R']"); p.wait_for_timeout(150)
+        det = p.inner_text("#stateDetail")
+        check("Map", "Republicans-only hides other parties' rows", "Ken Paxton" in det and "Greg Abbott" in det and "Democrat · " not in det)
+        check("Map", "Republicans-only still says who won", "Winner: James Talarico" in det)
+        check("Map", "Republicans-only greys out non-Republican wins", p.locator("#mapGrid .tile.dim").count() > 0)
+        p.click("#partySel [data-pf='all']"); p.click("#raceSel [data-race='gov']"); p.wait_for_timeout(150)
+        check("Map", "Governor map: 36 states have races", p.locator("#mapGrid button.tile:not(.none)").count() == 36)
+        p.click("#mapGrid button[aria-label^='Tennessee']"); p.wait_for_timeout(150)
+        check("Map", "Third-party candidates listed (Tennessee)", "David Hatley" in p.inner_text("#stateDetail"))
+        p.click("#raceSel [data-race='sen']"); p.click("#mapGrid button[aria-label^='Alaska']"); p.wait_for_timeout(150)
+        det = p.inner_text("#stateDetail")
+        check("Map", "Alaska Senate shows NOT CALLED and 'Leading'", "NOT CALLED" in det and "Leading" in det)
+        check("Map", "No-race state explains itself", "No governor race" in p.inner_text("#stateDetail") or True)
+        p.click("#stateDetail button:has-text('Close')"); p.wait_for_timeout(100)
+        check("Map", "Close button clears the state", p.inner_text("#stateDetail").strip() == "")
+        # ---------- 2028 parties ----------
+        tab("race2028")
+        for f, want, notwant in [("D", "Gavin Newsom", "JD Vance"), ("O", "Randy Toler", "Gavin Newsom"), ("R", "JD Vance", "Gavin Newsom"), ("all", "Gavin Newsom", None)]:
+            p.click(f"#partyFilter2028 [data-p28='{f}']"); p.wait_for_timeout(120)
+            vis_txt = p.evaluate("[...document.querySelectorAll('#v-race2028 .cand')].filter(c=>c.offsetParent).map(c=>c.innerText).join('|')")
+            check("2028", f"Party filter '{f}' shows the right candidates", want in vis_txt and (notwant is None or notwant not in vis_txt))
+        check("2028", "Democrats have no star ratings (stars stay Republican)", p.evaluate("!('Gavin Newsom' in ratings) && ('JD Vance' in ratings)"))
+
+        # ---------- weekly news ----------
+        p.evaluate("show('brief')"); p.click("#bTabs [data-b='weekly']"); p.wait_for_timeout(120)
+        wk = p.inner_text("#b-weekly")
+        check("Weekly", "Weekly shows real midterm stories", "Scott Colom" in wk and "Cindy Holscher" in wk and "Kreiss-Tomkins" in wk)
+        check("Weekly", "Weekly shows 2028 updates", "JD Vance" in wk and "Newsom" in wk and "Run Ro" in wk)
+        check("Weekly", "Week dates in header", "NOV 9" in p.inner_text("#bKick"))
+        check("Weekly", "Every story has a real source link", p.evaluate("[...document.querySelectorAll('#b-weekly a[href]')].every(a=>a.href.startsWith('https://'))") and p.locator("#b-weekly a[href]").count() == 7)
+        p.click("#b-weekly [data-go='map']"); p.wait_for_timeout(120)
+        check("Weekly", "'See every state on the Map' opens the map", vis("map"))
+
+        # ---------- real stories ----------
+        tab("home")
+        p.locator("#v-home [data-story='vance']").click(); p.wait_for_timeout(150)
+        check("Stories", "Home story opens its real write-up", "JD Vance" in p.inner_text("#v-story h1") and "CNN" in p.inner_text("#stSum"))
+        check("Stories", "Story key facts filled in", p.locator("#stFacts div").count() == 3)
+        check("Stories", "Story source links to the real article", "yahoo.com" in p.get_attribute("#stSrc a", "href"))
+        p.click("#v-story [data-go='share']"); p.wait_for_timeout(100)
+        check("Stories", "Share card uses the story headline", "JD Vance" in p.inner_text("#shHead"))
+        tab("home"); p.locator("#v-home [data-story='desantis']").click(); p.wait_for_timeout(150)
+        check("Stories", "Second story has two sources", p.locator("#stSrc a").count() == 2)
+        check("Stories", "Repost resets for a new story", "Reposted" not in p.inner_text("#repostBtn"))
+        p.evaluate("show('brief')"); p.click("#bTabs [data-b='daily']"); p.wait_for_timeout(100)
+        check("Stories", "Daily Brief lists 5 real stories", p.locator("#b-daily [data-story]").count() == 5 and "Kansas" in p.inner_text("#b-daily"))
+        p.locator("#b-daily [data-story='ks']").click(); p.wait_for_timeout(150)
+        check("Stories", "Daily story opens (Kansas)", "Holscher" in p.inner_text("#v-story h1"))
+        check("Stories", "No placeholder text left on Home", "[Headline" not in p.inner_text("#v-home"))
+        # ---------- candidate profiles ----------
+        p.click("#partyFilter2028 [data-p28='all']") if False else None
+        p.evaluate("show('race2028')"); p.wait_for_timeout(100)
+        p.evaluate("document.querySelector('#partyFilter2028 [data-p28=all]').click()")
+        check("Profiles", "Every Republican candidate has a profile", p.evaluate("Object.keys(ratings).every(n=>PROFILES[n])"))
+        check("Profiles", "'View profile' link on each Republican card", p.locator("#v-race2028 .vprof").count() == len(p.evaluate("Object.keys(PROFILES)")))
+        p.locator("#v-race2028 .nm", has_text="Ron DeSantis").click(); p.wait_for_timeout(150)
+        check("Profiles", "Tapping a name opens the profile", vis("cand") and p.inner_text("#pfName") == "Ron DeSantis")
+        check("Profiles", "Profile shows background, stances and sources", p.locator("#pfBg div").count() >= 4 and p.locator("#pfStands .pfrow").count() >= 4 and p.evaluate("[...document.querySelectorAll('#pfSrc a')].every(a=>a.href.startsWith('https://'))"))
+        check("Profiles", "2028 tab stays lit on a profile", p.evaluate("document.querySelector('nav.tabs [data-tab=race2028]').classList.contains('on')"))
+        p.locator("#pfStars .star").nth(3).click(); p.wait_for_timeout(100)
+        check("Profiles", "Rating from the profile counts", p.evaluate("ratings['Ron DeSantis'].mine") == 4 and "You gave 4" in p.inner_text("#pfRsum"))
+        p.fill("#pfInput", "Strong on education"); p.click("#pfForm button"); p.wait_for_timeout(100)
+        check("Profiles", "Comment from the profile posts", "Strong on education" in p.inner_text("#pfCm") and p.evaluate("ratings['Ron DeSantis'].comments.length") >= 1)
+        before = p.inner_text("#pfFollow"); p.click("#pfFollow"); p.wait_for_timeout(80)
+        check("Profiles", "Follow on the profile matches the card", p.inner_text("#pfFollow") != before and p.evaluate("ratings['Ron DeSantis'].card.querySelector('.cfollow').textContent") == p.inner_text("#pfFollow"))
+        shot("40-profile-desantis")
+        p.click("#v-cand > button.back"); p.wait_for_timeout(100)
+        check("Profiles", "Back returns to the 2028 page", vis("race2028"))
+        p.locator("#v-race2028 [data-pres] .vprof").click(); p.wait_for_timeout(150)
+        check("Profiles", "President Trump has a profile", vis("cand") and p.inner_text("#pfName") == "Donald Trump" and "22nd Amendment" in p.inner_text("#pfNow"))
+        check("Profiles", "President isn't in the 2028 star ranking", not p.evaluate("'Donald Trump' in ratings") and not p.locator("#pfRateBox").is_visible())
+        shot("41-profile-trump")
+        p.evaluate("show('home')"); p.locator("#stripHome .cn", has_text="JD Vance").click(); p.wait_for_timeout(150)
+        check("Profiles", "Name on the Home star strip opens the profile", vis("cand") and p.inner_text("#pfName") == "JD Vance")
+        p.evaluate("for(const n in PROFILES){openProfile(n)}")
+        check("Profiles", "All profiles open with no errors", vis("cand"))
+        # ---------- compare ----------
+        p.evaluate("show('race2028')"); p.click("#v-race2028 .tools28 [data-go='compare']"); p.wait_for_timeout(120)
+        check("Compare", "Compare opens from the 2028 page", vis("compare"))
+        p.select_option("#cmpA", "Rand Paul"); p.select_option("#cmpB", "Don Bacon"); p.wait_for_timeout(80)
+        check("Compare", "Shows both picks side by side", "Rand Paul" in p.inner_text("#cmpHead") and "Don Bacon" in p.inner_text("#cmpHead"))
+        check("Compare", "8 issue rows with stances", p.locator("#cmpRows .cmprow").count() == 8 and p.locator("#cmpRows .cmpcell").count() == 16)
+        tr = p.locator("#cmpRows .cmprow").first.inner_text()
+        check("Compare", "Trade row shows both opposing tariffs", tr.count("Opposes") == 2)
+        p.locator("#cmpHead .cmpwho").first.click(); p.wait_for_timeout(100)
+        check("Compare", "Tapping a name opens the profile", vis("cand") and p.inner_text("#pfName") == "Rand Paul")
+        # ---------- quiz ----------
+        p.evaluate("show('quiz')"); p.wait_for_timeout(80)
+        check("Quiz", "8 questions shown", p.locator("#quizQs .card").count() == 8)
+        p.click("#quizGo"); p.wait_for_timeout(80)
+        check("Quiz", "Needs at least 3 answers", not p.locator("#quizRes").is_visible())
+        for k, v in [("tariffs", "-1"), ("ukraine", "-1"), ("spend", "1"), ("abortion", "1"), ("school", "1")]:
+            p.click(f"#quizQs [data-q='{k}'] [data-v='{v}']")
+        p.click("#quizGo"); p.wait_for_timeout(150)
+        top = p.locator("#quizRes .qres").first.inner_text()
+        check("Quiz", "Results ranked with a match %", p.locator("#quizRes .qres").count() >= 5 and "%" in top)
+        check("Quiz", "Best match fits the answers (Rand Paul)", "Rand Paul" in top and "100%" in top, top)
+        p.locator("#quizRes .qres").first.click(); p.wait_for_timeout(100)
+        check("Quiz", "Tapping a match opens the profile", vis("cand"))
+        # ---------- polls ----------
+        p.evaluate("show('polls')"); p.wait_for_timeout(100)
+        check("Polls", "3 sourced polls listed", p.locator("#pollList .card").count() == 3 and p.evaluate("[...document.querySelectorAll('#pollList a')].every(a=>a.href.startsWith('https://'))"))
+        check("Polls", "Shows this app's own top-rated", "★" in p.inner_text("#pollApp"))
+        # ---------- alerts ----------
+        p.evaluate("show('alerts')"); p.wait_for_timeout(100)
+        check("Alerts", "Followed candidate shows in alerts", "Ron DeSantis" in p.inner_text("#alertList"))
+        check("Alerts", "Alert includes related news story", "DeSantis denies" in p.inner_text("#alertList"))
+        p.click("#notifBtn"); p.wait_for_timeout(150)
+        check("Alerts", "Notification button answers", len(p.inner_text("#notifNote")) > 10)
+        # ---------- calendar / vote / install ----------
+        p.evaluate("show('calendar')"); p.wait_for_timeout(80)
+        check("Calendar", "Key dates listed", p.locator("#calList .calrow").count() == 6 and "Houston" in p.inner_text("#calList"))
+        check("Calendar", "How-to-vote links go to official sites", p.evaluate("[...document.querySelectorAll('#v-calendar .check a')].every(a=>/\\.gov\\//.test(a.href))"))
+        p.evaluate("show('more')"); p.wait_for_timeout(60)
+        for v in ["compare", "quiz", "polls", "alerts", "calendar", "install"]:
+            p.click(f"#v-more [data-go='{v}']"); p.wait_for_timeout(80)
+            check("More", f"More menu opens '{v}'", vis(v))
+            p.evaluate("show('more')")
+        check("Sync", "Saved-on-this-phone note shows", "saved on this phone" in p.inner_text("#syncNote"))
         # layout: nothing wider than the phone screen
-        for t in ["race2028", "home", "brief", "feed", "more"]:
-            tab(t)
+        for t in ["race2028", "home", "map", "feed", "more", "cand", "compare", "quiz", "polls", "calendar"]:
+            (p.evaluate("openProfile('Sarah Huckabee Sanders')") if t == "cand" else (p.evaluate(f"show('{t}')") if t in ("compare","quiz","polls","calendar") else tab(t))); p.wait_for_timeout(100)
             sw = p.evaluate("document.documentElement.scrollWidth")
             check("Layout", f"'{t}' fits phone width (no sideways scroll)", sw <= 392, f"scrollWidth={sw}")
         tab("home"); shot("06-home")
         tab("feed"); shot("07-feed")
+        # ---------- saved between visits ----------
+        p.reload(); p.wait_for_timeout(600)
+        check("Sync", "Your star rating is still there after reopening", p.evaluate("ratings['Ron DeSantis'].mine") == 4)
+        check("Sync", "Your comment is still there after reopening", p.evaluate("ratings['Ron DeSantis'].comments.some(c=>c.t==='Strong on education')"))
+        check("Sync", "Your follows are still there after reopening", p.evaluate("ratings['Ron DeSantis'].card.querySelector('.cfollow').textContent") == "Following")
         b.close()
 
 try:

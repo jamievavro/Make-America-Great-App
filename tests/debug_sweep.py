@@ -64,7 +64,7 @@ with sync_playwright() as pw:
         for i in range(p.locator(sel).count()):
             p.locator(sel).nth(i).click(); tapped += 1; p.wait_for_timeout(60)
     # demo voting running long + stress
-    p.evaluate("show('race2028',false)"); p.click("#demoVotes"); p.wait_for_timeout(9000); p.click("#demoVotes")
+    p.evaluate("show('race2028',false)"); p.click("#partyFilter2028 [data-p28='all']"); p.click("#demoVotes"); p.wait_for_timeout(9000); p.click("#demoVotes")
     stats = p.evaluate("({votes:ACT.length, leaders:document.querySelectorAll('#leaders .lead').length, tiles:document.querySelectorAll('#stripRace .ctile').length})")
     info.append(f"after 9s of sample voting: {stats}")
     # memory/blob leak check is out of scope; check page still responsive
